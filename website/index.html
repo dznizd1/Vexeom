@@ -13,6 +13,7 @@
     <div class="nav-inner">
       <div class="logo">VEX<span>E</span>OM</div>
       <div class="nav-right">
+        <a href="#assessment" class="nav-link">FREE TEST</a>
         <a href="#indicators" class="nav-link">INDICATORS</a>
         <a href="#pricing" class="nav-link">ACCESS</a>
         <a href="#pricing" class="nav-cta">REQUEST ACCESS</a>
@@ -30,23 +31,112 @@
       <div class="hero-sub">don't show up on a skills test.</div>
       <p class="sub">Vexeom scores the 10 hidden factors that predict burnout, dropout, and career derailment — and maps exactly how they compound before they become terminal.</p>
       <div class="hero-actions">
-        <a href="#pricing" class="btn-primary">REQUEST ACCESS</a>
-        <a href="#indicators" class="btn-ghost">SEE THE 10 INDICATORS</a>
+        <a href="#assessment" class="btn-primary">TAKE THE FREE TEST</a>
+        <a href="#pricing" class="btn-ghost">VIEW ACCESS TIERS</a>
       </div>
       <div class="hero-stats">
-        <div class="stat">
-          <span class="stat-num">10</span>
-          <span class="stat-label">RISK INDICATORS SCORED</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num">24h</span>
-          <span class="stat-label">INTELLIGENCE DELIVERY</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num">15–25</span>
-          <span class="stat-label">PAGE CLASSIFIED REPORT</span>
-        </div>
+        <div class="stat"><span class="stat-num">10</span><span class="stat-label">RISK INDICATORS</span></div>
+        <div class="stat"><span class="stat-num">24h</span><span class="stat-label">INTELLIGENCE DELIVERY</span></div>
+        <div class="stat"><span class="stat-num">5</span><span class="stat-label">ACCESS TIERS</span></div>
       </div>
+    </div>
+  </section>
+
+  <!-- FREE ASSESSMENT -->
+  <section class="assessment" id="assessment">
+    <div class="inner">
+      <div class="section-header">
+        <div class="section-tag">FREE CAREER RISK SNAPSHOT</div>
+        <h2>Find out where you stand. In 3 minutes. Free.</h2>
+        <p class="section-sub">Answer 5 questions. Vexeom returns an instant snapshot of your top career risk area — no account required. Full intelligence available through membership.</p>
+      </div>
+
+      <div class="quiz-shell" id="quiz">
+
+        <div class="quiz-step active" data-step="1">
+          <div class="quiz-meta"><span class="quiz-num">01 / 05</span><span class="quiz-label">FINANCIAL RESILIENCE</span></div>
+          <div class="quiz-q">How much financial runway do you have to complete your training without taking on significant additional debt?</div>
+          <div class="quiz-options">
+            <button class="quiz-opt" data-score="1">Less than 3 months</button>
+            <button class="quiz-opt" data-score="2">3–6 months</button>
+            <button class="quiz-opt" data-score="3">6–12 months</button>
+            <button class="quiz-opt" data-score="4">12–24 months</button>
+            <button class="quiz-opt" data-score="5">Fully funded — no concern</button>
+          </div>
+        </div>
+
+        <div class="quiz-step" data-step="2">
+          <div class="quiz-meta"><span class="quiz-num">02 / 05</span><span class="quiz-label">RECOVERY</span></div>
+          <div class="quiz-q">How consistently do you get 7 or more hours of quality sleep per night during training periods?</div>
+          <div class="quiz-options">
+            <button class="quiz-opt" data-score="1">Rarely — under 5 hours most nights</button>
+            <button class="quiz-opt" data-score="2">Sometimes — 5 to 6 hours</button>
+            <button class="quiz-opt" data-score="3">Usually — around 6 to 7 hours</button>
+            <button class="quiz-opt" data-score="4">Most nights — 7 to 8 hours</button>
+            <button class="quiz-opt" data-score="5">Consistently — 8 or more hours</button>
+          </div>
+        </div>
+
+        <div class="quiz-step" data-step="3">
+          <div class="quiz-meta"><span class="quiz-num">03 / 05</span><span class="quiz-label">MOTIVATION STABILITY</span></div>
+          <div class="quiz-q">When training becomes difficult or setbacks occur, how does your commitment to your aviation career respond?</div>
+          <div class="quiz-options">
+            <button class="quiz-opt" data-score="1">I question whether this is right for me</button>
+            <button class="quiz-opt" data-score="2">I lose motivation for weeks at a time</button>
+            <button class="quiz-opt" data-score="3">I struggle but recover eventually</button>
+            <button class="quiz-opt" data-score="4">I stay committed with temporary dips</button>
+            <button class="quiz-opt" data-score="5">Setbacks sharpen my focus</button>
+          </div>
+        </div>
+
+        <div class="quiz-step" data-step="4">
+          <div class="quiz-meta"><span class="quiz-num">04 / 05</span><span class="quiz-label">COGNITIVE LOAD</span></div>
+          <div class="quiz-q">How reliably can you maintain focus and make clear decisions after a demanding training day?</div>
+          <div class="quiz-options">
+            <button class="quiz-opt" data-score="1">My focus collapses — I can't function</button>
+            <button class="quiz-opt" data-score="2">Significantly degraded performance</button>
+            <button class="quiz-opt" data-score="3">Noticeably reduced but manageable</button>
+            <button class="quiz-opt" data-score="4">Minor reduction, mostly intact</button>
+            <button class="quiz-opt" data-score="5">Consistent across full training days</button>
+          </div>
+        </div>
+
+        <div class="quiz-step" data-step="5">
+          <div class="quiz-meta"><span class="quiz-num">05 / 05</span><span class="quiz-label">LIFESTYLE COMPATIBILITY</span></div>
+          <div class="quiz-q">How well does your current home life, relationship, and personal environment support a demanding aviation career?</div>
+          <div class="quiz-options">
+            <button class="quiz-opt" data-score="1">Active conflict — major source of pressure</button>
+            <button class="quiz-opt" data-score="2">Frequent tension and friction</button>
+            <button class="quiz-opt" data-score="3">Neutral — neither helps nor hinders</button>
+            <button class="quiz-opt" data-score="4">Broadly supportive with occasional strain</button>
+            <button class="quiz-opt" data-score="5">Fully aligned — strong foundation</button>
+          </div>
+        </div>
+
+        <div class="quiz-result" id="quiz-result">
+          <div class="result-header">
+            <div class="section-tag">SNAPSHOT COMPLETE</div>
+            <div class="result-score-row">
+              <div class="result-score-label">YOUR RISK SCORE</div>
+              <div class="result-score" id="result-score">--</div>
+              <div class="result-score-max">/ 25</div>
+            </div>
+          </div>
+          <div class="result-band" id="result-band"></div>
+          <div class="result-text" id="result-text"></div>
+          <div class="result-cta-box">
+            <div class="result-cta-label">This snapshot covers 5 of your 10 risk indicators. Your full Vexeom report scores all 10, maps your active failure chains, and delivers a 12-month career outlook.</div>
+            <a href="#pricing" class="btn-primary">GET THE FULL REPORT</a>
+            <button class="quiz-restart btn-ghost" onclick="restartQuiz()">RETAKE SNAPSHOT</button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="quiz-progress" id="quiz-progress">
+        <div class="quiz-progress-bar" id="quiz-progress-bar"></div>
+      </div>
+
     </div>
   </section>
 
@@ -112,95 +202,139 @@
     </div>
   </section>
 
-  <section class="report">
-    <div class="inner">
-      <div class="section-header">
-        <div class="section-tag">THE REPORT</div>
-        <h2>What members receive within 24 hours.</h2>
-      </div>
-      <div class="report-grid">
-        <div class="report-item"><span class="report-num">01</span><span class="report-text"><strong>Scored indicators</strong> across all 10 career risk areas with individual rating and full interpretation</span></div>
-        <div class="report-item"><span class="report-num">02</span><span class="report-text"><strong>Failure chain analysis</strong> showing exactly how your current risks connect and compound against each other</span></div>
-        <div class="report-item"><span class="report-num">03</span><span class="report-text"><strong>Personal risk map</strong> identifying your highest-threat areas ranked by severity and urgency</span></div>
-        <div class="report-item"><span class="report-num">04</span><span class="report-text"><strong>12-month career outlook</strong> based on your current risk trajectory and full indicator pattern</span></div>
-        <div class="report-item"><span class="report-num">05</span><span class="report-text"><strong>Prioritised recommendations</strong> ranked by impact and implementation difficulty, specific to your profile</span></div>
-      </div>
-    </div>
-  </section>
-
+  <!-- PRICING -->
   <section class="pricing" id="pricing">
     <div class="inner">
       <div class="section-header">
         <div class="section-tag">ACCESS TIERS</div>
-        <h2>Intelligence reserved for those serious about the long game.</h2>
-      </div>
-      <div class="pricing-grid">
-
-        <div class="pricing-tier">
-          <div class="tier-header">
-            <div class="tier-tag">ENTRY INTELLIGENCE</div>
-            <div class="tier-name">Vexeom Report</div>
-            <div class="tier-price">£99<span class="tier-period"> one-time</span></div>
-            <div class="tier-note">Foundation access — first 200 members only</div>
-          </div>
-          <div class="tier-body">
-            <div class="tier-item"><span class="tier-check">—</span><span>Full 15–25 page intelligence report</span></div>
-            <div class="tier-item"><span class="tier-check">—</span><span>10 scored risk indicators</span></div>
-            <div class="tier-item"><span class="tier-check">—</span><span>Failure chain analysis</span></div>
-            <div class="tier-item"><span class="tier-check">—</span><span>Personal risk map</span></div>
-            <div class="tier-item"><span class="tier-check">—</span><span>12-month career outlook</span></div>
-            <div class="tier-item"><span class="tier-check">—</span><span>Prioritised recommendations</span></div>
-          </div>
-          <a href="#" class="tier-cta">REQUEST ENTRY ACCESS</a>
-        </div>
-
-        <div class="pricing-tier featured">
-          <div class="tier-badge">MOST SELECTED</div>
-          <div class="tier-header">
-            <div class="tier-tag">ONGOING INTELLIGENCE</div>
-            <div class="tier-name">Vexeom Navigator™</div>
-            <div class="tier-price">£29<span class="tier-period"> / month</span></div>
-            <div class="tier-note">Monthly reassessment and benchmark tracking</div>
-          </div>
-          <div class="tier-body">
-            <div class="tier-item"><span class="tier-check">—</span><span>Everything in Vexeom Report</span></div>
-            <div class="tier-item"><span class="tier-check">—</span><span>Monthly comparative reassessment</span></div>
-            <div class="tier-item"><span class="tier-check">—</span><span>Score movement tracking over time</span></div>
-            <div class="tier-item"><span class="tier-check">—</span><span>Anonymised benchmark cohort comparison</span></div>
-            <div class="tier-item"><span class="tier-check">—</span><span>Quarterly deep insight report</span></div>
-            <div class="tier-item"><span class="tier-check">—</span><span>Priority report delivery</span></div>
-          </div>
-          <a href="#" class="tier-cta featured-cta">REQUEST NAVIGATOR ACCESS</a>
-        </div>
-
-        <div class="pricing-tier">
-          <div class="tier-header">
-            <div class="tier-tag">PROFESSIONAL INTELLIGENCE</div>
-            <div class="tier-name">Vexeom Professional™</div>
-            <div class="tier-price">£99<span class="tier-period"> / month</span></div>
-            <div class="tier-note">For commercial pilots and senior operators</div>
-          </div>
-          <div class="tier-body">
-            <div class="tier-item"><span class="tier-check">—</span><span>Everything in Navigator</span></div>
-            <div class="tier-item"><span class="tier-check">—</span><span>Advanced longitudinal data analysis</span></div>
-            <div class="tier-item"><span class="tier-check">—</span><span>Career trajectory modelling</span></div>
-            <div class="tier-item"><span class="tier-check">—</span><span>Full dataset benchmark access</span></div>
-            <div class="tier-item"><span class="tier-check">—</span><span>Early access to new indicators</span></div>
-            <div class="tier-item"><span class="tier-check">—</span><span>Launching Year 2</span></div>
-          </div>
-          <a href="#" class="tier-cta">JOIN WAITLIST</a>
-        </div>
-
+        <h2>Five tiers. One standard — uncompromising intelligence.</h2>
+        <p class="section-sub">From student pilots to defence operators. Every tier delivers the same rigorous Vexeom intelligence framework, calibrated to your level of operation.</p>
       </div>
 
-      <div class="enterprise-bar">
-        <div class="enterprise-left">
-          <div class="enterprise-label">ENTERPRISE & DEFENCE</div>
-          <div class="enterprise-text">Flight schools, airlines, aerospace firms, defence operators — bespoke intelligence programmes from £500 per cohort to £50,000+ enterprise engagements.</div>
-        </div>
-        <a href="#" class="tier-cta">ENQUIRE</a>
-      </div>
+      <div class="tiers-stack">
 
+        <div class="tier-row">
+          <div class="tier-left">
+            <div class="tier-num">01</div>
+            <div class="tier-info">
+              <div class="tier-label">FOUNDATION</div>
+              <div class="tier-name">Vexeom Cadet</div>
+              <div class="tier-desc">For aspiring pilots and student pilots. Entry-level career intelligence at the start of the journey.</div>
+            </div>
+          </div>
+          <div class="tier-middle">
+            <div class="tier-feature">Full 15–25 page intelligence report</div>
+            <div class="tier-feature">10 scored risk indicators</div>
+            <div class="tier-feature">Failure chain analysis</div>
+            <div class="tier-feature">12-month career outlook</div>
+          </div>
+          <div class="tier-right">
+            <div class="tier-price-block">
+              <div class="tier-amount">£19<span>/mo</span></div>
+              <div class="tier-sub">or £99 one-time report</div>
+            </div>
+            <a href="#" class="tier-btn">JOIN CADET</a>
+          </div>
+        </div>
+
+        <div class="tier-row">
+          <div class="tier-left">
+            <div class="tier-num">02</div>
+            <div class="tier-info">
+              <div class="tier-label">PROFESSIONAL</div>
+              <div class="tier-name">Vexeom Navigator™</div>
+              <div class="tier-desc">For commercial pilots and active aviation professionals. Ongoing intelligence with monthly comparative scoring.</div>
+            </div>
+          </div>
+          <div class="tier-middle">
+            <div class="tier-feature">Everything in Cadet</div>
+            <div class="tier-feature">Monthly reassessment and score tracking</div>
+            <div class="tier-feature">Benchmark cohort comparison</div>
+            <div class="tier-feature">Quarterly deep insight report</div>
+          </div>
+          <div class="tier-right">
+            <div class="tier-price-block">
+              <div class="tier-amount">£49<span>/mo</span></div>
+              <div class="tier-sub">billed monthly</div>
+            </div>
+            <a href="#" class="tier-btn">JOIN NAVIGATOR</a>
+          </div>
+        </div>
+
+        <div class="tier-row highlight-row">
+          <div class="tier-highlight-badge">MOST SELECTED</div>
+          <div class="tier-left">
+            <div class="tier-num accent">03</div>
+            <div class="tier-info">
+              <div class="tier-label">FIRM</div>
+              <div class="tier-name">Vexeom Academy™</div>
+              <div class="tier-desc">For flight schools and aviation academies. Cohort-level intelligence across your entire student body.</div>
+            </div>
+          </div>
+          <div class="tier-middle">
+            <div class="tier-feature">Everything in Navigator</div>
+            <div class="tier-feature">Per-cohort reporting dashboard</div>
+            <div class="tier-feature">Cohort risk map and aggregate analysis</div>
+            <div class="tier-feature">Annual unlimited licence available</div>
+          </div>
+          <div class="tier-right">
+            <div class="tier-price-block">
+              <div class="tier-amount">£500<span>/cohort</span></div>
+              <div class="tier-sub">or £5,000–£15,000 annual licence</div>
+            </div>
+            <a href="#" class="tier-btn accent-btn">JOIN ACADEMY</a>
+          </div>
+        </div>
+
+        <div class="tier-row">
+          <div class="tier-left">
+            <div class="tier-num">04</div>
+            <div class="tier-info">
+              <div class="tier-label">AEROSPACE FIRM</div>
+              <div class="tier-name">Vexeom Squadron™</div>
+              <div class="tier-desc">For airlines, aerospace firms, and large aviation organisations. Workforce-scale intelligence and performance sustainability.</div>
+            </div>
+          </div>
+          <div class="tier-middle">
+            <div class="tier-feature">Everything in Academy</div>
+            <div class="tier-feature">Per-head annual licensing</div>
+            <div class="tier-feature">Volume discount above 100 people</div>
+            <div class="tier-feature">Workforce risk dashboard</div>
+          </div>
+          <div class="tier-right">
+            <div class="tier-price-block">
+              <div class="tier-amount">£200<span>/head/yr</span></div>
+              <div class="tier-sub">volume discounts available</div>
+            </div>
+            <a href="#" class="tier-btn">JOIN SQUADRON</a>
+          </div>
+        </div>
+
+        <div class="tier-row elite-row">
+          <div class="tier-left">
+            <div class="tier-num gold">05</div>
+            <div class="tier-info">
+              <div class="tier-label">ELITE & DEFENCE</div>
+              <div class="tier-name">Vexeom Command™</div>
+              <div class="tier-desc">For defence contractors, C-suite aerospace executives, and senior operators. Bespoke intelligence programmes built to your organisation's requirements.</div>
+            </div>
+          </div>
+          <div class="tier-middle">
+            <div class="tier-feature">Bespoke engagement scoping</div>
+            <div class="tier-feature">Defence data sovereignty compliance</div>
+            <div class="tier-feature">Executive-level reporting</div>
+            <div class="tier-feature">Dedicated intelligence partnership</div>
+          </div>
+          <div class="tier-right">
+            <div class="tier-price-block">
+              <div class="tier-amount gold">£50k<span>+</span></div>
+              <div class="tier-sub">minimum engagement — bespoke scoping</div>
+            </div>
+            <a href="#" class="tier-btn gold-btn">ENQUIRE PRIVATELY</a>
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 
@@ -215,5 +349,73 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+    let currentStep = 1;
+    let scores = [];
+    const totalSteps = 5;
+
+    function updateProgress() {
+      const pct = ((currentStep - 1) / totalSteps) * 100;
+      document.getElementById('quiz-progress-bar').style.width = pct + '%';
+    }
+
+    document.querySelectorAll('.quiz-opt').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const step = this.closest('.quiz-step');
+        step.querySelectorAll('.quiz-opt').forEach(b => b.classList.remove('selected'));
+        this.classList.add('selected');
+        scores.push(parseInt(this.dataset.score));
+
+        setTimeout(() => {
+          step.classList.remove('active');
+          if (currentStep < totalSteps) {
+            currentStep++;
+            document.querySelector('[data-step="' + currentStep + '"]').classList.add('active');
+            updateProgress();
+          } else {
+            showResult();
+          }
+        }, 300);
+      });
+    });
+
+    function showResult() {
+      document.getElementById('quiz-progress-bar').style.width = '100%';
+      const total = scores.reduce((a, b) => a + b, 0);
+      const max = totalSteps * 5;
+      document.getElementById('result-score').textContent = total;
+
+      let band, text;
+      if (total <= 10) {
+        band = 'RISK LEVEL: HIGH';
+        text = 'Multiple active risk factors detected across your profile. Financial pressure, recovery deficits, or motivation instability are likely creating compounding chains that threaten your career trajectory. A full Vexeom report is strongly recommended before these risks compound further.';
+        document.getElementById('result-band').style.color = '#FF3B3B';
+      } else if (total <= 17) {
+        band = 'RISK LEVEL: MODERATE';
+        text = 'Several indicators are under pressure. Your profile shows vulnerabilities that, left unaddressed, are likely to compound over the next 6–12 months. A full Vexeom report will identify exactly where your chains are forming and what to address first.';
+        document.getElementById('result-band').style.color = '#F0A500';
+      } else {
+        band = 'RISK LEVEL: MANAGED';
+        text = 'Your snapshot indicators are broadly stable. However, 5 of your 10 risk areas remain unscored. The full Vexeom report covers all 10 indicators including fatigue, cognitive load, circadian stability, training readiness, and stress — areas not captured in this snapshot.';
+        document.getElementById('result-band').style.color = '#00FF94';
+      }
+
+      document.getElementById('result-band').textContent = band;
+      document.getElementById('result-text').textContent = text;
+      document.getElementById('quiz-result').classList.add('active');
+    }
+
+    function restartQuiz() {
+      scores = [];
+      currentStep = 1;
+      document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+      document.querySelector('[data-step="1"]').classList.add('active');
+      document.getElementById('quiz-result').classList.remove('active');
+      document.querySelectorAll('.quiz-opt').forEach(b => b.classList.remove('selected'));
+      document.getElementById('quiz-progress-bar').style.width = '0%';
+    }
+
+    updateProgress();
+  </script>
 </body>
 </html>
