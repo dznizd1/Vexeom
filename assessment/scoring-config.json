@@ -1,0 +1,19 @@
+{
+  "indicators": [
+    { "id": 1, "name": "Recovery" },
+    { "id": 2, "name": "Fatigue" },
+    { "id": 3, "name": "Cognitive Load" },
+    { "id": 4, "name": "Stress" },
+    { "id": 5, "name": "Circadian Stability" },
+    { "id": 6, "name": "Training Readiness" },
+    { "id": 7, "name": "Lifestyle Compatibility" },
+    { "id": 8, "name": "Financial Resilience" },
+    { "id": 9, "name": "Motivation Stability" },
+    { "id": 10, "name": "Career Sustainability" }
+  ],
+  "scale": { "min": 1, "max": 5 },
+  "questions": [
+    { "id": "Q1", "indicator": 1, "text": "I get 7+ hours of quality sleep on most nights." },
+    { "id": "Q2", "indicator": 1, "text": "I have a consistent wind-down routine before bed." }
+  ]
+}
