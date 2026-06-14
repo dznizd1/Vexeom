@@ -11,9 +11,11 @@
     :root {
       --bg: #000000;
       --bg-surface: #050A12;
+      --bg-raised: #080F1A;
       --accent: #00D4FF;
       --gold: #C8A96E;
       --danger: #FF3B3B;
+      --warning: #FF8C00;
       --success: #00FF94;
       --text: #E8EDF2;
       --text-dim: #6B7A8D;
@@ -23,6 +25,8 @@
       --mono: 'IBM Plex Mono', monospace;
       --sans: 'Space Grotesk', sans-serif;
     }
+
+    html { scroll-behavior: smooth; }
 
     body {
       background: var(--bg);
@@ -38,19 +42,68 @@
       position: fixed;
       inset: 0;
       background-image:
-        linear-gradient(rgba(0,212,255,0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,212,255,0.025) 1px, transparent 1px);
+        linear-gradient(rgba(0,212,255,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,212,255,0.018) 1px, transparent 1px);
       background-size: 60px 60px;
       pointer-events: none;
       z-index: 0;
     }
 
+    #cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 9999;
+      background: #050A12;
+      border-top: 1px solid var(--border-light);
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    #cookie-banner p {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-mid);
+      max-width: 700px;
+      margin: 0;
+    }
+
+    #cookie-banner a { color: var(--accent); text-decoration: underline; }
+
+    .cookie-actions { display: flex; gap: 12px; flex-shrink: 0; }
+
+    .cookie-btn {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      padding: 8px 20px;
+      border: 1px solid var(--border-light);
+      background: transparent;
+      color: var(--text-dim);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .cookie-btn.primary {
+      background: var(--accent);
+      color: #000;
+      border-color: var(--accent);
+      font-weight: 500;
+    }
+
+    .cookie-btn:hover { opacity: 0.8; }
+
     nav {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(0,0,0,0.92);
-      backdrop-filter: blur(12px);
+      background: rgba(0,0,0,0.94);
+      backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
       padding: 0 40px;
       display: flex;
@@ -68,12 +121,7 @@
       text-decoration: none;
     }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-      list-style: none;
-    }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
 
     .nav-links a {
       font-family: var(--mono);
@@ -87,30 +135,64 @@
     .nav-links a:hover { color: var(--text); }
     .nav-links a.gold { color: var(--gold); }
 
-    main {
+    .page-wrap {
       position: relative;
       z-index: 1;
-      max-width: 860px;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 80px 40px 120px;
+      padding: 60px 40px 120px;
+      gap: 64px;
+      align-items: start;
     }
 
+    .toc { position: sticky; top: 80px; }
+
+    .toc-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--text-dim);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+
+    .toc-list { list-style: none; border-left: 1px solid var(--border); }
+
+    .toc-list li a {
+      display: block;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      text-decoration: none;
+      padding: 6px 0 6px 16px;
+      border-left: 2px solid transparent;
+      margin-left: -1px;
+      transition: all 0.2s;
+      line-height: 1.4;
+    }
+
+    .toc-list li a:hover { color: var(--accent); border-left-color: var(--accent); }
+
+    main { min-width: 0; }
+
     .page-header {
-      margin-bottom: 64px;
+      margin-bottom: 48px;
       padding-bottom: 40px;
       border-bottom: 1px solid var(--border);
     }
 
     .page-eyebrow {
       font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: 0.2em;
+      font-size: 10px;
+      letter-spacing: 0.25em;
       color: var(--accent);
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     h1 {
-      font-size: clamp(28px, 4vw, 42px);
+      font-size: clamp(26px, 3.5vw, 38px);
       font-weight: 600;
       letter-spacing: -0.02em;
       line-height: 1.15;
@@ -118,85 +200,107 @@
     }
 
     .page-meta {
-      font-family: var(--mono);
-      font-size: 12px;
-      color: var(--text-dim);
       display: flex;
-      gap: 32px;
+      gap: 0;
       flex-wrap: wrap;
+      border: 1px solid var(--border);
+      margin-top: 24px;
     }
 
-    .page-meta span { color: var(--text-mid); }
+    .meta-cell { padding: 12px 20px; border-right: 1px solid var(--border); flex: 1; }
+    .meta-cell:last-child { border-right: none; }
 
-    .warning-banner {
-      background: rgba(255, 59, 59, 0.06);
-      border: 1px solid rgba(255, 59, 59, 0.3);
+    .meta-label {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .meta-value { font-family: var(--mono); font-size: 12px; color: var(--text); }
+
+    .banner { padding: 18px 22px; margin-bottom: 40px; border-radius: 1px; }
+
+    .banner-critical {
+      background: rgba(255,59,59,0.05);
+      border: 1px solid rgba(255,59,59,0.25);
       border-left: 3px solid var(--danger);
-      padding: 20px 24px;
-      margin-bottom: 48px;
-      border-radius: 2px;
     }
 
-    .warning-banner p {
+    .banner-warning {
+      background: rgba(255,140,0,0.05);
+      border: 1px solid rgba(255,140,0,0.2);
+      border-left: 3px solid var(--warning);
+    }
+
+    .banner-info {
+      background: rgba(0,212,255,0.04);
+      border: 1px solid var(--border-light);
+      border-left: 3px solid var(--accent);
+    }
+
+    .banner-label {
       font-family: var(--mono);
-      font-size: 12px;
-      color: #FF8080;
-      line-height: 1.6;
-    }
-
-    .warning-banner strong {
-      color: var(--danger);
-      display: block;
+      font-size: 9px;
+      letter-spacing: 0.2em;
       margin-bottom: 6px;
-      letter-spacing: 0.1em;
-      font-size: 11px;
     }
 
-    .terms-section { margin-bottom: 56px; }
+    .banner-critical .banner-label { color: var(--danger); }
+    .banner-warning .banner-label { color: var(--warning); }
+    .banner-info .banner-label { color: var(--accent); }
 
-    .section-number {
+    .banner p { font-family: var(--mono); font-size: 12px; line-height: 1.6; margin: 0; }
+    .banner-critical p { color: #FF9090; }
+    .banner-warning p { color: #FFBA6B; }
+    .banner-info p { color: var(--text-mid); }
+
+    .terms-section { margin-bottom: 52px; scroll-margin-top: 80px; }
+
+    .section-tag {
       font-family: var(--mono);
-      font-size: 11px;
+      font-size: 10px;
       color: var(--accent);
-      letter-spacing: 0.15em;
-      margin-bottom: 8px;
+      letter-spacing: 0.2em;
+      margin-bottom: 6px;
     }
 
     h2 {
-      font-size: 20px;
+      font-size: 19px;
       font-weight: 600;
       letter-spacing: -0.01em;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       color: var(--text);
+      line-height: 1.3;
     }
 
     h3 {
-      font-size: 14px;
+      font-size: 11px;
       font-weight: 500;
       font-family: var(--mono);
-      letter-spacing: 0.08em;
-      color: var(--text-mid);
-      margin-top: 24px;
+      letter-spacing: 0.12em;
+      color: var(--text-dim);
+      margin-top: 28px;
       margin-bottom: 10px;
       text-transform: uppercase;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
     }
 
-    p {
-      color: var(--text-mid);
-      font-size: 15px;
-      margin-bottom: 14px;
-    }
-
+    p { color: var(--text-mid); font-size: 15px; margin-bottom: 14px; line-height: 1.75; }
     p strong { color: var(--text); font-weight: 500; }
 
-    ul { list-style: none; margin-bottom: 14px; }
+    ul { list-style: none; margin-bottom: 16px; }
 
     ul li {
       color: var(--text-mid);
-      font-size: 15px;
-      padding: 6px 0 6px 20px;
+      font-size: 14px;
+      padding: 8px 0 8px 20px;
       position: relative;
       border-bottom: 1px solid var(--border);
+      line-height: 1.6;
     }
 
     ul li:last-child { border-bottom: none; }
@@ -207,66 +311,78 @@
       left: 0;
       color: var(--accent);
       font-family: var(--mono);
+      font-size: 12px;
     }
 
-    .critical-box {
-      background: rgba(0, 212, 255, 0.04);
-      border: 1px solid var(--border-light);
-      border-left: 3px solid var(--accent);
-      padding: 20px 24px;
-      margin: 20px 0;
-      border-radius: 2px;
-    }
+    ul li strong { color: var(--text); font-weight: 500; }
 
-    .critical-box p { font-size: 14px; margin-bottom: 0; color: var(--text); }
-
-    .section-divider {
-      border: none;
-      border-top: 1px solid var(--border);
-      margin: 48px 0;
-    }
+    .section-divider { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
 
     .acceptance-block {
-      background: var(--bg-surface);
+      background: var(--bg-raised);
       border: 1px solid var(--border-light);
-      padding: 32px;
+      padding: 36px;
       margin-top: 64px;
-      border-radius: 2px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .acceptance-block h2 { font-size: 16px; margin-bottom: 12px; }
-    .acceptance-block p { font-size: 14px; margin-bottom: 0; }
+    .acceptance-block::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+    }
+
+    .acceptance-block .section-tag { margin-bottom: 10px; }
+    .acceptance-block h2 { font-size: 15px; margin-bottom: 14px; }
+    .acceptance-block p { font-size: 14px; margin-bottom: 0; color: var(--text-mid); }
 
     footer {
       position: relative;
       z-index: 1;
       border-top: 1px solid var(--border);
-      padding: 32px 40px;
+      padding: 28px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 16px;
+      gap: 12px;
     }
 
-    .footer-logo {
-      font-family: var(--mono);
-      font-size: 12px;
-      color: var(--text-dim);
-      letter-spacing: 0.2em;
-    }
-
-    .footer-note {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--text-dim);
-    }
+    .footer-logo { font-family: var(--mono); font-size: 11px; color: var(--text-dim); letter-spacing: 0.2em; }
+    .footer-note { font-family: var(--mono); font-size: 10px; color: var(--text-dim); }
 
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
+
+    @media (max-width: 768px) {
+      .page-wrap { grid-template-columns: 1fr; gap: 32px; padding: 40px 20px 80px; }
+      .toc { display: none; }
+      nav { padding: 0 20px; }
+      .nav-links { gap: 16px; }
+      .nav-links a { font-size: 10px; }
+      .page-meta { flex-direction: column; }
+      .meta-cell { border-right: none; border-bottom: 1px solid var(--border); }
+      #cookie-banner { padding: 16px 20px; }
+      footer { padding: 24px 20px; }
+    }
   </style>
 </head>
 <body>
+
+  <div id="cookie-banner">
+    <p>
+      Vexeom uses essential cookies required for Platform operation, and analytics cookies to improve our service. Analytics cookies are only activated with your consent. Read our
+      <a href="#section-privacy">Data &amp; Privacy</a> section for full details.
+      You may withdraw consent at any time by contacting <a href="mailto:info@vexeom.com">info@vexeom.com</a>.
+    </p>
+    <div class="cookie-actions">
+      <button class="cookie-btn" onclick="rejectCookies()">ESSENTIAL ONLY</button>
+      <button class="cookie-btn primary" onclick="acceptCookies()">ACCEPT ALL</button>
+    </div>
+  </div>
 
   <nav>
     <a href="index.html" class="nav-logo">VEXEOM</a>
@@ -280,267 +396,397 @@
     </ul>
   </nav>
 
-  <main>
+  <div class="page-wrap">
 
-    <div class="page-header">
-      <div class="page-eyebrow">LEGAL DOCUMENTATION</div>
-      <h1>Terms &amp; Conditions</h1>
-      <div class="page-meta">
-        <span>Effective date: <span>1 July 2025</span></span>
-        <span>Governing law: <span>England &amp; Wales</span></span>
-        <span>Operator: <span>Vexeom Ltd</span></span>
+    <aside class="toc">
+      <div class="toc-label">Contents</div>
+      <ul class="toc-list">
+        <li><a href="#section-definitions">01 — Definitions</a></li>
+        <li><a href="#section-nature">02 — Nature of Service</a></li>
+        <li><a href="#section-medical">03 — Medical Disclaimer</a></li>
+        <li><a href="#section-outcomes">04 — No Career Guarantees</a></li>
+        <li><a href="#section-age">05 — Eligibility &amp; Age</a></li>
+        <li><a href="#section-data">06 — Self-Reported Data</a></li>
+        <li><a href="#section-privacy">07 — Privacy &amp; Data Use</a></li>
+        <li><a href="#section-ai">08 — AI-Generated Content</a></li>
+        <li><a href="#section-payment">09 — Payment &amp; Refunds</a></li>
+        <li><a href="#section-command">10 — Command Tier</a></li>
+        <li><a href="#section-ip">11 — Intellectual Property</a></li>
+        <li><a href="#section-liability">12 — Limitation of Liability</a></li>
+        <li><a href="#section-aviation">13 — Aviation Regulations</a></li>
+        <li><a href="#section-conduct">14 — Acceptable Use</a></li>
+        <li><a href="#section-complaints">15 — Complaints Procedure</a></li>
+        <li><a href="#section-changes">16 — Changes to Terms</a></li>
+        <li><a href="#section-law">17 — Governing Law</a></li>
+        <li><a href="#section-contact">18 — Contact</a></li>
+      </ul>
+    </aside>
+
+    <main>
+
+      <div class="page-header">
+        <div class="page-eyebrow">LEGAL DOCUMENTATION — VEXEOM PLATFORM</div>
+        <h1>Terms &amp; Conditions of Use</h1>
+        <div class="page-meta">
+          <div class="meta-cell">
+            <div class="meta-label">Effective Date</div>
+            <div class="meta-value">Upon Account Creation</div>
+          </div>
+          <div class="meta-cell">
+            <div class="meta-label">Last Revised</div>
+            <div class="meta-value">June 2025</div>
+          </div>
+          <div class="meta-cell">
+            <div class="meta-label">Governing Law</div>
+            <div class="meta-value">England &amp; Wales</div>
+          </div>
+          <div class="meta-cell">
+            <div class="meta-label">Operator</div>
+            <div class="meta-value">Vexeom</div>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="warning-banner">
-      <strong>READ BEFORE PROCEEDING</strong>
-      <p>By accessing this platform, submitting an assessment, or completing a purchase, you confirm that you have read, understood, and agreed to every clause in this document in its entirety. If you do not agree, you must not use this platform or purchase any product.</p>
-    </div>
-
-    <div class="terms-section">
-      <div class="section-number">01</div>
-      <h2>Definitions</h2>
-      <p>In these Terms, the following definitions apply:</p>
-      <ul>
-        <li><strong>"Vexeom", "we", "us", "our"</strong> refers to Vexeom Ltd, the operator of this platform at vexeom.com.</li>
-        <li><strong>"Platform"</strong> refers to the website vexeom.com, all subpages, and any associated digital tools or reports.</li>
-        <li><strong>"Report"</strong> refers to the Vexeom Pilot Intelligence Report and any derivative documents generated by this Platform.</li>
-        <li><strong>"Assessment"</strong> refers to any questionnaire, snapshot test, or data-input form on this Platform.</li>
-        <li><strong>"User", "you", "your"</strong> refers to any individual accessing the Platform or purchasing a product.</li>
-        <li><strong>"Member"</strong> refers to a User who has purchased a subscription tier (Altitude, Vantage, or Citadel).</li>
-        <li><strong>"Indicators"</strong> refers to the ten scored dimensions produced by the Vexeom assessment engine.</li>
-        <li><strong>"Failure Chain"</strong> refers to the causal risk pathway analysis produced within Reports.</li>
-      </ul>
-    </div>
-
-    <hr class="section-divider" />
-
-    <div class="terms-section">
-      <div class="section-number">02</div>
-      <h2>Nature of Service — What Vexeom Is and Is Not</h2>
-      <div class="critical-box">
-        <p><strong>Vexeom is a self-reported career planning and risk awareness tool.</strong> It produces algorithmic intelligence outputs based solely on information you voluntarily submit. It is not a medical service, a clinical assessment, a psychological evaluation, a regulated financial product, or a regulatory compliance tool of any kind.</p>
+      <div class="banner banner-critical">
+        <div class="banner-label">MANDATORY — READ BEFORE PROCEEDING</div>
+        <p>By accessing this Platform, submitting an assessment, or completing a purchase, you confirm you have read, understood, and agreed to every clause in this document. If you do not agree in full, you must not use this Platform or purchase any product. These Terms constitute a binding legal agreement.</p>
       </div>
-      <h3>Vexeom is NOT any of the following</h3>
-      <ul>
-        <li>A medical device as defined under UK MDR 2002 or EU MDR 2017/745</li>
-        <li>A Class I, II, or III medical product under any regulatory framework</li>
-        <li>A clinical mental health assessment or psychological diagnostic tool</li>
-        <li>A service provided by or affiliated with the UK Civil Aviation Authority (CAA)</li>
-        <li>A service provided by or affiliated with the European Union Aviation Safety Agency (EASA)</li>
-        <li>A service provided by or affiliated with the Federal Aviation Administration (FAA) or ICAO</li>
-        <li>A regulated financial advisory or investment service under FCA rules</li>
-        <li>An aeromedical assessment under CAA or EASA Class 1, 2, or LAPL medical standards</li>
-        <li>A fitness-to-fly determination or pilot licence suitability assessment</li>
-        <li>A replacement for any regulatory, employer, or medical process</li>
-        <li>A substitute for professional legal, financial, or medical advice</li>
-      </ul>
-      <h3>What Vexeom produces</h3>
-      <p>Vexeom produces algorithmic output based exclusively on self-reported data. Reports reflect your own submissions processed through a scoring model. They are informational intelligence documents intended to support your personal career awareness and planning decisions only. No report constitutes a recommendation to take or avoid any specific regulatory, medical, financial, or professional action.</p>
-    </div>
 
-    <hr class="section-divider" />
-
-    <div class="terms-section">
-      <div class="section-number">03</div>
-      <h2>Health, Medical, and Psychological Disclaimer</h2>
-      <p>Indicators within Vexeom Reports — including but not limited to Recovery, Fatigue, Cognitive Load, Stress, and Circadian Stability — are <strong>self-reported wellness dimensions for career awareness purposes only</strong>. They are not clinical measurements. They do not constitute a diagnosis, prognosis, or medical assessment of any kind.</p>
-      <p><strong>Vexeom does not assess your fitness to fly.</strong> Only a licensed Aviation Medical Examiner (AME) can assess medical fitness to fly under CAA, EASA, or FAA aeromedical standards. Vexeom Report outputs have no bearing on, and must not be submitted in connection with, any aeromedical examination, Class 1 or Class 2 medical certificate application, or LAPL medical self-declaration.</p>
-      <p>If any Report output causes you concern about your physical or mental health, you must consult a qualified medical professional. Vexeom accepts no liability whatsoever for any health decision, self-assessment conclusion, or action you take based on a Report or any content on this Platform.</p>
-      <div class="critical-box">
-        <p>If you are experiencing symptoms of fatigue, cognitive impairment, depression, anxiety, or any condition that may affect your flight safety, you must consult a qualified medical professional and, where required, your employer or national aviation authority. Do not rely on this Platform.</p>
+      <div class="terms-section" id="section-definitions">
+        <div class="section-tag">01</div>
+        <h2>Definitions</h2>
+        <ul>
+          <li><strong>"Vexeom", "we", "us", "our"</strong> — the operator of this Platform at vexeom.com.</li>
+          <li><strong>"Platform"</strong> — the website vexeom.com, all subpages, associated digital tools, assessments, and reports.</li>
+          <li><strong>"Report"</strong> — the Vexeom Pilot Intelligence Report and any AI-generated derivative documents produced by this Platform.</li>
+          <li><strong>"Assessment"</strong> — any questionnaire, snapshot test, or data-input form on this Platform.</li>
+          <li><strong>"User", "you", "your"</strong> — any individual accessing the Platform or purchasing a product.</li>
+          <li><strong>"Member"</strong> — a User who has purchased a subscription tier (Altitude, Vantage, or Citadel).</li>
+          <li><strong>"Indicators"</strong> — the ten scored career risk dimensions produced by the Vexeom assessment engine.</li>
+          <li><strong>"Failure Chain"</strong> — the causal risk pathway analysis produced within Reports.</li>
+          <li><strong>"AI System"</strong> — the automated large language model infrastructure used to generate Report content.</li>
+          <li><strong>"Digital Content"</strong> — Reports and any other electronically delivered outputs produced by this Platform.</li>
+          <li><strong>"Consumer"</strong> — a User acting outside of any trade, business, or profession, as defined under the Consumer Rights Act 2015.</li>
+        </ul>
       </div>
-    </div>
 
-    <hr class="section-divider" />
+      <hr class="section-divider" />
 
-    <div class="terms-section">
-      <div class="section-number">04</div>
-      <h2>No Guarantee of Career Outcomes</h2>
-      <p>Vexeom makes no representation, warranty, or guarantee — express or implied — that use of the Platform or receipt of any Report will result in any career outcome, including but not limited to:</p>
-      <ul>
-        <li>Successful completion of flight training</li>
-        <li>Passing of any CAA, EASA, FAA, or airline selection assessment</li>
-        <li>Obtaining a pilot licence, type rating, or instructor qualification</li>
-        <li>Employment by any airline, operator, or aviation organisation</li>
-        <li>Improved performance in any training, simulator, or operational environment</li>
-        <li>Prevention of training dropout or career failure</li>
-      </ul>
-      <p>Industry statistics cited on this Platform (including dropout rates, pilot demand forecasts, and screening data) are sourced from third-party organisations including Boeing, EASA, CAA, and ICAO. These statistics are provided for contextual awareness only. Vexeom does not warrant the accuracy, completeness, or continued validity of any third-party data.</p>
-    </div>
-
-    <hr class="section-divider" />
-
-    <div class="terms-section">
-      <div class="section-number">05</div>
-      <h2>Self-Reported Data — Accuracy and Limitations</h2>
-      <p>All assessment outputs are derived entirely from data you input. Vexeom does not independently verify, cross-reference, or validate any information you submit. <strong>The quality and accuracy of any Report is directly and entirely dependent on the accuracy of your responses.</strong></p>
-      <p>Vexeom accepts no liability for inaccurate, misleading, or incomplete outputs caused by inaccurate, misleading, or incomplete input data. If you provide false or exaggerated information, your Report output will not reflect your actual circumstances and should not be relied upon.</p>
-      <p>You warrant that all information you submit to the Platform is truthful, accurate, and your own. You must not submit assessments on behalf of another individual without their explicit consent.</p>
-    </div>
-
-    <hr class="section-divider" />
-
-    <div class="terms-section">
-      <div class="section-number">06</div>
-      <h2>Data Collection, Privacy, and Use</h2>
-      <p>By using this Platform and submitting an assessment, you consent to the collection and processing of the following categories of data:</p>
-      <ul>
-        <li>Your name and email address (provided at time of purchase or assessment)</li>
-        <li>Your assessment responses across all questions submitted</li>
-        <li>Your scored indicator results</li>
-        <li>Device, browser, and approximate location data collected automatically via standard web analytics</li>
-      </ul>
-      <h3>How your data is used</h3>
-      <ul>
-        <li>To generate and deliver your Report</li>
-        <li>To maintain your membership account and history</li>
-        <li>To build anonymised, aggregated industry datasets (your individual identity is never published)</li>
-        <li>To improve the Platform's scoring models and report quality over time</li>
-        <li>To contact you regarding your membership or significant Platform changes</li>
-      </ul>
-      <h3>Anonymised dataset</h3>
-      <p>Assessment responses may be included in Vexeom's proprietary aggregated aviation career dataset in anonymised, non-identifiable form. This dataset may be used for research publications, industry reports, or commercial intelligence products. Your personal identity is never associated with any published data.</p>
-      <h3>Third-party processors</h3>
-      <p>Vexeom uses third-party processors including Stripe (payment processing) and Vercel (hosting). Your data may pass through these processors in the course of normal Platform operation. Each processor is bound by their own privacy and data handling policies.</p>
-      <p>Vexeom operates in compliance with the UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018. You have the right to request access to, correction of, or deletion of your personal data by contacting <a href="mailto:info@vexeom.com">info@vexeom.com</a>.</p>
-    </div>
-
-    <hr class="section-divider" />
-
-    <div class="terms-section">
-      <div class="section-number">07</div>
-      <h2>Subscriptions, Payment, and Refund Policy</h2>
-      <h3>Subscription tiers</h3>
-      <p>Vexeom offers the following subscription tiers billed on a recurring monthly basis:</p>
-      <ul>
-        <li>Altitude — £99 per month</li>
-        <li>Vantage — £299 per month</li>
-        <li>Citadel — £799 per month (organisational, 25 seats)</li>
-      </ul>
-      <h3>Billing</h3>
-      <p>All subscriptions are billed automatically on a monthly basis from the date of purchase. Payments are processed by Stripe. By completing a purchase, you authorise Vexeom to charge your nominated payment method on a recurring basis until cancellation.</p>
-      <h3>Cancellation</h3>
-      <p>You may cancel your subscription at any time by contacting <a href="mailto:info@vexeom.com">info@vexeom.com</a>. Cancellation takes effect at the end of the current billing period. No partial month refunds are issued. You retain access to the Platform until the period ends.</p>
-      <h3>Refund policy</h3>
-      <p><strong>Vexeom operates a strict no-refund policy on all digital products and Report deliveries.</strong> Because Reports are generated and delivered digitally upon request, they constitute delivered digital content and are non-refundable under the Consumer Contracts Regulations 2013 (Regulation 37 — digital content exception), provided you have expressly acknowledged this prior to purchase — which you do by accepting these Terms.</p>
-      <p>In the event of a technical failure that prevents Report delivery within the stated timeframe, Vexeom will either re-deliver the Report or issue a credit at its sole discretion.</p>
-      <h3>Price changes</h3>
-      <p>Vexeom reserves the right to amend subscription pricing at any time. Existing members will be given not less than 30 days' notice of any price change. Continued use of the Platform after the change takes effect constitutes acceptance of the new pricing.</p>
-    </div>
-
-    <hr class="section-divider" />
-
-    <div class="terms-section">
-      <div class="section-number">08</div>
-      <h2>Command Tier — Bespoke Engagements</h2>
-      <p>The Vexeom Command tier is a bespoke engagement available by application only. Command engagements are subject to a separate bespoke services agreement issued by Vexeom at the time of engagement. The minimum engagement value is £50,000. These Terms apply in addition to any bespoke agreement unless explicitly superseded in writing.</p>
-      <p>Submission of an application to Command does not constitute acceptance, offer, or commitment by Vexeom. Vexeom reserves the right to decline any application without explanation.</p>
-    </div>
-
-    <hr class="section-divider" />
-
-    <div class="terms-section">
-      <div class="section-number">09</div>
-      <h2>Intellectual Property</h2>
-      <p>All content on this Platform — including but not limited to the Vexeom scoring methodology, indicator framework, failure chain analysis system, report templates, website design, copy, and branding — is the exclusive intellectual property of Vexeom Ltd.</p>
-      <p>Reports delivered to Members are licensed for personal use only. You may not reproduce, resell, redistribute, publish, or share Report content in any commercial context. Reports may not be submitted to third parties including airlines, employers, training organisations, or regulators as evidence of any assessment, screening, or qualification.</p>
-      <p>Vexeom and Command are trading names of Vexeom Ltd. Unauthorised use of these marks is prohibited.</p>
-    </div>
-
-    <hr class="section-divider" />
-
-    <div class="terms-section">
-      <div class="section-number">10</div>
-      <h2>Limitation of Liability</h2>
-      <div class="critical-box">
-        <p><strong>To the maximum extent permitted by applicable law, Vexeom Ltd excludes all liability</strong> for any loss, damage, cost, or expense — direct, indirect, consequential, or otherwise — arising from your use of this Platform or any Report.</p>
+      <div class="terms-section" id="section-nature">
+        <div class="section-tag">02</div>
+        <h2>Nature of Service — What Vexeom Is and Is Not</h2>
+        <div class="banner banner-info">
+          <div class="banner-label">PLATFORM CLASSIFICATION</div>
+          <p>Vexeom is a self-reported career planning and risk awareness tool. It produces algorithmic and AI-generated intelligence outputs based solely on information you voluntarily submit. It is not a medical service, clinical assessment, psychological evaluation, regulated financial product, or regulatory compliance tool of any kind.</p>
+        </div>
+        <h3>Vexeom is not any of the following</h3>
+        <ul>
+          <li>A medical device as defined under UK MDR 2002, EU MDR 2017/745, or any equivalent national framework</li>
+          <li>A Class I, II, or III medical product under any regulatory framework</li>
+          <li>A clinical mental health, psychological, or neurological diagnostic tool</li>
+          <li>A service provided by or affiliated with the UK Civil Aviation Authority (CAA)</li>
+          <li>A service provided by or affiliated with the European Union Aviation Safety Agency (EASA)</li>
+          <li>A service provided by or affiliated with the Federal Aviation Administration (FAA) or ICAO</li>
+          <li>A regulated financial advisory or investment service under FCA rules</li>
+          <li>An aeromedical assessment under CAA or EASA Class 1, 2, or LAPL medical standards</li>
+          <li>A fitness-to-fly determination or pilot licence suitability assessment</li>
+          <li>A fatigue risk management system (FRMS) under EASA FTL (EU 965/2012) or UK FTL</li>
+          <li>A replacement for any regulatory, employer, or medical process</li>
+          <li>A substitute for professional legal, financial, or medical advice</li>
+        </ul>
+        <p>Reports are informational intelligence documents intended solely to support your personal career awareness and planning. No Report constitutes a recommendation to take or avoid any regulatory, medical, financial, or professional action.</p>
       </div>
-      <p>Without limiting the above, Vexeom accepts no liability for:</p>
-      <ul>
-        <li>Any career decision made in reliance on a Report or Platform content</li>
-        <li>Any financial loss incurred in connection with flight training, employment, or career planning</li>
-        <li>Any physical or psychological harm arising from decisions made in reliance on Platform content</li>
-        <li>Any aviation incident, accident, or regulatory action connected in any way to Platform use</li>
-        <li>Inaccurate Report outputs resulting from inaccurate or incomplete input data</li>
-        <li>Platform downtime, technical failures, or data loss</li>
-        <li>Third-party actions including those of payment processors or hosting providers</li>
-      </ul>
-      <p>Where liability cannot be excluded by law (including under the Consumer Rights Act 2015 for consumers), Vexeom's total liability is limited to the amount paid by you in the 12 months preceding the claim.</p>
-      <p><strong>Nothing in these Terms excludes liability for death or personal injury caused by Vexeom's negligence, or for fraud or fraudulent misrepresentation.</strong></p>
-    </div>
 
-    <hr class="section-divider" />
+      <hr class="section-divider" />
 
-    <div class="terms-section">
-      <div class="section-number">11</div>
-      <h2>Regulatory Compliance — Aviation Specific</h2>
-      <p>Vexeom content references aviation regulatory frameworks including EASA FTL (EU 965/2012), CAA aeromedical standards, ICAO Annex 1, and ICAO Doc 9683 (Human Factors Training Manual) for contextual purposes only. Such references do not constitute regulatory guidance, compliance advice, or any form of official communication from any regulatory body.</p>
-      <p><strong>Vexeom is not approved, endorsed, accredited, or recognised by the CAA, EASA, FAA, ICAO, or any national or international aviation authority.</strong> Vexeom Reports must never be used as evidence of regulatory compliance, aeromedical fitness, or safety assessment.</p>
-      <p>Pilots operating under EASA FTL or UK FTL regulations have statutory obligations regarding fatigue reporting and duty time management. Vexeom is not a fatigue risk management system (FRMS) as defined under those regulations. It does not satisfy any regulatory fatigue management obligation.</p>
-      <p>If you have concerns about your fitness to operate as a pilot — including fatigue, cognitive impairment, or psychological wellbeing — your obligations under applicable aviation law take precedence over any content on this Platform. You must follow your operator's safety management system (SMS) and report concerns through the appropriate channels.</p>
-    </div>
+      <div class="terms-section" id="section-medical">
+        <div class="section-tag">03</div>
+        <h2>Health, Medical, and Psychological Disclaimer</h2>
+        <p>Indicators within Vexeom Reports — including Recovery, Fatigue, Cognitive Load, Stress, and Circadian Stability — are <strong>self-reported career awareness dimensions only</strong>. They are not clinical measurements and do not constitute a diagnosis, prognosis, or medical assessment of any kind.</p>
+        <p><strong>Vexeom does not assess your fitness to fly.</strong> Only a licensed Aviation Medical Examiner (AME) can assess medical fitness under CAA, EASA, or FAA aeromedical standards. Vexeom outputs must never be submitted in connection with any aeromedical examination, Class 1 or Class 2 medical certificate application, or LAPL medical self-declaration.</p>
+        <p>Vexeom accepts no liability whatsoever for any health decision, clinical conclusion, or action taken based on Report content or any other material on this Platform.</p>
+        <div class="banner banner-critical">
+          <div class="banner-label">SAFETY NOTICE</div>
+          <p>If you are experiencing symptoms of fatigue, cognitive impairment, depression, anxiety, or any condition that may affect your flight safety — you must consult a qualified medical professional immediately and, where required by law, notify your employer or national aviation authority. This Platform is not a crisis or medical resource.</p>
+        </div>
+      </div>
 
-    <hr class="section-divider" />
+      <hr class="section-divider" />
 
-    <div class="terms-section">
-      <div class="section-number">12</div>
-      <h2>Acceptable Use</h2>
-      <p>You agree not to:</p>
-      <ul>
-        <li>Submit false, misleading, or fabricated information in any assessment</li>
-        <li>Attempt to reverse-engineer, copy, or reproduce the Vexeom scoring methodology</li>
-        <li>Use Reports or Platform content for any commercial purpose without written consent</li>
-        <li>Share account credentials or allow others to access your Member account</li>
-        <li>Use automated tools, scrapers, or bots to access the Platform</li>
-        <li>Submit assessments for third parties without their knowledge and consent</li>
-        <li>Misrepresent Vexeom Reports as official, regulatory, or medically validated documents</li>
-      </ul>
-      <p>Vexeom reserves the right to suspend or terminate access for any User found in breach of these conditions, without refund.</p>
-    </div>
+      <div class="terms-section" id="section-outcomes">
+        <div class="section-tag">04</div>
+        <h2>No Guarantee of Career Outcomes</h2>
+        <p>Vexeom makes no representation, warranty, or guarantee — express or implied — that use of the Platform or receipt of any Report will result in any career outcome, including but not limited to:</p>
+        <ul>
+          <li>Successful completion of flight training</li>
+          <li>Passing any CAA, EASA, FAA, or airline selection assessment</li>
+          <li>Obtaining a pilot licence, type rating, or instructor qualification</li>
+          <li>Employment by any airline, operator, or aviation organisation</li>
+          <li>Improved performance in any training, simulator, or operational environment</li>
+          <li>Prevention of training dropout or career failure of any kind</li>
+        </ul>
+        <p>Industry statistics cited on this Platform — including dropout rates, pilot demand forecasts, and screening data from Boeing, EASA, CAA, and ICAO — are provided for contextual awareness only. Vexeom does not warrant the accuracy, completeness, or continued validity of any third-party data.</p>
+      </div>
 
-    <hr class="section-divider" />
+      <hr class="section-divider" />
 
-    <div class="terms-section">
-      <div class="section-number">13</div>
-      <h2>Changes to These Terms</h2>
-      <p>Vexeom reserves the right to update these Terms at any time. Where changes materially affect your rights or obligations, we will notify active Members by email at least 14 days before the changes take effect. Continued use of the Platform after that date constitutes acceptance of the revised Terms. It is your responsibility to review these Terms periodically.</p>
-    </div>
+      <div class="terms-section" id="section-age">
+        <div class="section-tag">05</div>
+        <h2>Eligibility and Age Requirement</h2>
+        <div class="banner banner-warning">
+          <div class="banner-label">AGE RESTRICTION</div>
+          <p>You must be at least 18 years of age to use this Platform, create an account, or purchase any product. By using this Platform, you confirm that you are 18 or older. Vexeom reserves the right to terminate any account found to belong to a minor, without refund.</p>
+        </div>
+        <p>Under UK law, individuals under 18 lack full contractual capacity. Any subscription or purchase entered into by a minor is voidable. Vexeom will not knowingly process payments from or deliver Reports to users under the age of 18.</p>
+        <p>You must also have the legal right to enter into contracts in your country of residence. By using this Platform, you represent and warrant that you meet all eligibility requirements applicable to you.</p>
+      </div>
 
-    <hr class="section-divider" />
+      <hr class="section-divider" />
 
-    <div class="terms-section">
-      <div class="section-number">14</div>
-      <h2>Governing Law and Jurisdiction</h2>
-      <p>These Terms are governed by and construed in accordance with the laws of England and Wales. Any dispute arising from or in connection with these Terms shall be subject to the exclusive jurisdiction of the courts of England and Wales.</p>
-      <p>If you are a consumer based in Scotland, Northern Ireland, or another UK jurisdiction, you may also have the right to bring proceedings in your local courts.</p>
-    </div>
+      <div class="terms-section" id="section-data">
+        <div class="section-tag">06</div>
+        <h2>Self-Reported Data — Accuracy and Limitations</h2>
+        <p>All assessment outputs are derived entirely from data you input. Vexeom does not independently verify, cross-reference, or validate any information you submit. <strong>The quality and accuracy of any Report is directly and entirely dependent on the accuracy of your responses.</strong></p>
+        <p>Vexeom accepts no liability for inaccurate, misleading, or incomplete outputs caused by inaccurate, misleading, or incomplete input data. If you provide false or exaggerated responses, your Report will not reflect your actual circumstances and must not be relied upon.</p>
+        <p>You warrant that all information submitted to the Platform is truthful, accurate, and your own. You must not submit assessments on behalf of another individual without their explicit, informed, and documented consent.</p>
+      </div>
 
-    <hr class="section-divider" />
+      <hr class="section-divider" />
 
-    <div class="terms-section">
-      <div class="section-number">15</div>
-      <h2>Contact</h2>
-      <p>For questions, data requests, cancellations, or complaints, contact:</p>
-      <ul>
-        <li>Email: <a href="mailto:info@vexeom.com">info@vexeom.com</a></li>
-        <li>Platform: vexeom.com</li>
-        <li>Registered jurisdiction: England &amp; Wales</li>
-      </ul>
-    </div>
+      <div class="terms-section" id="section-privacy">
+        <div class="section-tag">07</div>
+        <h2>Data Collection, Privacy, and Use</h2>
+        <p>Vexeom operates in compliance with the UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018. The following sets out how we collect, use, store, and retain your personal data.</p>
+        <h3>Data we collect</h3>
+        <ul>
+          <li>Your name and email address provided at time of purchase or assessment</li>
+          <li>Your assessment responses across all questions submitted</li>
+          <li>Your scored indicator results and Report outputs</li>
+          <li>Device, browser, and IP data collected automatically via essential Platform cookies</li>
+          <li>Analytics data (only where you have provided explicit cookie consent)</li>
+        </ul>
+        <h3>How your data is used</h3>
+        <ul>
+          <li>To generate and deliver your Report</li>
+          <li>To maintain your membership account and score history</li>
+          <li>To build anonymised, aggregated industry datasets — your identity is never published</li>
+          <li>To improve the Platform scoring models and AI-generated report quality</li>
+          <li>To contact you regarding your membership or material Platform changes</li>
+        </ul>
+        <h3>Data retention</h3>
+        <p>We retain your personal data for as long as your account is active. Following account closure or cancellation, personal data is retained for a maximum of <strong>24 months</strong> for legal compliance and dispute resolution purposes, after which it is permanently deleted or anonymised. Anonymised assessment data may be retained indefinitely as part of the aggregated Vexeom industry dataset.</p>
+        <h3>Cookie policy</h3>
+        <p><strong>Essential cookies</strong> are strictly necessary for Platform operation and are active by default. <strong>Analytics cookies</strong> are only activated with your explicit consent via the cookie banner. You may withdraw analytics consent at any time by contacting <a href="mailto:info@vexeom.com">info@vexeom.com</a>. Withdrawal does not affect the lawfulness of processing prior to withdrawal.</p>
+        <h3>Third-party processors</h3>
+        <ul>
+          <li>Stripe — payment processing, governed by Stripe's privacy policy</li>
+          <li>Vercel — Platform hosting and infrastructure, governed by Vercel's privacy policy</li>
+          <li>Anthropic — AI report generation. Assessment data is processed by Anthropic's API infrastructure in accordance with their data processing terms</li>
+        </ul>
+        <h3>Your rights</h3>
+        <p>Under UK GDPR you have the right to: access your personal data; request correction of inaccurate data; request deletion (subject to legal retention obligations); object to processing; and lodge a complaint with the ICO at <a href="https://ico.org.uk" target="_blank" rel="noopener">ico.org.uk</a>. Contact <a href="mailto:info@vexeom.com">info@vexeom.com</a> to exercise any right. We will respond within 30 days.</p>
+      </div>
 
-    <div class="acceptance-block">
-      <div class="section-number">ACKNOWLEDGEMENT</div>
-      <h2>By using this Platform or completing a purchase, you confirm:</h2>
-      <p>You have read these Terms in full. You understand that Vexeom is a self-reported career planning tool and not a medical, regulatory, or professional advisory service. You accept that Reports are non-refundable digital products. You agree to be bound by these Terms in their entirety.</p>
-    </div>
+      <hr class="section-divider" />
 
-  </main>
+      <div class="terms-section" id="section-ai">
+        <div class="section-tag">08</div>
+        <h2>AI-Generated Content and Automated Processing</h2>
+        <div class="banner banner-warning">
+          <div class="banner-label">AUTOMATED DECISION DISCLOSURE — UK GDPR ARTICLE 22</div>
+          <p>Vexeom Reports are generated entirely by an automated AI system. No human reviews, edits, or validates Report content before delivery. You are entitled to request human review of any automated output within 14 days of delivery by contacting info@vexeom.com.</p>
+        </div>
+        <p>The Platform uses a large language model (LLM) AI system to generate Report content from your assessment responses. This is a fully automated process with no human involvement in generation or review prior to delivery.</p>
+        <h3>Limitations of AI-generated content</h3>
+        <ul>
+          <li>AI-generated content may contain errors, inconsistencies, or outputs that do not accurately reflect your individual circumstances</li>
+          <li>The AI system has no access to external databases, flight records, medical histories, or employer data</li>
+          <li>AI outputs are probabilistic, not deterministic — the same inputs may produce varied outputs across sessions</li>
+          <li>AI-generated Reports must not be treated as authoritative, definitive, or clinically valid assessments</li>
+          <li>Vexeom accepts no liability for decisions made in reliance on AI-generated content</li>
+        </ul>
+        <p>Your assessment data is transmitted to Anthropic's API infrastructure for Report generation. By using this Platform, you consent to this processing. Anthropic's data handling is governed by their own data processing agreement.</p>
+        <h3>Right to human review</h3>
+        <p>Where automated processing produces outputs that significantly affect you, you have the right under UK GDPR Article 22 to request human review. Submit requests to <a href="mailto:info@vexeom.com">info@vexeom.com</a> within 14 days of Report delivery. We will respond within 30 days. Human review does not guarantee a different outcome and does not constitute professional advice of any kind.</p>
+      </div>
+
+      <hr class="section-divider" />
+
+      <div class="terms-section" id="section-payment">
+        <div class="section-tag">09</div>
+        <h2>Subscriptions, Payment, and Refund Policy</h2>
+        <h3>Subscription tiers</h3>
+        <ul>
+          <li>Altitude — £99 per month (individual, student and aspiring pilots)</li>
+          <li>Vantage — £299 per month (commercial pilots and senior aviation professionals)</li>
+          <li>Citadel — £799 per month (organisations, 25 member seats)</li>
+        </ul>
+        <h3>Billing</h3>
+        <p>All subscriptions are billed automatically on a monthly recurring basis from the date of purchase. Payments are processed by Stripe. By completing a purchase, you authorise Vexeom to charge your nominated payment method monthly until you cancel.</p>
+        <h3>Cancellation</h3>
+        <p>You may cancel at any time by contacting <a href="mailto:info@vexeom.com">info@vexeom.com</a>. Cancellation takes effect at the end of the current billing period. No partial-month refunds are issued. You retain Platform access until the period ends.</p>
+        <h3>Digital content — cooling off waiver</h3>
+        <div class="banner banner-warning">
+          <div class="banner-label">14-DAY COOLING OFF PERIOD — CONSUMER CONTRACTS REGULATIONS 2013</div>
+          <p>Under the Consumer Contracts Regulations 2013, consumers ordinarily have a 14-day right to cancel digital content purchases. By completing a purchase and requesting immediate Report delivery, you expressly consent to delivery beginning immediately and acknowledge that your right to cancel is lost once delivery has commenced. This acknowledgement is confirmed at checkout and forms part of your binding agreement.</p>
+        </div>
+        <h3>Refund policy</h3>
+        <p><strong>Vexeom operates a strict no-refund policy on all delivered Digital Content.</strong> Once a Report has been generated and delivered, it is non-refundable, regardless of whether you read, used, or were satisfied with the content.</p>
+        <p>In the event of a verified technical failure preventing Report delivery within the stated timeframe, Vexeom will re-deliver the Report or issue account credit at its sole discretion. Dissatisfaction with Report content does not constitute grounds for a refund.</p>
+        <h3>Price changes</h3>
+        <p>Vexeom reserves the right to amend subscription pricing at any time. Active Members will receive not less than 30 days written notice of any price change. Continued use after the effective date constitutes acceptance.</p>
+        <h3>Failed payments</h3>
+        <p>If a scheduled payment fails, Vexeom reserves the right to suspend Platform access until payment is resolved. Continued non-payment may result in account termination. Outstanding balances remain due.</p>
+      </div>
+
+      <hr class="section-divider" />
+
+      <div class="terms-section" id="section-command">
+        <div class="section-tag">10</div>
+        <h2>Command Tier — Bespoke Engagements</h2>
+        <p>The Vexeom Command tier is a bespoke engagement available by private application only, with a minimum engagement value of £50,000. Command engagements are subject to a separate bespoke services agreement issued by Vexeom at the time of engagement. These Terms apply in addition to any bespoke agreement unless explicitly superseded in writing by a signed contract.</p>
+        <p>Submission of a Command application does not constitute an offer, acceptance, or commitment by either party. Vexeom reserves the right to decline any application without explanation or obligation.</p>
+      </div>
+
+      <hr class="section-divider" />
+
+      <div class="terms-section" id="section-ip">
+        <div class="section-tag">11</div>
+        <h2>Intellectual Property</h2>
+        <p>All content on this Platform — including the Vexeom scoring methodology, indicator framework, failure chain analysis system, report templates, AI prompt architecture, website design, copy, and branding — is the exclusive intellectual property of Vexeom.</p>
+        <p>Reports are licensed to Members for <strong>personal, non-commercial use only</strong>. You may not reproduce, resell, redistribute, publish, or share Report content commercially. Reports must not be submitted to any third party — including airlines, employers, training organisations, or regulators — as evidence of any assessment, qualification, or professional suitability.</p>
+        <p>Vexeom and Command are trading names. Unauthorised use of these names, marks, or any Platform content is prohibited and may result in legal action.</p>
+      </div>
+
+      <hr class="section-divider" />
+
+      <div class="terms-section" id="section-liability">
+        <div class="section-tag">12</div>
+        <h2>Limitation of Liability</h2>
+        <div class="banner banner-critical">
+          <div class="banner-label">LIABILITY EXCLUSION</div>
+          <p>To the maximum extent permitted by applicable law, Vexeom excludes all liability for any loss, damage, cost, or expense — direct, indirect, consequential, or otherwise — arising from your use of this Platform or any Report.</p>
+        </div>
+        <p>Without limiting the above, Vexeom accepts no liability for:</p>
+        <ul>
+          <li>Any career decision made in reliance on a Report or Platform content</li>
+          <li>Any financial loss incurred in connection with flight training, employment, or career planning</li>
+          <li>Any physical or psychological harm arising from decisions made in reliance on Platform content</li>
+          <li>Any aviation incident, accident, enforcement action, or regulatory consequence connected in any way to Platform use</li>
+          <li>Inaccurate Report outputs resulting from inaccurate, incomplete, or misleading input data</li>
+          <li>AI system errors, hallucinations, or inconsistencies in generated Report content</li>
+          <li>Platform downtime, data loss, or technical failures</li>
+          <li>Third-party actions including those of payment processors, hosting providers, or AI infrastructure providers</li>
+        </ul>
+        <p>Where liability cannot be excluded by law (including under the Consumer Rights Act 2015), Vexeom's total aggregate liability is limited to the total amount paid by you in the 12 months immediately preceding the claim.</p>
+        <p><strong>Nothing in these Terms excludes liability for death or personal injury caused by Vexeom's negligence, or for fraud or fraudulent misrepresentation, or for any other liability that cannot be excluded under applicable law.</strong></p>
+      </div>
+
+      <hr class="section-divider" />
+
+      <div class="terms-section" id="section-aviation">
+        <div class="section-tag">13</div>
+        <h2>Aviation Regulatory Compliance</h2>
+        <p>Vexeom content references aviation regulatory frameworks — including EASA FTL (EU 965/2012), CAA aeromedical standards, ICAO Annex 1, ICAO Doc 9683, and CAA CAP 1468 — for contextual and educational purposes only. Such references do not constitute regulatory guidance, compliance advice, or any official communication from any regulatory body.</p>
+        <p><strong>Vexeom is not approved, endorsed, accredited, or recognised by the CAA, EASA, FAA, ICAO, or any national or international aviation authority.</strong> Vexeom Reports must never be used as evidence of regulatory compliance, aeromedical fitness, safety assessment, or professional qualification.</p>
+        <p>Vexeom is not a fatigue risk management system (FRMS) as defined under EASA FTL or UK equivalent regulations. It does not satisfy any statutory fatigue management, duty time reporting, or safety management obligation.</p>
+        <div class="banner banner-critical">
+          <div class="banner-label">OPERATIONAL SAFETY — MANDATORY</div>
+          <p>If you have concerns about your fitness to operate as a pilot — including fatigue, cognitive impairment, substance use, or psychological wellbeing — your statutory obligations under applicable aviation law take precedence over any content on this Platform. You must follow your operator's Safety Management System (SMS) and report concerns through the correct regulatory channels. Failure to do so may constitute a criminal offence under the Air Navigation Order 2016 or equivalent national legislation.</p>
+        </div>
+      </div>
+
+      <hr class="section-divider" />
+
+      <div class="terms-section" id="section-conduct">
+        <div class="section-tag">14</div>
+        <h2>Acceptable Use</h2>
+        <p>By using this Platform, you agree not to:</p>
+        <ul>
+          <li>Submit false, misleading, or fabricated information in any assessment</li>
+          <li>Attempt to reverse-engineer, copy, or reproduce the Vexeom scoring methodology or AI prompt architecture</li>
+          <li>Use Reports or Platform content for any commercial purpose without prior written consent</li>
+          <li>Share account credentials or permit third parties to access your Member account</li>
+          <li>Use automated tools, scrapers, bots, or crawlers to access or extract Platform content</li>
+          <li>Submit assessments on behalf of third parties without their explicit, informed consent</li>
+          <li>Misrepresent Vexeom Reports as official, regulatory, medically validated, or professionally accredited documents</li>
+          <li>Use Platform content in any way that violates applicable law</li>
+        </ul>
+        <p>Vexeom reserves the right to suspend or permanently terminate access for any User in breach of this section, without refund and without prior notice where the breach is serious.</p>
+      </div>
+
+      <hr class="section-divider" />
+
+      <div class="terms-section" id="section-complaints">
+        <div class="section-tag">15</div>
+        <h2>Complaints Procedure</h2>
+        <h3>Step 1 — Submit your complaint</h3>
+        <p>Email <a href="mailto:info@vexeom.com">info@vexeom.com</a> with subject line "COMPLAINT" including your name, account email, the nature of your complaint, and the outcome you are seeking. We will acknowledge receipt within <strong>3 business days</strong>.</p>
+        <h3>Step 2 — Investigation</h3>
+        <p>We will provide a substantive written response within <strong>14 business days</strong> of acknowledgement. Complex cases may require up to 28 business days, in which case we will notify you of the extended timeframe.</p>
+        <h3>Step 3 — Escalation</h3>
+        <p>If unsatisfied with our response, you may escalate to the relevant authority. For data protection matters: the Information Commissioner's Office at <a href="https://ico.org.uk" target="_blank" rel="noopener">ico.org.uk</a>. For consumer disputes: Citizens Advice or independent legal advice. These procedures do not affect your statutory rights as a Consumer.</p>
+      </div>
+
+      <hr class="section-divider" />
+
+      <div class="terms-section" id="section-changes">
+        <div class="section-tag">16</div>
+        <h2>Changes to These Terms</h2>
+        <p>Vexeom reserves the right to update these Terms at any time. Where changes materially affect your rights or obligations, active Members will be notified by email at least <strong>14 days</strong> before the changes take effect. Minor corrections may be made without notice. The "Last Revised" date above will always reflect the most recent update. Continued use after the effective date constitutes acceptance of the revised Terms.</p>
+      </div>
+
+      <hr class="section-divider" />
+
+      <div class="terms-section" id="section-law">
+        <div class="section-tag">17</div>
+        <h2>Governing Law and Jurisdiction</h2>
+        <p>These Terms are governed by the laws of England and Wales. Any dispute arising from these Terms, the Platform, or any Report shall be subject to the exclusive jurisdiction of the courts of England and Wales, except where applicable consumer protection law in your country of residence grants you the right to bring proceedings locally.</p>
+        <p>Consumers resident in Scotland or Northern Ireland retain the right to bring proceedings in their local courts in respect of consumer rights disputes.</p>
+      </div>
+
+      <hr class="section-divider" />
+
+      <div class="terms-section" id="section-contact">
+        <div class="section-tag">18</div>
+        <h2>Contact</h2>
+        <ul>
+          <li>General &amp; Legal: <a href="mailto:info@vexeom.com">info@vexeom.com</a></li>
+          <li>Data &amp; Privacy requests: <a href="mailto:info@vexeom.com">info@vexeom.com</a></li>
+          <li>Platform: vexeom.com</li>
+          <li>Governing jurisdiction: England &amp; Wales</li>
+        </ul>
+      </div>
+
+      <div class="acceptance-block">
+        <div class="section-tag">BINDING ACKNOWLEDGEMENT</div>
+        <h2>By using this Platform or completing a purchase, you confirm all of the following:</h2>
+        <p>You are at least 18 years of age and have full legal capacity to enter into this agreement. You have read these Terms in their entirety and agree to be bound by them. You understand that Vexeom is a self-reported career planning tool — not a medical, regulatory, psychological, or professional advisory service. You understand that Reports are generated by an automated AI system with no human review prior to delivery. You accept that delivered Digital Content is non-refundable and that by requesting immediate delivery you waive your 14-day cooling off right. You consent to your assessment data being processed by Anthropic's AI infrastructure for Report generation. You consent to anonymised data being used in Vexeom's aggregated industry dataset.</p>
+      </div>
+
+    </main>
+  </div>
 
   <footer>
     <div class="footer-logo">VEXEOM — INTELLIGENCE INFRASTRUCTURE</div>
-    <div class="footer-note">© 2025 Vexeom Ltd. All rights reserved. Governing law: England &amp; Wales.</div>
+    <div class="footer-note">© 2025 Vexeom. All rights reserved. Governing law: England &amp; Wales.</div>
   </footer>
+
+  <script>
+    function acceptCookies() {
+      document.getElementById('cookie-banner').style.display = 'none';
+      localStorage.setItem('vx_cookie_consent', 'all');
+    }
+    function rejectCookies() {
+      document.getElementById('cookie-banner').style.display = 'none';
+      localStorage.setItem('vx_cookie_consent', 'essential');
+    }
+    (function() {
+      if (localStorage.getItem('vx_cookie_consent')) {
+        document.getElementById('cookie-banner').style.display = 'none';
+      }
+    })();
+  </script>
 
 </body>
 </html>
