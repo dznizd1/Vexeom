@@ -3,9 +3,75 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Free Career Risk Snapshot — Vexeom</title>
+  <title>Career Risk Snapshot — Vexeom</title>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .report-wrap { max-width: 780px; margin: 0 auto; padding: 120px 40px 120px; position: relative; z-index: 1; }
+    .report-header { border: 1px solid var(--border); padding: 40px; margin-bottom: 40px; position: relative; overflow: hidden; }
+    .report-header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), transparent); }
+    .report-meta { display: flex; gap: 0; border: 1px solid var(--border); margin-bottom: 0; flex-wrap: wrap; margin-top: 24px; }
+    .report-meta-cell { padding: 10px 20px; border-right: 1px solid var(--border); flex: 1; min-width: 120px; }
+    .report-meta-cell:last-child { border-right: none; }
+    .rmc-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; margin-bottom: 3px; }
+    .rmc-value { font-family: var(--mono); font-size: 11px; color: var(--text); }
+    .report-eyebrow { font-family: var(--mono); font-size: 10px; letter-spacing: 0.25em; color: var(--accent); margin-bottom: 12px; }
+    .report-header h1 { font-size: clamp(20px, 3vw, 28px); font-weight: 600; letter-spacing: -0.02em; margin-bottom: 8px; }
+    .report-header p { font-size: 14px; color: var(--muted); font-family: var(--mono); margin: 0; }
+    .report-notice { background: rgba(27,79,216,0.05); border: 1px solid rgba(27,79,216,0.2); border-left: 3px solid var(--accent); padding: 14px 18px; margin-bottom: 32px; }
+    .report-notice p { font-family: var(--mono); font-size: 11px; color: #9BA8B5; margin: 0; line-height: 1.6; }
+    .q-block { border: 1px solid var(--border); margin-bottom: 2px; background: var(--bg-surface); }
+    .q-head { padding: 20px 24px 16px; border-bottom: 1px solid var(--border); }
+    .q-meta-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+    .q-num { font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.15em; }
+    .q-indicator-tag { font-family: var(--mono); font-size: 10px; color: var(--muted); letter-spacing: 0.12em; background: var(--border); padding: 3px 10px; }
+    .q-text { font-size: 15px; font-weight: 500; color: var(--text); margin-bottom: 8px; line-height: 1.4; }
+    .q-data { font-family: var(--mono); font-size: 11px; color: #6B7A8D; line-height: 1.5; }
+    .q-options { padding: 0; }
+    .q-option { display: flex; align-items: center; gap: 14px; padding: 14px 24px; border-bottom: 1px solid var(--border); cursor: pointer; transition: background 0.15s; }
+    .q-option:last-child { border-bottom: none; }
+    .q-option:hover { background: rgba(27,79,216,0.04); }
+    .q-option input[type="radio"] { accent-color: var(--accent); width: 15px; height: 15px; flex-shrink: 0; cursor: pointer; }
+    .q-option span { font-size: 14px; color: var(--muted); line-height: 1.4; cursor: pointer; }
+    .q-option:has(input:checked) { background: rgba(27,79,216,0.06); }
+    .q-option:has(input:checked) span { color: var(--text); }
+    .submit-wrap { margin-top: 32px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .submit-btn { font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em; padding: 16px 40px; background: var(--accent); color: #fff; border: none; cursor: pointer; transition: opacity 0.2s; }
+    .submit-btn:hover { opacity: 0.85; }
+    .submit-note { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+    /* RESULT */
+    .result-wrap { display: none; }
+    .result-doc { border: 1px solid var(--border); background: var(--bg-surface); }
+    .result-doc-header { padding: 32px 40px; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+    .result-doc-header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), transparent); }
+    .result-doc-eyebrow { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; color: var(--accent); margin-bottom: 10px; }
+    .result-doc-title { font-size: 22px; font-weight: 600; margin-bottom: 6px; }
+    .result-score-row { display: flex; align-items: baseline; gap: 8px; margin-top: 20px; }
+    .result-score-num { font-family: var(--mono); font-size: 48px; font-weight: 500; color: var(--text); line-height: 1; }
+    .result-score-denom { font-family: var(--mono); font-size: 18px; color: var(--muted); }
+    .result-band { font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; padding: 4px 12px; display: inline-block; margin-top: 10px; }
+    .band-critical { background: rgba(204,41,54,0.15); color: #FF6B6B; border: 1px solid rgba(204,41,54,0.3); }
+    .band-warning { background: rgba(255,140,0,0.1); color: #FFBA6B; border: 1px solid rgba(255,140,0,0.3); }
+    .band-stable { background: rgba(27,79,216,0.1); color: #6B9BFF; border: 1px solid rgba(27,79,216,0.3); }
+    .result-flags-section { padding: 24px 40px; border-bottom: 1px solid var(--border); }
+    .result-flags-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; color: var(--muted); margin-bottom: 12px; }
+    .result-flag { font-family: var(--mono); font-size: 12px; color: #FF9090; padding: 8px 0; border-bottom: 1px solid var(--border); }
+    .result-flag:last-child { border-bottom: none; }
+    .result-redacted { padding: 32px 40px; border-bottom: 1px solid var(--border); }
+    .redacted-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; color: var(--muted); margin-bottom: 16px; }
+    .redacted-row { display: flex; align-items: center; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+    .redacted-row:last-child { border-bottom: none; }
+    .redacted-name { font-family: var(--mono); font-size: 12px; color: var(--muted); width: 180px; flex-shrink: 0; }
+    .redacted-bar { flex: 1; height: 4px; background: var(--border); position: relative; overflow: hidden; }
+    .redacted-bar::after { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, #1B2A3A 0px, #1B2A3A 8px, transparent 8px, transparent 12px); }
+    .redacted-lock { font-family: var(--mono); font-size: 10px; color: #3A4A5A; letter-spacing: 0.1em; }
+    .result-cta-block { padding: 32px 40px; background: rgba(27,79,216,0.04); }
+    .result-cta-title { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+    .result-cta-sub { font-size: 13px; color: var(--muted); margin-bottom: 20px; font-family: var(--mono); }
+    .result-cta-btn { display: inline-block; font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em; padding: 14px 36px; background: var(--accent); color: #fff; text-decoration: none; transition: opacity 0.2s; }
+    .result-cta-btn:hover { opacity: 0.85; text-decoration: none; }
+    @media(max-width:768px) { .report-wrap { padding: 90px 20px 80px; } .report-header { padding: 24px; } .result-doc-header { padding: 24px; } .result-flags-section, .result-redacted, .result-cta-block { padding: 20px 24px; } .redacted-name { width: 120px; } }
+  </style>
 </head>
 <body>
 
@@ -34,114 +100,177 @@
     <a href="access.html" class="cta-mobile">REQUEST ACCESS</a>
   </div>
 
-  <section class="assessment-hero">
-    <div class="inner">
-      <div class="section-eyebrow">CAREER RISK SNAPSHOT — FREE</div>
-      <h1>4 Questions.<br/><span class="accent">Your Risk Profile.</span></h1>
-      <p class="assessment-sub">A surface-level read of your career risk exposure. The full picture requires the complete 10-indicator report.</p>
+  <div class="report-wrap">
+
+    <div class="report-header">
+      <div class="report-eyebrow">VEXEOM — CAREER RISK SNAPSHOT</div>
+      <h1>Pilot Intelligence Snapshot<br/>Report — Preview</h1>
+      <p>Free surface-level assessment. 7 of 10 indicators. Results delivered in report format.</p>
+      <div class="report-meta">
+        <div class="report-meta-cell"><div class="rmc-label">Classification</div><div class="rmc-value">SNAPSHOT — PARTIAL</div></div>
+        <div class="report-meta-cell"><div class="rmc-label">Indicators</div><div class="rmc-value">7 OF 10</div></div>
+        <div class="report-meta-cell"><div class="rmc-label">Access Level</div><div class="rmc-value">FREE PREVIEW</div></div>
+        <div class="report-meta-cell"><div class="rmc-label">Full Report</div><div class="rmc-value">ALTITUDE+</div></div>
+      </div>
     </div>
-  </section>
 
-  <section class="assessment-section">
-    <div class="inner assessment-inner">
+    <div class="report-notice">
+      <p>This snapshot covers 7 of 10 Vexeom indicators. Cognitive Load, Circadian Stability, and Career Sustainability are withheld from the free preview. Results are shown in partial report format — full scoring, failure chain analysis, and 12-month outlook require a membership.</p>
+    </div>
 
-      <form id="assessmentForm" class="assessment-form">
+    <!-- FORM -->
+    <div id="assessmentForm">
 
-        <!-- Q1 FINANCIAL -->
-        <div class="question-block" data-question="1">
-          <div class="q-meta">
-            <span class="q-number">01 / 04</span>
-            <span class="q-indicator">FINANCIAL RESILIENCE</span>
-          </div>
-          <div class="q-context">67% of pilot training withdrawals cite financial pressure as the primary factor. (CAA 2025)</div>
-          <h3 class="q-text">How many months could you sustain full training costs without additional income?</h3>
-          <div class="q-options">
-            <label class="q-option"><input type="radio" name="q1" value="1" data-flag="financial"/> <span>Less than 1 month</span></label>
-            <label class="q-option"><input type="radio" name="q1" value="2" data-flag="financial"/> <span>1–3 months</span></label>
-            <label class="q-option"><input type="radio" name="q1" value="3"/> <span>3–6 months</span></label>
-            <label class="q-option"><input type="radio" name="q1" value="4"/> <span>6–12 months</span></label>
-            <label class="q-option"><input type="radio" name="q1" value="5"/> <span>12+ months — fully funded</span></label>
-          </div>
+      <div class="q-block">
+        <div class="q-head">
+          <div class="q-meta-row"><span class="q-num">01 / 07</span><span class="q-indicator-tag">FINANCIAL RESILIENCE</span></div>
+          <div class="q-text">How many months could you sustain full training costs without additional income?</div>
+          <div class="q-data">CAA 2025 — 67% of pilot training withdrawals cite financial pressure as primary cause.</div>
         </div>
-
-        <!-- Q2 FATIGUE -->
-        <div class="question-block" data-question="2">
-          <div class="q-meta">
-            <span class="q-number">02 / 04</span>
-            <span class="q-indicator">FATIGUE & RECOVERY</span>
-          </div>
-          <div class="q-context">EASA FTL 2024 revisions tightened crew rest minimums after fatigue was linked to 23% of reported incidents.</div>
-          <h3 class="q-text">How would you rate your average sleep quality over the past 30 days?</h3>
-          <div class="q-options">
-            <label class="q-option"><input type="radio" name="q2" value="1" data-flag="fatigue"/> <span>Poor — regularly under 5 hours</span></label>
-            <label class="q-option"><input type="radio" name="q2" value="2" data-flag="fatigue"/> <span>Below average — disrupted sleep</span></label>
-            <label class="q-option"><input type="radio" name="q2" value="3"/> <span>Average — 6–7 hours, inconsistent</span></label>
-            <label class="q-option"><input type="radio" name="q2" value="4"/> <span>Good — 7–8 hours most nights</span></label>
-            <label class="q-option"><input type="radio" name="q2" value="5"/> <span>Excellent — consistent, restorative sleep</span></label>
-          </div>
+        <div class="q-options">
+          <label class="q-option"><input type="radio" name="q1" value="1" data-flag="financial"/><span>Less than 1 month</span></label>
+          <label class="q-option"><input type="radio" name="q1" value="2" data-flag="financial"/><span>1–3 months</span></label>
+          <label class="q-option"><input type="radio" name="q1" value="3"/><span>3–6 months</span></label>
+          <label class="q-option"><input type="radio" name="q1" value="4"/><span>6–12 months</span></label>
+          <label class="q-option"><input type="radio" name="q1" value="5"/><span>12+ months — fully funded</span></label>
         </div>
+      </div>
 
-        <!-- Q3 MOTIVATION -->
-        <div class="question-block" data-question="3">
-          <div class="q-meta">
-            <span class="q-number">03 / 04</span>
-            <span class="q-indicator">MOTIVATION STABILITY</span>
-          </div>
-          <div class="q-context">Motivation instability is the second most common non-technical cause of training failure. (Boeing 2024)</div>
-          <h3 class="q-text">How consistent is your motivation to pursue an aviation career right now?</h3>
-          <div class="q-options">
-            <label class="q-option"><input type="radio" name="q3" value="1" data-flag="motivation"/> <span>Seriously questioning the career path</span></label>
-            <label class="q-option"><input type="radio" name="q3" value="2" data-flag="motivation"/> <span>Motivation fluctuates significantly week to week</span></label>
-            <label class="q-option"><input type="radio" name="q3" value="3"/> <span>Generally motivated with occasional doubts</span></label>
-            <label class="q-option"><input type="radio" name="q3" value="4"/> <span>Consistently motivated</span></label>
-            <label class="q-option"><input type="radio" name="q3" value="5"/> <span>Fully committed — no doubt</span></label>
-          </div>
+      <div class="q-block">
+        <div class="q-head">
+          <div class="q-meta-row"><span class="q-num">02 / 07</span><span class="q-indicator-tag">FATIGUE & RECOVERY</span></div>
+          <div class="q-text">How would you rate your average sleep quality over the past 30 days?</div>
+          <div class="q-data">EASA FTL 2024 — fatigue linked to 23% of reported aviation incidents across EU operators.</div>
         </div>
-
-        <!-- Q4 TRAINING READINESS -->
-        <div class="question-block" data-question="4">
-          <div class="q-meta">
-            <span class="q-number">04 / 04</span>
-            <span class="q-indicator">TRAINING READINESS</span>
-          </div>
-          <div class="q-context">82% of EU/UK airlines now use structured performance screening at selection stage. (EASA 2024)</div>
-          <h3 class="q-text">How prepared do you feel for your next major training milestone or selection?</h3>
-          <div class="q-options">
-            <label class="q-option"><input type="radio" name="q4" value="1" data-flag="training"/> <span>Unprepared — significant gaps</span></label>
-            <label class="q-option"><input type="radio" name="q4" value="2" data-flag="training"/> <span>Below where I need to be</span></label>
-            <label class="q-option"><input type="radio" name="q4" value="3"/> <span>Partially prepared</span></label>
-            <label class="q-option"><input type="radio" name="q4" value="4"/> <span>Well prepared</span></label>
-            <label class="q-option"><input type="radio" name="q4" value="5"/> <span>Fully prepared and confident</span></label>
-          </div>
+        <div class="q-options">
+          <label class="q-option"><input type="radio" name="q2" value="1" data-flag="fatigue"/><span>Poor — regularly under 5 hours</span></label>
+          <label class="q-option"><input type="radio" name="q2" value="2" data-flag="fatigue"/><span>Below average — disrupted sleep most nights</span></label>
+          <label class="q-option"><input type="radio" name="q2" value="3"/><span>Average — 6–7 hours, inconsistent</span></label>
+          <label class="q-option"><input type="radio" name="q2" value="4"/><span>Good — 7–8 hours most nights</span></label>
+          <label class="q-option"><input type="radio" name="q2" value="5"/><span>Excellent — consistent, restorative sleep</span></label>
         </div>
+      </div>
 
-        <button type="button" class="submit-assessment" onclick="runAssessment()">ANALYSE MY RISK PROFILE</button>
+      <div class="q-block">
+        <div class="q-head">
+          <div class="q-meta-row"><span class="q-num">03 / 07</span><span class="q-indicator-tag">STRESS</span></div>
+          <div class="q-text">How frequently do you experience stress that affects your focus or decision-making?</div>
+          <div class="q-data">ICAO 2025 — stress-related cognitive impairment is a leading human factors contributor in training failures.</div>
+        </div>
+        <div class="q-options">
+          <label class="q-option"><input type="radio" name="q3" value="1" data-flag="stress"/><span>Daily — significantly impacts performance</span></label>
+          <label class="q-option"><input type="radio" name="q3" value="2" data-flag="stress"/><span>Several times a week</span></label>
+          <label class="q-option"><input type="radio" name="q3" value="3"/><span>Occasionally — manageable</span></label>
+          <label class="q-option"><input type="radio" name="q3" value="4"/><span>Rarely</span></label>
+          <label class="q-option"><input type="radio" name="q3" value="5"/><span>Almost never — well regulated</span></label>
+        </div>
+      </div>
 
-      </form>
+      <div class="q-block">
+        <div class="q-head">
+          <div class="q-meta-row"><span class="q-num">04 / 07</span><span class="q-indicator-tag">MOTIVATION STABILITY</span></div>
+          <div class="q-text">How consistent is your motivation to pursue an aviation career right now?</div>
+          <div class="q-data">Boeing 2024 — motivation instability is the second most common non-technical cause of training withdrawal.</div>
+        </div>
+        <div class="q-options">
+          <label class="q-option"><input type="radio" name="q4" value="1" data-flag="motivation"/><span>Seriously questioning the career path</span></label>
+          <label class="q-option"><input type="radio" name="q4" value="2" data-flag="motivation"/><span>Motivation fluctuates significantly week to week</span></label>
+          <label class="q-option"><input type="radio" name="q4" value="3"/><span>Generally motivated with occasional doubts</span></label>
+          <label class="q-option"><input type="radio" name="q4" value="4"/><span>Consistently motivated</span></label>
+          <label class="q-option"><input type="radio" name="q4" value="5"/><span>Fully committed — no doubt</span></label>
+        </div>
+      </div>
 
-      <!-- RESULT -->
-      <div id="assessmentResult" class="assessment-result" style="display:none;">
-        <div class="result-header">
-          <div class="result-eyebrow">SNAPSHOT COMPLETE</div>
-          <div class="result-score-wrap">
-            <div class="result-score" id="resultScore">—</div>
-            <div class="result-score-label">/ 20</div>
+      <div class="q-block">
+        <div class="q-head">
+          <div class="q-meta-row"><span class="q-num">05 / 07</span><span class="q-indicator-tag">LIFESTYLE COMPATIBILITY</span></div>
+          <div class="q-text">How compatible is your current lifestyle with the demands of full-time aviation training or operations?</div>
+          <div class="q-data">CAA 2025 — lifestyle incompatibility accounts for 31% of mid-training dropout in integrated ATPL programmes.</div>
+        </div>
+        <div class="q-options">
+          <label class="q-option"><input type="radio" name="q5" value="1" data-flag="lifestyle"/><span>Highly incompatible — major conflicts</span></label>
+          <label class="q-option"><input type="radio" name="q5" value="2" data-flag="lifestyle"/><span>Several significant lifestyle conflicts</span></label>
+          <label class="q-option"><input type="radio" name="q5" value="3"/><span>Some conflicts — manageable with effort</span></label>
+          <label class="q-option"><input type="radio" name="q5" value="4"/><span>Mostly compatible</span></label>
+          <label class="q-option"><input type="radio" name="q5" value="5"/><span>Fully compatible — structured for aviation</span></label>
+        </div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-head">
+          <div class="q-meta-row"><span class="q-num">06 / 07</span><span class="q-indicator-tag">TRAINING READINESS</span></div>
+          <div class="q-text">How prepared do you feel for your next major training milestone or selection?</div>
+          <div class="q-data">EASA 2024 — 82% of EU/UK airlines use structured psychometric and performance screening at selection stage.</div>
+        </div>
+        <div class="q-options">
+          <label class="q-option"><input type="radio" name="q6" value="1" data-flag="training"/><span>Unprepared — significant gaps</span></label>
+          <label class="q-option"><input type="radio" name="q6" value="2" data-flag="training"/><span>Below where I need to be</span></label>
+          <label class="q-option"><input type="radio" name="q6" value="3"/><span>Partially prepared</span></label>
+          <label class="q-option"><input type="radio" name="q6" value="4"/><span>Well prepared</span></label>
+          <label class="q-option"><input type="radio" name="q6" value="5"/><span>Fully prepared and confident</span></label>
+        </div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-head">
+          <div class="q-meta-row"><span class="q-num">07 / 07</span><span class="q-indicator-tag">FINANCIAL RESILIENCE — DEBT EXPOSURE</span></div>
+          <div class="q-text">What is your current level of training-related debt or financial obligation?</div>
+          <div class="q-data">UK integrated ATPL programmes average £150,000+. Debt pressure compounds dropout risk by 2.4x. (CAA 2025)</div>
+        </div>
+        <div class="q-options">
+          <label class="q-option"><input type="radio" name="q7" value="1" data-flag="financial"/><span>High debt — significant pressure on decisions</span></label>
+          <label class="q-option"><input type="radio" name="q7" value="2" data-flag="financial"/><span>Moderate debt — noticeable financial strain</span></label>
+          <label class="q-option"><input type="radio" name="q7" value="3"/><span>Some debt — manageable</span></label>
+          <label class="q-option"><input type="radio" name="q7" value="4"/><span>Minimal debt</span></label>
+          <label class="q-option"><input type="radio" name="q7" value="5"/><span>No training debt — self-funded or sponsored</span></label>
+        </div>
+      </div>
+
+      <div class="submit-wrap">
+        <button class="submit-btn" onclick="runAssessment()">GENERATE SNAPSHOT REPORT</button>
+        <span class="submit-note">Results appear instantly in report format below.</span>
+      </div>
+
+    </div>
+
+    <!-- RESULT -->
+    <div id="assessmentResult" class="result-wrap">
+      <div class="result-doc">
+
+        <div class="result-doc-header">
+          <div class="result-doc-eyebrow">VEXEOM PILOT INTELLIGENCE REPORT — SNAPSHOT PREVIEW</div>
+          <div class="result-doc-title">Career Risk Assessment<br/>Partial Report — 7 Indicators</div>
+          <div class="result-score-row">
+            <div class="result-score-num" id="resultScore">—</div>
+            <div class="result-score-denom">/ 35</div>
           </div>
           <div class="result-band" id="resultBand">—</div>
         </div>
 
-        <div class="result-flags" id="resultFlags"></div>
-
-        <div class="result-limit-notice">
-          <div class="limit-label">THIS IS A SURFACE READ ONLY</div>
-          <p>This snapshot covers 4 of 10 risk indicators. Your full profile — including Cognitive Load, Stress, Circadian Stability, Recovery, Lifestyle Compatibility, and Career Sustainability — requires the complete Vexeom Intelligence Report.</p>
+        <div class="result-flags-section">
+          <div class="result-flags-label">DETECTED RISK SIGNALS</div>
+          <div id="resultFlags"></div>
         </div>
 
-        <a href="access.html" class="result-cta">GET THE FULL REPORT</a>
-      </div>
+        <div class="result-redacted">
+          <div class="redacted-label">INDICATORS — FULL REPORT REQUIRED FOR COMPLETE SCORING</div>
+          <div class="redacted-row"><div class="redacted-name">COGNITIVE LOAD</div><div class="redacted-bar"></div><div class="redacted-lock">LOCKED</div></div>
+          <div class="redacted-row"><div class="redacted-name">CIRCADIAN STABILITY</div><div class="redacted-bar"></div><div class="redacted-lock">LOCKED</div></div>
+          <div class="redacted-row"><div class="redacted-name">CAREER SUSTAINABILITY</div><div class="redacted-bar"></div><div class="redacted-lock">LOCKED</div></div>
+          <div class="redacted-row"><div class="redacted-name">FAILURE CHAIN MAP</div><div class="redacted-bar"></div><div class="redacted-lock">LOCKED</div></div>
+          <div class="redacted-row"><div class="redacted-name">12-MONTH OUTLOOK</div><div class="redacted-bar"></div><div class="redacted-lock">LOCKED</div></div>
+        </div>
 
+        <div class="result-cta-block">
+          <div class="result-cta-title">Your full intelligence report is one step away.</div>
+          <div class="result-cta-sub">Complete scoring across all 10 indicators. Failure chain analysis. 12-month career outlook. Delivered instantly.</div>
+          <a href="access.html" class="result-cta-btn">ACCESS FULL REPORT</a>
+        </div>
+
+      </div>
     </div>
-  </section>
+
+  </div>
 
   <footer>
     <div class="inner footer-inner">
@@ -156,67 +285,30 @@
   </footer>
 
   <script>
-    function toggleMenu(){
-      var m=document.getElementById("mobileMenu");
-      var h=document.querySelector(".hamburger");
-      m.classList.toggle("open");
-      h.classList.toggle("open");
-    }
-
+    function toggleMenu(){var m=document.getElementById("mobileMenu");var h=document.querySelector(".hamburger");m.classList.toggle("open");h.classList.toggle("open");}
     function runAssessment(){
-      var total = 0;
-      var answered = 0;
-      var flags = [];
-
-      for(var i = 1; i <= 4; i++){
-        var sel = document.querySelector('input[name="q'+i+'"]:checked');
-        if(sel){
-          total += parseInt(sel.value);
-          answered++;
-          if(sel.dataset.flag) flags.push(sel.dataset.flag);
-        }
+      var total=0,answered=0,flags=[];
+      for(var i=1;i<=7;i++){
+        var sel=document.querySelector('input[name="q'+i+'"]:checked');
+        if(sel){total+=parseInt(sel.value);answered++;if(sel.dataset.flag)flags.push(sel.dataset.flag);}
       }
-
-      if(answered < 4){
-        alert('Please answer all 4 questions.');
-        return;
-      }
-
-      document.getElementById('resultScore').textContent = total;
-
-      var band, bandClass;
-      if(total <= 8){
-        band = 'CRITICAL EXPOSURE';
-        bandClass = 'band-critical';
-      } else if(total <= 14){
-        band = 'ELEVATED RISK';
-        bandClass = 'band-warning';
-      } else {
-        band = 'MANAGED — INCOMPLETE PICTURE';
-        bandClass = 'band-stable';
-      }
-
-      var bandEl = document.getElementById('resultBand');
-      bandEl.textContent = band;
-      bandEl.className = 'result-band ' + bandClass;
-
-      var flagsHtml = '';
-      var flagLabels = {
-        financial: 'FINANCIAL PRESSURE DETECTED',
-        fatigue: 'FATIGUE RISK DETECTED',
-        motivation: 'MOTIVATION INSTABILITY DETECTED',
-        training: 'TRAINING READINESS GAP DETECTED'
-      };
-      flags.forEach(function(f){
-        if(flagLabels[f]) flagsHtml += '<div class="result-flag">⚠ ' + flagLabels[f] + '</div>';
-      });
-      document.getElementById('resultFlags').innerHTML = flagsHtml;
-
-      document.getElementById('assessmentForm').style.display = 'none';
-      document.getElementById('assessmentResult').style.display = 'block';
-      window.scrollTo({top: 0, behavior: 'smooth'});
+      if(answered<7){alert('Please answer all 7 questions.');return;}
+      document.getElementById('resultScore').textContent=total;
+      var band,cls;
+      if(total<=14){band='CRITICAL RISK EXPOSURE';cls='band-critical';}
+      else if(total<=24){band='ELEVATED RISK — ACTION REQUIRED';cls='band-warning';}
+      else{band='MANAGED — INCOMPLETE PICTURE';cls='band-stable';}
+      var el=document.getElementById('resultBand');
+      el.textContent=band;el.className='result-band '+cls;
+      var labels={financial:'FINANCIAL PRESSURE CHAIN DETECTED',fatigue:'FATIGUE & RECOVERY RISK DETECTED',stress:'STRESS IMPAIRMENT RISK DETECTED',motivation:'MOTIVATION INSTABILITY DETECTED',lifestyle:'LIFESTYLE INCOMPATIBILITY DETECTED',training:'TRAINING READINESS GAP DETECTED'};
+      var seen={},html='';
+      flags.forEach(function(f){if(!seen[f]&&labels[f]){html+='<div class="result-flag">⚠ '+labels[f]+'</div>';seen[f]=1;}});
+      if(!html)html='<div class="result-flag" style="color:#6B9BFF;">No critical signals detected in snapshot indicators.</div>';
+      document.getElementById('resultFlags').innerHTML=html;
+      document.getElementById('assessmentForm').style.display='none';
+      document.getElementById('assessmentResult').style.display='block';
+      window.scrollTo({top:0,behavior:'smooth'});
     }
   </script>
-
 </body>
 </html>
