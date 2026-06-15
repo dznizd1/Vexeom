@@ -3158,3 +3158,11 @@ footer p {
   .access-hero { padding: 100px 24px 40px; }
   .command-strip { padding: 24px; flex-direction: column; }
 }
+
+/* ── BACKGROUND BRIGHTNESS ── */
+:root {
+  --bg: #03111F;
+  --bg-surface: #051829;
+}
+
+body { background: #03111F; }
