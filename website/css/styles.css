@@ -3166,3 +3166,13 @@ footer p {
 }
 
 body { background: #03111F; }
+
+/* ── SELECTION COLOUR ── */
+::selection {
+  background: #C8A96E;
+  color: #000;
+}
+::-moz-selection {
+  background: #C8A96E;
+  color: #000;
+}
