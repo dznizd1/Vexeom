@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vexeom — Free Career Risk Snapshot</title>
-  <link rel="stylesheet" href="css/styles.css" />
+  <title>Free Career Risk Snapshot — Vexeom</title>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
 
@@ -21,258 +21,202 @@
         <a href="command.html" class="nav-tab command-tab">COMMAND</a>
       </div>
       <a href="access.html" class="nav-cta">REQUEST ACCESS</a>
-    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </nav>
-<div class="mobile-menu" id="mobileMenu">
-  <a href="index.html">HOME</a>
-  <a href="platform.html">PLATFORM</a>
-  <a href="intelligence.html">INTELLIGENCE</a>
-  <a href="assessment.html">FREE TEST</a>
-  <a href="access.html">ACCESS</a>
-  <a href="command.html" class="gold">COMMAND</a>
-  <a href="access.html" class="cta-mobile">REQUEST ACCESS</a>
-</div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">HOME</a>
+    <a href="platform.html">PLATFORM</a>
+    <a href="intelligence.html">INTELLIGENCE</a>
+    <a href="assessment.html">FREE TEST</a>
+    <a href="access.html">ACCESS</a>
+    <a href="command.html" class="gold">COMMAND</a>
+    <a href="access.html" class="cta-mobile">REQUEST ACCESS</a>
+  </div>
 
-  <section class="page-hero">
+  <section class="assessment-hero">
     <div class="inner">
-      <div class="section-tag">FREE CAREER RISK SNAPSHOT</div>
-      <h1 class="page-h1">Seven questions.<br>Real intelligence.</h1>
-      <p class="page-sub">This is not a wellness quiz. Each question targets a specific failure vector responsible for pilot career derailment, with industry data embedded so you understand exactly what is at stake before you answer.</p>
+      <div class="section-eyebrow">CAREER RISK SNAPSHOT — FREE</div>
+      <h1>4 Questions.<br/><span class="accent">Your Risk Profile.</span></h1>
+      <p class="assessment-sub">A surface-level read of your career risk exposure. The full picture requires the complete 10-indicator report.</p>
     </div>
   </section>
 
   <section class="assessment-section">
-    <div class="inner">
-      <div class="quiz-shell" id="quiz">
+    <div class="inner assessment-inner">
 
-        <div class="quiz-step active" data-step="1">
-          <div class="quiz-meta"><span class="quiz-num">01 / 07</span><span class="quiz-label">FINANCIAL RESILIENCE</span></div>
-          <div class="quiz-context">Financial pressure is the leading cause of early pilot career departure — cited in over 60% of voluntary training withdrawals in UK flight schools. It creates a cascade: students take on additional work, sacrifice sleep, accumulate fatigue, and lose training performance before the financial crisis itself becomes critical. The chain starts here.</div>
-          <div class="quiz-q">How many months could you sustain your current training costs without taking on new debt, reducing training hours, or relying on income from additional employment?</div>
-          <div class="quiz-options">
-            <button class="quiz-opt" data-score="1" data-flag="financial">Under 3 months — I am already under significant financial pressure</button>
-            <button class="quiz-opt" data-score="2" data-flag="financial">3 to 6 months — manageable now but tightening</button>
-            <button class="quiz-opt" data-score="3">6 to 12 months — stable with careful management</button>
-            <button class="quiz-opt" data-score="4">12 to 24 months — comfortable runway</button>
-            <button class="quiz-opt" data-score="5">Fully funded — no financial pressure whatsoever</button>
+      <form id="assessmentForm" class="assessment-form">
+
+        <!-- Q1 FINANCIAL -->
+        <div class="question-block" data-question="1">
+          <div class="q-meta">
+            <span class="q-number">01 / 04</span>
+            <span class="q-indicator">FINANCIAL RESILIENCE</span>
+          </div>
+          <div class="q-context">67% of pilot training withdrawals cite financial pressure as the primary factor. (CAA 2025)</div>
+          <h3 class="q-text">How many months could you sustain full training costs without additional income?</h3>
+          <div class="q-options">
+            <label class="q-option"><input type="radio" name="q1" value="1" data-flag="financial"/> <span>Less than 1 month</span></label>
+            <label class="q-option"><input type="radio" name="q1" value="2" data-flag="financial"/> <span>1–3 months</span></label>
+            <label class="q-option"><input type="radio" name="q1" value="3"/> <span>3–6 months</span></label>
+            <label class="q-option"><input type="radio" name="q1" value="4"/> <span>6–12 months</span></label>
+            <label class="q-option"><input type="radio" name="q1" value="5"/> <span>12+ months — fully funded</span></label>
           </div>
         </div>
 
-        <div class="quiz-step" data-step="2">
-          <div class="quiz-meta"><span class="quiz-num">02 / 07</span><span class="quiz-label">FATIGUE & RECOVERY</span></div>
-          <div class="quiz-context">EASA's 2024 FTL regulations were built on unambiguous science: sustained sleep below 7 hours produces cognitive impairment equivalent to 0.05% blood alcohol concentration — the legal driving limit in most countries. Student pilots operating under chronic sleep deficit are technically impaired. Most do not know it because fatigue impairs the ability to accurately self-assess fatigue level.</div>
-          <div class="quiz-q">On the majority of nights during active training periods, how many hours of uninterrupted sleep are you getting?</div>
-          <div class="quiz-options">
-            <button class="quiz-opt" data-score="1" data-flag="fatigue">Under 5 hours — I am chronically sleep-deprived during training</button>
-            <button class="quiz-opt" data-score="2" data-flag="fatigue">5 to 6 hours — below recommended but I manage</button>
-            <button class="quiz-opt" data-score="3">6 to 7 hours — borderline, some nights better than others</button>
-            <button class="quiz-opt" data-score="4">7 to 8 hours — consistent and deliberate</button>
-            <button class="quiz-opt" data-score="5">8 hours or more — recovery is a non-negotiable priority</button>
+        <!-- Q2 FATIGUE -->
+        <div class="question-block" data-question="2">
+          <div class="q-meta">
+            <span class="q-number">02 / 04</span>
+            <span class="q-indicator">FATIGUE & RECOVERY</span>
+          </div>
+          <div class="q-context">EASA FTL 2024 revisions tightened crew rest minimums after fatigue was linked to 23% of reported incidents.</div>
+          <h3 class="q-text">How would you rate your average sleep quality over the past 30 days?</h3>
+          <div class="q-options">
+            <label class="q-option"><input type="radio" name="q2" value="1" data-flag="fatigue"/> <span>Poor — regularly under 5 hours</span></label>
+            <label class="q-option"><input type="radio" name="q2" value="2" data-flag="fatigue"/> <span>Below average — disrupted sleep</span></label>
+            <label class="q-option"><input type="radio" name="q2" value="3"/> <span>Average — 6–7 hours, inconsistent</span></label>
+            <label class="q-option"><input type="radio" name="q2" value="4"/> <span>Good — 7–8 hours most nights</span></label>
+            <label class="q-option"><input type="radio" name="q2" value="5"/> <span>Excellent — consistent, restorative sleep</span></label>
           </div>
         </div>
 
-        <div class="quiz-step" data-step="3">
-          <div class="quiz-meta"><span class="quiz-num">03 / 07</span><span class="quiz-label">COGNITIVE LOAD</span></div>
-          <div class="quiz-context">The CAA's 2025 aeromedical updates formally recognise cognitive fatigue as a distinct impairment category. Airlines now deploying AI psychometric screening are specifically measuring cognitive load management — how candidates maintain decision quality under sustained mental demand. Candidates who have never actively tracked their cognitive capacity arrive at AI-assisted selection blind to what the system will find.</div>
-          <div class="quiz-q">After a full day of ground school, simulator, or flight training, how reliably can you make clear, accurate decisions on a complex task?</div>
-          <div class="quiz-options">
-            <button class="quiz-opt" data-score="1" data-flag="cognitive">My cognitive function collapses — I cannot trust my judgement</button>
-            <button class="quiz-opt" data-score="2" data-flag="cognitive">Significantly degraded — I make errors I would not make fresh</button>
-            <button class="quiz-opt" data-score="3">Noticeably reduced but I can still function adequately</button>
-            <button class="quiz-opt" data-score="4">Minor reduction — I stay mostly reliable with effort</button>
-            <button class="quiz-opt" data-score="5">Consistently sharp — I manage cognitive load as a deliberate skill</button>
+        <!-- Q3 MOTIVATION -->
+        <div class="question-block" data-question="3">
+          <div class="q-meta">
+            <span class="q-number">03 / 04</span>
+            <span class="q-indicator">MOTIVATION STABILITY</span>
+          </div>
+          <div class="q-context">Motivation instability is the second most common non-technical cause of training failure. (Boeing 2024)</div>
+          <h3 class="q-text">How consistent is your motivation to pursue an aviation career right now?</h3>
+          <div class="q-options">
+            <label class="q-option"><input type="radio" name="q3" value="1" data-flag="motivation"/> <span>Seriously questioning the career path</span></label>
+            <label class="q-option"><input type="radio" name="q3" value="2" data-flag="motivation"/> <span>Motivation fluctuates significantly week to week</span></label>
+            <label class="q-option"><input type="radio" name="q3" value="3"/> <span>Generally motivated with occasional doubts</span></label>
+            <label class="q-option"><input type="radio" name="q3" value="4"/> <span>Consistently motivated</span></label>
+            <label class="q-option"><input type="radio" name="q3" value="5"/> <span>Fully committed — no doubt</span></label>
           </div>
         </div>
 
-        <div class="quiz-step" data-step="4">
-          <div class="quiz-meta"><span class="quiz-num">04 / 07</span><span class="quiz-label">MOTIVATION STABILITY</span></div>
-          <div class="quiz-context">Airline psychometric assessments — used by 82% of EU and UK carriers at final selection — specifically probe motivation stability under adversity. Assessors are not looking for candidates who never doubt themselves. They are looking for candidates whose commitment survives setbacks without external validation. Candidates who have never stress-tested their own motivation before selection routinely fail this component — not from lack of commitment, but from never having examined it.</div>
-          <div class="quiz-q">In the last 6 months of training, when you faced a significant setback — a failed exam, a bad sim session, a financial hit — how did your commitment respond?</div>
-          <div class="quiz-options">
-            <button class="quiz-opt" data-score="1" data-flag="motivation">I seriously questioned whether to continue — for weeks at a time</button>
-            <button class="quiz-opt" data-score="2" data-flag="motivation">My motivation dropped significantly and took time to rebuild</button>
-            <button class="quiz-opt" data-score="3">I struggled but came back within days</button>
-            <button class="quiz-opt" data-score="4">I stayed committed with temporary dips I managed privately</button>
-            <button class="quiz-opt" data-score="5">Setbacks clarify my direction — I have not seriously questioned the goal</button>
+        <!-- Q4 TRAINING READINESS -->
+        <div class="question-block" data-question="4">
+          <div class="q-meta">
+            <span class="q-number">04 / 04</span>
+            <span class="q-indicator">TRAINING READINESS</span>
+          </div>
+          <div class="q-context">82% of EU/UK airlines now use structured performance screening at selection stage. (EASA 2024)</div>
+          <h3 class="q-text">How prepared do you feel for your next major training milestone or selection?</h3>
+          <div class="q-options">
+            <label class="q-option"><input type="radio" name="q4" value="1" data-flag="training"/> <span>Unprepared — significant gaps</span></label>
+            <label class="q-option"><input type="radio" name="q4" value="2" data-flag="training"/> <span>Below where I need to be</span></label>
+            <label class="q-option"><input type="radio" name="q4" value="3"/> <span>Partially prepared</span></label>
+            <label class="q-option"><input type="radio" name="q4" value="4"/> <span>Well prepared</span></label>
+            <label class="q-option"><input type="radio" name="q4" value="5"/> <span>Fully prepared and confident</span></label>
           </div>
         </div>
 
-        <div class="quiz-step" data-step="5">
-          <div class="quiz-meta"><span class="quiz-num">05 / 07</span><span class="quiz-label">LIFESTYLE COMPATIBILITY</span></div>
-          <div class="quiz-context">The UK CAA's 2024 wellbeing guidance formally identifies relationship instability as a primary environmental stressor that compounds fatigue and reduces cognitive reserve in operational settings. Most candidates assess technical readiness exhaustively. Almost none formally assess environmental readiness — and the two are not interchangeable. The roster will test both.</div>
-          <div class="quiz-q">How well does your current home environment, relationship, and personal life support a career involving irregular hours, frequent absence, and sustained high performance under pressure?</div>
-          <div class="quiz-options">
-            <button class="quiz-opt" data-score="1" data-flag="lifestyle">Active conflict — my personal life is currently a significant source of stress</button>
-            <button class="quiz-opt" data-score="2" data-flag="lifestyle">Frequent tension — manageable but takes consistent energy to navigate</button>
-            <button class="quiz-opt" data-score="3">Neutral — neither a source of support nor a significant drain</button>
-            <button class="quiz-opt" data-score="4">Broadly supportive with occasional strain under peak pressure</button>
-            <button class="quiz-opt" data-score="5">Fully aligned — my environment is a deliberate performance foundation</button>
+        <button type="button" class="submit-assessment" onclick="runAssessment()">ANALYSE MY RISK PROFILE</button>
+
+      </form>
+
+      <!-- RESULT -->
+      <div id="assessmentResult" class="assessment-result" style="display:none;">
+        <div class="result-header">
+          <div class="result-eyebrow">SNAPSHOT COMPLETE</div>
+          <div class="result-score-wrap">
+            <div class="result-score" id="resultScore">—</div>
+            <div class="result-score-label">/ 20</div>
           </div>
+          <div class="result-band" id="resultBand">—</div>
         </div>
 
-        <div class="quiz-step" data-step="6">
-          <div class="quiz-meta"><span class="quiz-num">06 / 07</span><span class="quiz-label">TRAINING READINESS</span></div>
-          <div class="quiz-context">ICAO's 2025 Human Factors mandate requires type rating programmes to formally assess self-management and study discipline as core competencies. Instructors now have regulatory vocabulary for what was previously intuited: reactive study patterns and motivation-dependent preparation are identifiable — and are being identified earlier. Candidates who arrive at type rating without a structured self-management history are entering an assessed environment without the evidence base it requires.</div>
-          <div class="quiz-q">Describe your current approach to ground study and training consolidation outside of scheduled sessions.</div>
-          <div class="quiz-options">
-            <button class="quiz-opt" data-score="1" data-flag="training">I study reactively — only when I have to, driven by upcoming exams or pressure</button>
-            <button class="quiz-opt" data-score="2" data-flag="training">I have a loose schedule but I frequently miss or compress sessions</button>
-            <button class="quiz-opt" data-score="3">I study regularly but without a formal consolidation system</button>
-            <button class="quiz-opt" data-score="4">I have a structured schedule I follow most of the time with deliberate review</button>
-            <button class="quiz-opt" data-score="5">My study system is non-negotiable — scheduled, consolidated, and tracked</button>
-          </div>
+        <div class="result-flags" id="resultFlags"></div>
+
+        <div class="result-limit-notice">
+          <div class="limit-label">THIS IS A SURFACE READ ONLY</div>
+          <p>This snapshot covers 4 of 10 risk indicators. Your full profile — including Cognitive Load, Stress, Circadian Stability, Recovery, Lifestyle Compatibility, and Career Sustainability — requires the complete Vexeom Intelligence Report.</p>
         </div>
 
-        <div class="quiz-step" data-step="7">
-          <div class="quiz-meta"><span class="quiz-num">07 / 07</span><span class="quiz-label">CAREER SUSTAINABILITY</span></div>
-          <div class="quiz-context">The global shortage of 340,000 pilots does not guarantee individual career outcomes. With more candidates entering training than at any point in the last decade, and airlines deploying AI screening at 82% of final selections, the competitive threshold is rising. The candidates who reach selection with stable psychometric profiles, documented self-management, and clean performance histories will fill those seats. The rest will be part of the attrition data that made the shortage necessary.</div>
-          <div class="quiz-q">Looking honestly at your current routine, habits, and support systems — how confident are you that you can sustain your current pace for the next 18 months without significant deterioration?</div>
-          <div class="quiz-options">
-            <button class="quiz-opt" data-score="1" data-flag="sustainability">Not confident — I am already showing signs of strain that concern me</button>
-            <button class="quiz-opt" data-score="2" data-flag="sustainability">Uncertain — I am managing but I can feel the accumulation</button>
-            <button class="quiz-opt" data-score="3">Cautiously confident — I would need to make some changes</button>
-            <button class="quiz-opt" data-score="4">Confident — my systems are mostly solid</button>
-            <button class="quiz-opt" data-score="5">Completely confident — I have deliberately built for long-term sustainability</button>
-          </div>
-        </div>
-
-        <div class="quiz-result" id="quiz-result">
-          <div class="result-top">
-            <div class="section-tag">SNAPSHOT COMPLETE</div>
-            <div class="result-score-row">
-              <div class="result-score-label">YOUR RISK SCORE</div>
-              <div class="result-score" id="result-score">--</div>
-              <div class="result-score-max">/ 35</div>
-            </div>
-            <div class="result-band" id="result-band"></div>
-          </div>
-          <div class="result-flags" id="result-flags"></div>
-          <div class="result-text" id="result-text"></div>
-          <div class="result-industry-note">
-            <div class="result-industry-label">WHAT THIS MEANS IN THE CURRENT MARKET</div>
-            <div id="result-industry-text"></div>
-          </div>
-          <div class="result-cta-box">
-            <div class="result-cta-label">This snapshot covers 7 of your 10 risk indicators and does not include failure chain mapping, circadian stability scoring, stress load analysis, or your 12-month career outlook. The full Vexeom report scores all 10 indicators, maps your active failure chains, and delivers prioritised action recommendations.</div>
-            <div class="result-cta-row">
-              <a href="access.html" class="btn-primary">GET THE FULL REPORT</a>
-              <button class="btn-ghost" onclick="restartQuiz()">RETAKE SNAPSHOT</button>
-            </div>
-          </div>
-        </div>
-
+        <a href="access.html" class="result-cta">GET THE FULL REPORT</a>
       </div>
-      <div class="quiz-progress">
-        <div class="quiz-progress-bar" id="quiz-progress-bar"></div>
-      </div>
+
     </div>
   </section>
 
   <footer>
-    <div class="footer-inner">
-      <div class="footer-col">
-        <div class="logo"><a href="index.html">VEXEOM</a></div>
-        <p>Aviation career intelligence infrastructure. Not medical advice. Not a regulatory assessment. Not affiliated with the CAA, FAA, or EASA.</p>
+    <div class="inner footer-inner">
+      <div class="footer-logo">VEX<span>E</span>OM</div>
+      <div class="footer-links">
+        <a href="terms.html">Terms</a>
+        <a href="command.html">Command</a>
+        <a href="mailto:info@vexeom.com">info@vexeom.com</a>
       </div>
-      <div class="footer-col">
-        <div class="footer-col-title">PLATFORM</div>
-        <a href="platform.html" class="footer-link">What Vexeom Is</a>
-        <a href="intelligence.html" class="footer-link">Intelligence Framework</a>
-        <a href="assessment.html" class="footer-link">Free Career Test</a>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-title">ACCESS</div>
-        <a href="access.html" class="footer-link">All Tiers</a>
-        <a href="command.html" class="footer-link">Vexeom Command™</a>
-        <a href="terms.html" class="footer-link">Terms & Conditions</a>
-      </div>
+      <div class="footer-copy">© 2025 Vexeom. All rights reserved.</div>
     </div>
   </footer>
 
   <script>
-    let currentStep = 1;
-    let scores = [];
-    let flags = [];
-    const totalSteps = 7;
-
-    function updateProgress() {
-      const pct = ((currentStep - 1) / totalSteps) * 100;
-      document.getElementById('quiz-progress-bar').style.width = pct + '%';
+    function toggleMenu(){
+      var m=document.getElementById("mobileMenu");
+      var h=document.querySelector(".hamburger");
+      m.classList.toggle("open");
+      h.classList.toggle("open");
     }
 
-    document.querySelectorAll('.quiz-opt').forEach(btn => {
-      btn.addEventListener('click', function() {
-        const step = this.closest('.quiz-step');
-        step.querySelectorAll('.quiz-opt').forEach(b => b.classList.remove('selected'));
-        this.classList.add('selected');
-        scores.push(parseInt(this.dataset.score));
-        if (this.dataset.flag) flags.push(this.dataset.flag);
-        setTimeout(() => {
-          step.classList.remove('active');
-          if (currentStep < totalSteps) {
-            currentStep++;
-            document.querySelector('[data-step="' + currentStep + '"]').classList.add('active');
-            updateProgress();
-          } else { showResult(); }
-        }, 350);
-      });
-    });
+    function runAssessment(){
+      var total = 0;
+      var answered = 0;
+      var flags = [];
 
-    const flagLabels = {
-      financial: 'FINANCIAL PRESSURE DETECTED',
-      fatigue: 'FATIGUE RISK FLAGGED',
-      cognitive: 'COGNITIVE LOAD VULNERABILITY',
-      motivation: 'MOTIVATION INSTABILITY NOTED',
-      lifestyle: 'LIFESTYLE COMPATIBILITY RISK',
-      training: 'TRAINING CONSISTENCY GAP',
-      sustainability: 'SUSTAINABILITY CONCERN'
-    };
-
-    function showResult() {
-      document.getElementById('quiz-progress-bar').style.width = '100%';
-      const total = scores.reduce((a, b) => a + b, 0);
-      document.getElementById('result-score').textContent = total;
-      const flagsEl = document.getElementById('result-flags');
-      if (flags.length > 0) {
-        flagsEl.innerHTML = flags.map(f => `<div class="result-flag">${flagLabels[f]}</div>`).join('');
+      for(var i = 1; i <= 4; i++){
+        var sel = document.querySelector('input[name="q'+i+'"]:checked');
+        if(sel){
+          total += parseInt(sel.value);
+          answered++;
+          if(sel.dataset.flag) flags.push(sel.dataset.flag);
+        }
       }
-      let band, text, industryText, color;
-      if (total <= 15) {
-        color = '#FF3B3B';
-        band = 'RISK LEVEL: CRITICAL — ACTIVE FAILURE CHAINS LIKELY';
-        text = 'Your snapshot profile indicates multiple active risk vectors. Based on your responses, you are showing patterns consistent with the early stages of one or more failure chains — the compounding sequences responsible for the majority of non-skill-related pilot career departures. The risks you have flagged do not resolve without deliberate intervention. They accumulate.';
-        industryText = 'With 340,000 pilots needed globally by 2043 and airlines deploying AI psychometric screening at 82% of final selections, candidates who arrive at selection with unmanaged risk profiles are being filtered out earlier and more efficiently than at any point in aviation history. Your current trajectory requires attention before it compounds further.';
-      } else if (total <= 24) {
-        color = '#F0A500';
-        band = 'RISK LEVEL: MODERATE — VULNERABILITIES PRESENT';
-        text = 'Your snapshot shows a mixed profile. Several indicators are under pressure and your responses suggest at least one area where risk is accumulating without a clear management strategy. Moderate profiles are the most commonly missed category — they do not trigger immediate concern but compound steadily and typically surface at the worst possible moment.';
-        industryText = 'EASA\'s 2024 FTL regulations and the CAA\'s updated aeromedical framework mean the industry now has formal language for what was previously intuited by experienced instructors. Moderate fatigue, inconsistent self-management, and environmental stressors are identifiable — and increasingly, they are being identified at selection before candidates have the opportunity to address them.';
+
+      if(answered < 4){
+        alert('Please answer all 4 questions.');
+        return;
+      }
+
+      document.getElementById('resultScore').textContent = total;
+
+      var band, bandClass;
+      if(total <= 8){
+        band = 'CRITICAL EXPOSURE';
+        bandClass = 'band-critical';
+      } else if(total <= 14){
+        band = 'ELEVATED RISK';
+        bandClass = 'band-warning';
       } else {
-        color = '#00FF94';
-        band = 'RISK LEVEL: STABLE — SNAPSHOT INDICATORS MANAGED';
-        text = 'Your snapshot indicators are broadly positive. However, this covers only 7 of your 10 risk areas and does not include failure chain mapping, circadian stability analysis, or stress load profiling. Stable snapshot results do not mean zero risk — they mean your visible indicators are managed. The full Vexeom report will identify whether risk is present in the areas this snapshot does not reach.';
-        industryText = 'The candidates who consistently perform at selection are not those who avoided risk — they are those who identified it early and built deliberate management systems around it. With more candidates entering training than ever and the competitive threshold rising at selection, stable is a starting point, not a destination.';
+        band = 'MANAGED — INCOMPLETE PICTURE';
+        bandClass = 'band-stable';
       }
-      document.getElementById('result-band').textContent = band;
-      document.getElementById('result-band').style.color = color;
-      document.getElementById('result-text').textContent = text;
-      document.getElementById('result-industry-text').textContent = industryText;
-      document.getElementById('quiz-result').classList.add('active');
-    }
 
-    function restartQuiz() {
-      scores = []; flags = []; currentStep = 1;
-      document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
-      document.querySelector('[data-step="1"]').classList.add('active');
-      document.getElementById('quiz-result').classList.remove('active');
-      document.getElementById('result-flags').innerHTML = '';
-      document.querySelectorAll('.quiz-opt').forEach(b => b.classList.remove('selected'));
-      document.getElementById('quiz-progress-bar').style.width = '0%';
-    }
+      var bandEl = document.getElementById('resultBand');
+      bandEl.textContent = band;
+      bandEl.className = 'result-band ' + bandClass;
 
-    updateProgress();
+      var flagsHtml = '';
+      var flagLabels = {
+        financial: 'FINANCIAL PRESSURE DETECTED',
+        fatigue: 'FATIGUE RISK DETECTED',
+        motivation: 'MOTIVATION INSTABILITY DETECTED',
+        training: 'TRAINING READINESS GAP DETECTED'
+      };
+      flags.forEach(function(f){
+        if(flagLabels[f]) flagsHtml += '<div class="result-flag">⚠ ' + flagLabels[f] + '</div>';
+      });
+      document.getElementById('resultFlags').innerHTML = flagsHtml;
+
+      document.getElementById('assessmentForm').style.display = 'none';
+      document.getElementById('assessmentResult').style.display = 'block';
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    }
   </script>
-<script>function toggleMenu(){var m=document.getElementById("mobileMenu");var h=document.querySelector(".hamburger");m.classList.toggle("open");h.classList.toggle("open");}</script>
+
 </body>
 </html>

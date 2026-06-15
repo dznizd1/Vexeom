@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vexeom — Access</title>
-  <link rel="stylesheet" href="css/styles.css" />
+  <title>Access — Vexeom</title>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body class="access-page">
 
@@ -20,399 +20,146 @@
         <a href="access.html" class="nav-tab active">ACCESS</a>
         <a href="command.html" class="nav-tab command-tab">COMMAND</a>
       </div>
-      <a href="mailto:access@vexeom.com" class="nav-cta">REQUEST ACCESS</a>
+      <a href="access.html" class="nav-cta">REQUEST ACCESS</a>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </nav>
-<div class="mobile-menu" id="mobileMenu">
-  <a href="index.html">HOME</a>
-  <a href="platform.html">PLATFORM</a>
-  <a href="intelligence.html">INTELLIGENCE</a>
-  <a href="assessment.html">FREE TEST</a>
-  <a href="access.html">ACCESS</a>
-  <a href="command.html" class="gold">COMMAND</a>
-  <a href="access.html" class="cta-mobile">REQUEST ACCESS</a>
-</div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">HOME</a>
+    <a href="platform.html">PLATFORM</a>
+    <a href="intelligence.html">INTELLIGENCE</a>
+    <a href="assessment.html">FREE TEST</a>
+    <a href="access.html">ACCESS</a>
+    <a href="command.html" class="gold">COMMAND</a>
+    <a href="access.html" class="cta-mobile">REQUEST ACCESS</a>
+  </div>
 
-  <!-- HERO -->
   <section class="access-hero">
-    <div class="access-hero-inner">
-      <div class="access-hero-eyebrow">VEXEOM MEMBERSHIP</div>
-      <h1>Intelligence at<br><em>every altitude.</em></h1>
-      <p class="access-hero-sub">Three membership tiers. One uncompromising standard of career intelligence. The difference between tiers is not cosmetic — it is the difference between knowing your risk and commanding it.</p>
-      <div class="access-hero-rule"></div>
-      <div class="access-manifesto">
-        <div class="access-manifesto-item">
-          <div class="access-manifesto-num">ALTITUDE — £99/MO</div>
-          <div class="access-manifesto-text"><strong>Entry-level intelligence</strong> for student and aspiring pilots. Monthly scored report, failure chain monitoring, benchmark cohort tracking.</div>
-        </div>
-        <div class="access-manifesto-item">
-          <div class="access-manifesto-num">VANTAGE — £299/MO</div>
-          <div class="access-manifesto-text"><strong>Professional-grade intelligence</strong> for commercial pilots and senior operators. Longitudinal trajectory modelling, full dataset access, quarterly strategy reports.</div>
-        </div>
-        <div class="access-manifesto-item">
-          <div class="access-manifesto-num">CITADEL — £799/MO</div>
-          <div class="access-manifesto-text"><strong>Organisational intelligence infrastructure</strong> for flight schools and aerospace firms. Multi-seat access, cohort dashboards, dedicated account intelligence.</div>
-        </div>
-      </div>
+    <div class="inner">
+      <div class="section-eyebrow">INTELLIGENCE ACCESS</div>
+      <h1>Select Your<br/><span class="accent">Intelligence Tier</span></h1>
+      <p class="access-sub">Every report is generated and delivered instantly upon submission. No waiting. No queues.</p>
     </div>
   </section>
 
-  <!-- TIER CARDS -->
   <section class="tiers-section">
     <div class="inner">
-      <div class="tiers-section-header">
-        <div class="section-tag">SELECT YOUR TIER</div>
-        <h2>Three tiers. Built for different levels of operation.</h2>
-        <p>Every tier delivers the same Vexeom intelligence framework. The difference is depth, data access, delivery speed, and organisational scale.</p>
-      </div>
-
-      <div class="elite-tier-cards">
+      <div class="tiers-grid">
 
         <!-- ALTITUDE -->
-        <div class="elite-card elite-card-altitude">
-          <div class="elite-card-glow"></div>
-          <div class="elite-card-header">
-            <div class="elite-card-tier">TIER 01 — FOUNDATION</div>
-            <div class="elite-card-name">Altitude</div>
-            <div class="elite-card-pricing">
-              <span class="elite-card-amount">£99</span>
-              <span class="elite-card-period">PER MONTH — CANCEL ANYTIME</span>
-            </div>
-            <div class="elite-card-tagline">For student and aspiring pilots. The intelligence layer that does not exist anywhere else in aviation — at the start of the journey when it matters most.</div>
-          </div>
-          <div class="elite-card-body">
-            <div class="elite-card-features-label">WHAT YOU GET</div>
-            <div class="elite-feature">
-              <span class="ef-mark">—</span>
-              <div class="ef-content">
-                <div class="ef-title">Monthly Pilot Intelligence Report</div>
-                <div class="ef-desc">Full 15–25 page scored report. 10 indicators. Failure chain analysis. Personal risk map. 12-month outlook. Prioritised recommendations.</div>
-              </div>
-            </div>
-            <div class="elite-feature">
-              <span class="ef-mark">—</span>
-              <div class="ef-content">
-                <div class="ef-title">Score Movement Tracking</div>
-                <div class="ef-desc">Monthly comparison against your previous scores. See whether your risk profile is improving, stable, or deteriorating.</div>
-              </div>
-            </div>
-            <div class="elite-feature">
-              <span class="ef-mark">—</span>
-              <div class="ef-content">
-                <div class="ef-title">Benchmark Cohort Comparison</div>
-                <div class="ef-desc">Your scores mapped against an anonymised cohort of pilots at the same training stage. Know where you stand relative to the field.</div>
-              </div>
-            </div>
-            <div class="elite-feature">
-              <span class="ef-mark">—</span>
-              <div class="ef-content">
-                <div class="ef-title">Continuous Failure Chain Monitoring</div>
-                <div class="ef-desc">Monthly chain analysis flags whether active failure chains have progressed, stabilised, or resolved since your last report.</div>
-              </div>
-            </div>
-            <div class="elite-feature">
-              <span class="ef-mark">—</span>
-              <div class="ef-content">
-                <div class="ef-title">24-Hour Report Delivery</div>
-                <div class="ef-desc">Every report delivered within 24 hours of assessment completion. No waiting. No appointments.</div>
-              </div>
-            </div>
-          </div>
-          <div class="elite-card-footer">
-            <a href="#" class="elite-cta elite-cta-altitude">JOIN ALTITUDE</a>
-            <div class="elite-card-cancel">CANCEL ANYTIME — NO MINIMUM TERM</div>
-          </div>
+        <div class="tier-card">
+          <div class="tier-tag">TIER 01</div>
+          <div class="tier-name">ALTITUDE</div>
+          <div class="tier-price">£99<span>/month</span></div>
+          <div class="tier-target">Student &amp; aspiring pilots</div>
+          <ul class="tier-features">
+            <li>Monthly Pilot Intelligence Report</li>
+            <li>10 scored career risk indicators</li>
+            <li>Failure chain analysis</li>
+            <li>Score movement tracking</li>
+            <li>Standard cohort benchmarking</li>
+            <li>Instant report delivery</li>
+          </ul>
+          <a href="#" class="tier-cta" onclick="showAnimation()">GET ALTITUDE</a>
         </div>
 
         <!-- VANTAGE -->
-        <div class="elite-card elite-card-vantage">
-          <div class="elite-card-glow"></div>
-          <div class="elite-card-recommended">MOST SELECTED</div>
-          <div class="elite-card-header">
-            <div class="elite-card-tier">TIER 02 — PROFESSIONAL</div>
-            <div class="elite-card-name">Vantage</div>
-            <div class="elite-card-pricing">
-              <span class="elite-card-amount">£299</span>
-              <span class="elite-card-period">PER MONTH — CANCEL ANYTIME</span>
-            </div>
-            <div class="elite-card-tagline">For commercial pilots and senior operators who treat career intelligence as a professional discipline — not an occasional check-in.</div>
-          </div>
-          <div class="elite-card-body">
-            <div class="elite-card-features-label">EVERYTHING IN ALTITUDE, PLUS</div>
-            <div class="elite-feature">
-              <span class="ef-mark">—</span>
-              <div class="ef-content">
-                <div class="ef-title">Longitudinal Trajectory Modelling</div>
-                <div class="ef-desc">Predictive risk trajectory modelled over 6 and 12-month horizons from your accumulated data. Not retrospective reporting — forward intelligence.</div>
-              </div>
-            </div>
-            <div class="elite-feature">
-              <span class="ef-mark">—</span>
-              <div class="ef-content">
-                <div class="ef-title">Full Dataset Benchmark Access</div>
-                <div class="ef-desc">Access to the complete Vexeom anonymised dataset across all pilot demographics, training stages, and experience levels — not just your cohort.</div>
-              </div>
-            </div>
-            <div class="elite-feature">
-              <span class="ef-mark">—</span>
-              <div class="ef-content">
-                <div class="ef-title">Quarterly Strategy Intelligence Report</div>
-                <div class="ef-desc">Every 90 days — a deep-format report drawing patterns from your full longitudinal data. Systemic trend identification, intervention effectiveness, long-term sustainability outlook.</div>
-              </div>
-            </div>
-            <div class="elite-feature">
-              <span class="ef-mark">—</span>
-              <div class="ef-content">
-                <div class="ef-title">Priority 12-Hour Delivery</div>
-                <div class="ef-desc">Reports delivered within 12 hours. Priority processing ahead of all Altitude members.</div>
-              </div>
-            </div>
-            <div class="elite-feature">
-              <span class="ef-mark">—</span>
-              <div class="ef-content">
-                <div class="ef-title">Early Access to New Indicators</div>
-                <div class="ef-desc">Vantage members receive new Vexeom indicators before general release — including advanced cognitive and operational readiness metrics as developed.</div>
-              </div>
-            </div>
-            <div class="elite-feature">
-              <span class="ef-mark">—</span>
-              <div class="ef-content">
-                <div class="ef-title">Exclusive Population Data Reports</div>
-                <div class="ef-desc">Quarterly release of anonymised Vexeom population intelligence — prevalence rates, high-risk indicator combinations, industry-wide trend data. Not available at Altitude.</div>
-              </div>
-            </div>
-          </div>
-          <div class="elite-card-footer">
-            <a href="#" class="elite-cta elite-cta-vantage">JOIN VANTAGE</a>
-            <div class="elite-card-cancel">CANCEL ANYTIME — NO MINIMUM TERM</div>
-          </div>
+        <div class="tier-card tier-featured">
+          <div class="tier-badge">MOST SELECTED</div>
+          <div class="tier-tag">TIER 02</div>
+          <div class="tier-name">VANTAGE</div>
+          <div class="tier-price">£299<span>/month</span></div>
+          <div class="tier-target">Commercial pilots &amp; senior professionals</div>
+          <ul class="tier-features">
+            <li>Everything in Altitude</li>
+            <li>6 &amp; 12-month trajectory modelling</li>
+            <li>Full dataset benchmark access</li>
+            <li>Quarterly strategy intelligence report</li>
+            <li>Dedicated account intelligence review</li>
+            <li>Early access to new indicators</li>
+            <li>Instant report delivery</li>
+          </ul>
+          <a href="#" class="tier-cta tier-cta-featured" onclick="showAnimation()">GET VANTAGE</a>
         </div>
 
         <!-- CITADEL -->
-        <div class="elite-card elite-card-citadel">
-          <div class="elite-card-glow"></div>
-          <div class="elite-card-header">
-            <div class="elite-card-tier">TIER 03 — ORGANISATIONAL</div>
-            <div class="elite-card-name">Citadel</div>
-            <div class="elite-card-pricing">
-              <span class="elite-card-amount">£799</span>
-              <span class="elite-card-period">PER MONTH — UP TO 25 SEATS</span>
-            </div>
-            <div class="elite-card-tagline">For flight schools, aerospace organisations, and aviation firms. Organisation-wide intelligence infrastructure — a systemic view of your entire human performance layer.</div>
-          </div>
-          <div class="elite-card-body">
-            <div class="elite-card-features-label">EVERYTHING IN VANTAGE, PLUS</div>
-            <div class="elite-feature">
-              <span class="ef-mark">—</span>
-              <div class="ef-content">
-                <div class="ef-title">25 Individual Member Seats</div>
-                <div class="ef-desc">Each seat receives full Vantage-level intelligence. The organisation receives aggregate reporting across all seats simultaneously.</div>
-              </div>
-            </div>
-            <div class="elite-feature">
-              <span class="ef-mark">—</span>
-              <div class="ef-content">
-                <div class="ef-title">Cohort Risk Dashboard</div>
-                <div class="ef-desc">Live aggregate view of risk scores across your entire member cohort. High-risk flagging, systemic pattern identification, and cohort-level trend tracking built for programme directors and HR leads.</div>
-              </div>
-            </div>
-            <div class="elite-feature">
-              <span class="ef-mark">—</span>
-              <div class="ef-content">
-                <div class="ef-title">Monthly Organisation Intelligence Report</div>
-                <div class="ef-desc">Dedicated monthly report for organisational leadership. Aggregate risk profile, trend analysis, highest-risk indicators across the cohort, recommended organisational interventions.</div>
-              </div>
-            </div>
-            <div class="elite-feature">
-              <span class="ef-mark">—</span>
-              <div class="ef-content">
-                <div class="ef-title">Anonymised Instructor Risk Flagging</div>
-                <div class="ef-desc">Alerts when individual members cross risk thresholds — allowing intervention before failure chains reach critical stages, without compromising individual data privacy.</div>
-              </div>
-            </div>
-            <div class="elite-feature">
-              <span class="ef-mark">—</span>
-              <div class="ef-content">
-                <div class="ef-title">Dedicated Account Intelligence Contact</div>
-                <div class="ef-desc">A named Vexeom intelligence contact for your organisation. Quarterly review call. Direct access for report interpretation, programme design, and strategic questions.</div>
-              </div>
-            </div>
-            <div class="elite-feature">
-              <span class="ef-mark">—</span>
-              <div class="ef-content">
-                <div class="ef-title">Priority 6-Hour Delivery</div>
-                <div class="ef-desc">All Citadel member reports delivered within 6 hours. Highest priority processing across the entire Vexeom platform.</div>
-              </div>
-            </div>
-          </div>
-          <div class="elite-card-footer">
-            <a href="#" class="elite-cta elite-cta-citadel">JOIN CITADEL</a>
-            <div class="elite-card-cancel">ADDITIONAL SEATS AVAILABLE ABOVE 25 — CONTACT FOR PRICING</div>
-          </div>
+        <div class="tier-card">
+          <div class="tier-tag">TIER 03</div>
+          <div class="tier-name">CITADEL</div>
+          <div class="tier-price">£1,750<span>/month</span></div>
+          <div class="tier-target">Flight schools &amp; aerospace organisations — 25 seats</div>
+          <ul class="tier-features">
+            <li>Everything in Vantage</li>
+            <li>25 individual member seats</li>
+            <li>Cohort risk dashboard</li>
+            <li>Monthly organisation intelligence report</li>
+            <li>Anonymised instructor risk flagging</li>
+            <li>Dedicated account intelligence review</li>
+            <li>Instant report delivery</li>
+          </ul>
+          <a href="#" class="tier-cta" onclick="showAnimation()">GET CITADEL</a>
         </div>
 
       </div>
 
-      <!-- COMMAND BLOCK -->
-      <div class="command-block">
-        <div class="command-block-left">
-          <div class="command-block-eyebrow">VEXEOM COMMAND™ — WHITELIST ONLY</div>
-          <h2>Beyond Citadel.<br>By invitation only.</h2>
-          <p class="command-block-desc">For defence contractors, C-suite aerospace executives, and senior operators. Command is not a subscription tier. It is a bespoke intelligence engagement — scoped privately, delivered exclusively, and reviewed before acceptance. Minimum £50,000 engagement. Not all applications are accepted.</p>
-          <div class="command-block-stats">
-            <div>
-              <span class="command-block-stat-num">£50k+</span>
-              <span class="command-block-stat-label">MINIMUM ENGAGEMENT</span>
-            </div>
-            <div>
-              <span class="command-block-stat-num">BESPOKE</span>
-              <span class="command-block-stat-label">NO STANDARD DELIVERABLE</span>
-            </div>
-            <div>
-              <span class="command-block-stat-num">PRIVATE</span>
-              <span class="command-block-stat-label">TERMS DISCLOSED AFTER QUALIFICATION</span>
-            </div>
-          </div>
+      <!-- COMMAND STRIP -->
+      <div class="command-strip">
+        <div class="command-strip-left">
+          <div class="command-strip-tag">COMMAND™</div>
+          <div class="command-strip-title">Defence. Enterprise. C-Suite.</div>
+          <div class="command-strip-sub">Minimum £50,000 engagement budget. Bespoke intelligence infrastructure. Not a product — an engagement.</div>
         </div>
-        <div class="command-block-right">
-          <a href="command.html" class="command-block-cta">VIEW COMMAND</a>
-          <div class="command-block-note">APPLICATIONS REVIEWED — NOT ALL ACCEPTED</div>
-        </div>
+        <a href="command.html" class="command-strip-cta">APPLY PRIVATELY</a>
       </div>
 
     </div>
   </section>
 
-  <!-- COMPARISON TABLE -->
-  <section class="elite-comparison">
-    <div class="inner">
-      <div class="section-tag">FULL COMPARISON</div>
-      <h2 style="font-size:clamp(1.8rem,3vw,2.8rem);font-weight:700;letter-spacing:-0.025em;margin-top:16px;margin-bottom:0">Every difference, laid out clearly.</h2>
-      <div class="elite-ct">
-
-        <div class="elite-ct-row elite-ct-header">
-          <div class="elite-ct-cell">FEATURE</div>
-          <div class="elite-ct-cell"><span style="color:#8899AA;font-family:var(--mono);font-size:0.7rem;letter-spacing:2px">ALTITUDE</span><br><span class="elite-ct-altitude-price">£99/mo</span></div>
-          <div class="elite-ct-cell elite-ct-vantage-col"><span style="color:var(--accent);font-family:var(--mono);font-size:0.7rem;letter-spacing:2px">VANTAGE</span><br><span class="elite-ct-vantage-price">£299/mo</span></div>
-          <div class="elite-ct-cell"><span style="color:var(--gold);font-family:var(--mono);font-size:0.7rem;letter-spacing:2px">CITADEL</span><br><span class="elite-ct-citadel-price">£799/mo</span></div>
-        </div>
-
-        <div class="elite-ct-row">
-          <div class="elite-ct-cell elite-ct-feature">Monthly intelligence report</div>
-          <div class="elite-ct-cell"><span class="elite-ct-yes">✓</span></div>
-          <div class="elite-ct-cell elite-ct-vantage-col"><span class="elite-ct-yes">✓</span></div>
-          <div class="elite-ct-cell"><span class="elite-ct-yes">✓</span></div>
-        </div>
-        <div class="elite-ct-row">
-          <div class="elite-ct-cell elite-ct-feature">10 scored risk indicators</div>
-          <div class="elite-ct-cell"><span class="elite-ct-yes">✓</span></div>
-          <div class="elite-ct-cell elite-ct-vantage-col"><span class="elite-ct-yes">✓</span></div>
-          <div class="elite-ct-cell"><span class="elite-ct-yes">✓</span></div>
-        </div>
-        <div class="elite-ct-row">
-          <div class="elite-ct-cell elite-ct-feature">Failure chain analysis</div>
-          <div class="elite-ct-cell"><span class="elite-ct-yes">✓</span></div>
-          <div class="elite-ct-cell elite-ct-vantage-col"><span class="elite-ct-yes">✓</span></div>
-          <div class="elite-ct-cell"><span class="elite-ct-yes">✓</span></div>
-        </div>
-        <div class="elite-ct-row">
-          <div class="elite-ct-cell elite-ct-feature">Score movement tracking</div>
-          <div class="elite-ct-cell"><span class="elite-ct-yes">✓</span></div>
-          <div class="elite-ct-cell elite-ct-vantage-col"><span class="elite-ct-yes">✓</span></div>
-          <div class="elite-ct-cell"><span class="elite-ct-yes">✓</span></div>
-        </div>
-        <div class="elite-ct-row">
-          <div class="elite-ct-cell elite-ct-feature">Benchmark comparison</div>
-          <div class="elite-ct-cell" style="color:#555;font-size:0.72rem">Standard cohort</div>
-          <div class="elite-ct-cell elite-ct-vantage-col" style="color:var(--accent);font-size:0.72rem;font-family:var(--mono)">Full dataset</div>
-          <div class="elite-ct-cell" style="color:var(--gold);font-size:0.72rem;font-family:var(--mono)">Full dataset</div>
-        </div>
-        <div class="elite-ct-row">
-          <div class="elite-ct-cell elite-ct-feature">Report delivery</div>
-          <div class="elite-ct-cell" style="color:#555;font-size:0.72rem">24 hours</div>
-          <div class="elite-ct-cell elite-ct-vantage-col" style="color:var(--accent);font-size:0.72rem;font-family:var(--mono)">12 hours</div>
-          <div class="elite-ct-cell" style="color:var(--gold);font-size:0.72rem;font-family:var(--mono)">6 hours</div>
-        </div>
-        <div class="elite-ct-row">
-          <div class="elite-ct-cell elite-ct-feature">Longitudinal trajectory modelling</div>
-          <div class="elite-ct-cell"><span class="elite-ct-no">—</span></div>
-          <div class="elite-ct-cell elite-ct-vantage-col"><span class="elite-ct-yes">✓</span></div>
-          <div class="elite-ct-cell"><span class="elite-ct-yes">✓</span></div>
-        </div>
-        <div class="elite-ct-row">
-          <div class="elite-ct-cell elite-ct-feature">Quarterly strategy report</div>
-          <div class="elite-ct-cell"><span class="elite-ct-no">—</span></div>
-          <div class="elite-ct-cell elite-ct-vantage-col"><span class="elite-ct-yes">✓</span></div>
-          <div class="elite-ct-cell"><span class="elite-ct-yes">✓</span></div>
-        </div>
-        <div class="elite-ct-row">
-          <div class="elite-ct-cell elite-ct-feature">Early indicator access</div>
-          <div class="elite-ct-cell"><span class="elite-ct-no">—</span></div>
-          <div class="elite-ct-cell elite-ct-vantage-col"><span class="elite-ct-yes">✓</span></div>
-          <div class="elite-ct-cell"><span class="elite-ct-yes">✓</span></div>
-        </div>
-        <div class="elite-ct-row">
-          <div class="elite-ct-cell elite-ct-feature">Exclusive population data</div>
-          <div class="elite-ct-cell"><span class="elite-ct-no">—</span></div>
-          <div class="elite-ct-cell elite-ct-vantage-col"><span class="elite-ct-yes">✓</span></div>
-          <div class="elite-ct-cell"><span class="elite-ct-yes">✓</span></div>
-        </div>
-        <div class="elite-ct-row">
-          <div class="elite-ct-cell elite-ct-feature">Member seats</div>
-          <div class="elite-ct-cell" style="color:#555;font-size:0.72rem">1 seat</div>
-          <div class="elite-ct-cell elite-ct-vantage-col" style="color:#555;font-size:0.72rem">1 seat</div>
-          <div class="elite-ct-cell" style="color:var(--gold);font-size:0.72rem;font-family:var(--mono)">Up to 25</div>
-        </div>
-        <div class="elite-ct-row">
-          <div class="elite-ct-cell elite-ct-feature">Cohort risk dashboard</div>
-          <div class="elite-ct-cell"><span class="elite-ct-no">—</span></div>
-          <div class="elite-ct-cell elite-ct-vantage-col"><span class="elite-ct-no">—</span></div>
-          <div class="elite-ct-cell"><span class="elite-ct-yes">✓</span></div>
-        </div>
-        <div class="elite-ct-row">
-          <div class="elite-ct-cell elite-ct-feature">Monthly organisation report</div>
-          <div class="elite-ct-cell"><span class="elite-ct-no">—</span></div>
-          <div class="elite-ct-cell elite-ct-vantage-col"><span class="elite-ct-no">—</span></div>
-          <div class="elite-ct-cell"><span class="elite-ct-yes">✓</span></div>
-        </div>
-        <div class="elite-ct-row">
-          <div class="elite-ct-cell elite-ct-feature">Instructor risk flagging</div>
-          <div class="elite-ct-cell"><span class="elite-ct-no">—</span></div>
-          <div class="elite-ct-cell elite-ct-vantage-col"><span class="elite-ct-no">—</span></div>
-          <div class="elite-ct-cell"><span class="elite-ct-yes">✓</span></div>
-        </div>
-        <div class="elite-ct-row">
-          <div class="elite-ct-cell elite-ct-feature">Dedicated account contact</div>
-          <div class="elite-ct-cell"><span class="elite-ct-no">—</span></div>
-          <div class="elite-ct-cell elite-ct-vantage-col"><span class="elite-ct-no">—</span></div>
-          <div class="elite-ct-cell"><span class="elite-ct-yes">✓</span></div>
-        </div>
-
+  <!-- TRANSACTION ANIMATION -->
+  <div id="transactionOverlay" class="transaction-overlay">
+    <div class="overlay-content">
+      <div class="plane-animation">
+        <svg class="plane-svg" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 60L110 20L85 60L110 100L10 60Z" fill="#00D4FF" opacity="0.9"/>
+          <path d="M10 60L85 60L75 80L10 60Z" fill="#0099BB" opacity="0.7"/>
+        </svg>
+        <div class="trail"></div>
       </div>
+      <div class="overlay-text">
+        <div class="overlay-label">INTELLIGENCE DEPLOYED</div>
+        <div class="overlay-title">Your report is being generated.</div>
+        <div class="overlay-sub">Delivering to your account now.</div>
+      </div>
+      <div class="overlay-close" onclick="hideAnimation()">CONTINUE →</div>
     </div>
-  </section>
+  </div>
 
   <footer>
-    <div class="footer-inner">
-      <div class="footer-col">
-        <div class="logo"><a href="index.html">VEXEOM</a></div>
-        <p>Aviation career intelligence infrastructure. Not medical advice. Not a regulatory assessment. Not affiliated with the CAA, FAA, or EASA.</p>
+    <div class="inner footer-inner">
+      <div class="footer-logo">VEX<span>E</span>OM</div>
+      <div class="footer-links">
+        <a href="terms.html">Terms</a>
+        <a href="command.html">Command</a>
+        <a href="mailto:info@vexeom.com">info@vexeom.com</a>
       </div>
-      <div class="footer-col">
-        <div class="footer-col-title">PLATFORM</div>
-        <a href="platform.html" class="footer-link">What Vexeom Is</a>
-        <a href="intelligence.html" class="footer-link">Intelligence Framework</a>
-        <a href="assessment.html" class="footer-link">Free Career Test</a>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-title">ACCESS</div>
-        <a href="access.html" class="footer-link">All Tiers</a>
-        <a href="command.html" class="footer-link">Vexeom Command™</a>
-        <a href="terms.html" class="footer-link">Terms & Conditions</a>
-      </div>
+      <div class="footer-copy">© 2025 Vexeom. All rights reserved.</div>
     </div>
   </footer>
 
-<script>function toggleMenu(){var m=document.getElementById("mobileMenu");var h=document.querySelector(".hamburger");m.classList.toggle("open");h.classList.toggle("open");}</script>
+  <script>
+    function toggleMenu(){
+      var m=document.getElementById("mobileMenu");
+      var h=document.querySelector(".hamburger");
+      m.classList.toggle("open");
+      h.classList.toggle("open");
+    }
+    function showAnimation(){
+      document.getElementById("transactionOverlay").classList.add("active");
+    }
+    function hideAnimation(){
+      document.getElementById("transactionOverlay").classList.remove("active");
+    }
+  </script>
+
 </body>
 </html>
