@@ -21,8 +21,17 @@
         <a href="command.html" class="nav-tab command-tab">COMMAND</a>
       </div>
       <a href="access.html" class="nav-cta">REQUEST ACCESS</a>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">HOME</a>
+  <a href="platform.html">PLATFORM</a>
+  <a href="intelligence.html">INTELLIGENCE</a>
+  <a href="assessment.html">FREE TEST</a>
+  <a href="access.html">ACCESS</a>
+  <a href="command.html" class="gold">COMMAND</a>
+</div>
 
   <section class="page-hero">
     <div class="inner">
@@ -210,5 +219,6 @@
       </div>
     </div>
   </footer>
+<script>function toggleMenu(){var m=document.getElementById("mobileMenu");var h=document.querySelector(".hamburger");m.classList.toggle("open");h.classList.toggle("open");}</script>
 </body>
 </html>
