@@ -2837,3 +2837,8 @@ footer p {
   .nav-tabs { display: none !important; }
   .nav-cta { display: none !important; }
 }
+
+/* keep request access on desktop */
+@media (min-width: 769px) {
+  .nav-cta { display: block !important; }
+}
