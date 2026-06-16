@@ -3523,3 +3523,67 @@ footer {
 
 /* ── PLANE ANIMATION KILL ── */
 .plane-animation, .plane-svg, .trail { display: none !important; }
+
+/* ── COLOUR CONSOLIDATION — FINAL OVERRIDE ── */
+:root {
+  --bg: #03111F;
+  --bg-surface: #040E1A;
+  --accent: #1B4FD8;
+  --accent-bright: #2D6AFF;
+  --border: #0D1F35;
+  --border-light: #162840;
+  --muted: #6B7A8D;
+  --text: #E8EDF2;
+  --gold: #C8A96E;
+  --gold-dim: #9B7D4A;
+}
+
+body { background: #03111F; }
+
+.btn-primary {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: #fff;
+  background: #1B4FD8;
+  padding: 14px 32px;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.2s;
+  border: none;
+  cursor: pointer;
+}
+.btn-primary:hover { background: #2D6AFF; text-decoration: none; color: #fff; }
+
+.btn-ghost {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--text);
+  border: 1px solid var(--border-light);
+  padding: 14px 32px;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s;
+}
+.btn-ghost:hover { border-color: #1B4FD8; color: #1B4FD8; text-decoration: none; }
+
+.btn-text-link {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: #1B4FD8;
+  text-decoration: none;
+}
+.btn-text-link:hover { text-decoration: underline; }
+
+.section-tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+/* kill any remaining cyan */
+.hero-tag-dot { background: #1B4FD8 !important; }
