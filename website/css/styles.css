@@ -3591,3 +3591,10 @@ body { background: #03111F; }
 /* ── COMPARE TABLE STATUS COLOURS ── */
 .status-solved { color: #00A86B !important; font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; }
 .status-gap { color: #CC2936 !important; font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; font-weight: 500; }
+
+/* ── COMPARE TABLE FULL COLOUR PASS ── */
+.compare-table th { color: #4A6A8A; }
+.compare-table td { color: #6B7A8D; }
+.compare-table td:first-child { color: #E8EDF2; font-weight: 500; }
+.status-solved { color: #00A86B !important; }
+.status-gap { color: #CC2936 !important; font-weight: 600; }
