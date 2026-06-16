@@ -3587,3 +3587,7 @@ body { background: #03111F; }
 
 /* kill any remaining cyan */
 .hero-tag-dot { background: #1B4FD8 !important; }
+
+/* ── COMPARE TABLE STATUS COLOURS ── */
+.status-solved { color: #00A86B !important; font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; }
+.status-gap { color: #CC2936 !important; font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; font-weight: 500; }
