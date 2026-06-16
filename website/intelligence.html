@@ -3,12 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vexeom — Intelligence Framework</title>
+  <title>Intelligence Framework — Vexeom</title>
   <link rel="stylesheet" href="css/styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    .intel-wrap{max-width:900px;margin:0 auto;padding:120px 40px 120px;position:relative;z-index:1}
+    .intel-header{border:1px solid var(--border);padding:56px;margin-bottom:2px;position:relative;overflow:hidden}
+    .intel-header::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent)}
+    .intel-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.25em;color:var(--accent);margin-bottom:16px}
+    .intel-header h1{font-size:clamp(24px,3.5vw,38px);font-weight:600;letter-spacing:-.02em;margin-bottom:16px}
+    .intel-header p{font-size:15px;color:var(--muted);line-height:1.75;max-width:620px;margin:0}
+    .intel-block{border:1px solid var(--border);border-top:none;padding:48px 56px}
+    .intel-block-alt{background:var(--bg-surface)}
+    .intel-block-label{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--accent);margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+    .intel-block h2{font-size:20px;font-weight:600;letter-spacing:-.01em;margin-bottom:20px}
+    .ind-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin-top:8px}
+    .ind-card{background:var(--bg-surface);padding:24px 28px}
+    .ind-card-num{font-family:var(--mono);font-size:10px;color:var(--accent);margin-bottom:6px;letter-spacing:.1em}
+    .ind-card-title{font-size:15px;font-weight:600;color:var(--text);margin-bottom:4px}
+    .ind-card-sub{font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:12px}
+    .ind-card-body{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:10px}
+    .ind-card-chain{font-family:var(--mono);font-size:10px;color:#1B4FD8;letter-spacing:.05em}
+    .chain-lib-item{border:1px solid var(--border);border-top:none;padding:28px 32px}
+    .chain-lib-item:first-child{border-top:1px solid var(--border)}
+    .chain-lib-num{font-family:var(--mono);font-size:10px;color:#CC2936;letter-spacing:.15em;margin-bottom:8px}
+    .chain-lib-title{font-size:15px;font-weight:600;color:var(--text);margin-bottom:12px}
+    .chain-lib-flow{font-family:var(--mono);font-size:11px;color:#4A6A8A;line-height:2.2}
+    .chain-lib-flow .r{color:#CC2936}
+    .chain-lib-flow .o{color:#FF8C00}
+    .intel-cta{border:1px solid var(--border);border-top:none;padding:36px 56px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;background:rgba(27,79,216,.04)}
+    .intel-cta h3{font-size:17px;font-weight:600;margin-bottom:4px}
+    .intel-cta p{font-size:13px;color:var(--muted);font-family:var(--mono);margin:0}
+    @media(max-width:768px){.intel-wrap{padding:90px 20px 80px}.intel-header{padding:28px 24px}.intel-block{padding:28px 24px}.ind-grid{grid-template-columns:1fr}.intel-cta{padding:24px;flex-direction:column;align-items:flex-start}}
+  </style>
 </head>
 <body>
-
   <nav>
     <div class="nav-inner">
       <div class="logo"><a href="index.html">VEX<span>E</span>OM</a></div>
@@ -21,221 +50,65 @@
         <a href="command.html" class="nav-tab command-tab">COMMAND</a>
       </div>
       <a href="access.html" class="nav-cta">REQUEST ACCESS</a>
-    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </nav>
-<div class="mobile-menu" id="mobileMenu">
-  <a href="index.html">HOME</a>
-  <a href="platform.html">PLATFORM</a>
-  <a href="intelligence.html">INTELLIGENCE</a>
-  <a href="assessment.html">FREE TEST</a>
-  <a href="access.html">ACCESS</a>
-  <a href="command.html" class="gold">COMMAND</a>
-  <a href="access.html" class="cta-mobile">REQUEST ACCESS</a>
-</div>
-
-  <section class="page-hero">
-    <div class="inner">
-      <div class="section-tag">INTELLIGENCE FRAMEWORK</div>
-      <h1 class="page-h1">10 indicators.<br>One complete picture.</h1>
-      <p class="page-sub">The Vexeom framework targets the 10 risk dimensions responsible for the vast majority of non-skill-related pilot career failures. Each indicator is scored independently and mapped against the others to identify active failure chains.</p>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">HOME</a>
+    <a href="platform.html">PLATFORM</a>
+    <a href="intelligence.html">INTELLIGENCE</a>
+    <a href="assessment.html">FREE TEST</a>
+    <a href="access.html">ACCESS</a>
+    <a href="command.html" class="gold">COMMAND</a>
+    <a href="access.html" class="cta-mobile">REQUEST ACCESS</a>
+  </div>
+  <div class="intel-wrap">
+    <div class="intel-header">
+      <div class="intel-eyebrow">VEXEOM — INTELLIGENCE FRAMEWORK</div>
+      <h1>10 indicators. Mapped chains.<br/>Scored intelligence.</h1>
+      <p>No indicator is assessed in isolation. Every score is weighted against its known compounding relationships. The framework is not a wellness checklist — it is a structured risk architecture built on documented aviation career failure patterns.</p>
     </div>
-  </section>
-
-  <section class="platform-section">
-    <div class="inner">
-      <div class="section-tag">THE 10 INDICATORS</div>
-      <div class="ind-deep-grid">
-
-        <div class="ind-deep-card">
-          <div class="ind-deep-num">01</div>
-          <div class="ind-deep-content">
-            <div class="ind-deep-title">Recovery</div>
-            <div class="ind-deep-sub">Rest quality and consistency under training load</div>
-            <div class="ind-deep-body">Recovery is the foundation on which every other indicator rests. Insufficient recovery does not just produce fatigue — it degrades cognitive performance, increases stress reactivity, destabilises motivation, and accelerates circadian disruption simultaneously. A pilot with poor recovery scores is not just tired. They are operating with a compromised foundation across multiple indicators at once.</div>
-            <div class="ind-deep-chain">COMPOUNDS INTO → Fatigue, Cognitive Load, Stress, Circadian Stability</div>
-          </div>
-        </div>
-
-        <div class="ind-deep-card">
-          <div class="ind-deep-num">02</div>
-          <div class="ind-deep-content">
-            <div class="ind-deep-title">Fatigue</div>
-            <div class="ind-deep-sub">Accumulation patterns and energy volatility</div>
-            <div class="ind-deep-body">EASA's 2024 FTL regulations were constructed on decades of fatigue science. Sustained fatigue — not the acute tiredness of a single bad night, but the chronic accumulation of inadequate recovery over weeks — produces cognitive impairment equivalent to 0.05% blood alcohol concentration. Student pilots operating under chronic fatigue are technically impaired. Most do not know it because fatigue impairs the ability to accurately assess one's own fatigue level.</div>
-            <div class="ind-deep-chain">COMPOUNDS INTO → Cognitive Load, Training Readiness, Career Sustainability</div>
-          </div>
-        </div>
-
-        <div class="ind-deep-card">
-          <div class="ind-deep-num">03</div>
-          <div class="ind-deep-content">
-            <div class="ind-deep-title">Cognitive Load</div>
-            <div class="ind-deep-sub">Focus reliability and decision consistency under pressure</div>
-            <div class="ind-deep-body">The CAA's 2025 aeromedical updates formally recognise cognitive fatigue as a distinct impairment category. Airlines deploying AI psychometric screening are specifically measuring cognitive load management — how candidates maintain decision quality under sustained mental demand. Candidates who have never actively tracked their cognitive capacity during training arrive at AI-assisted selection assessments without a baseline and without a management strategy.</div>
-            <div class="ind-deep-chain">COMPOUNDS INTO → Training Readiness, Stress, Career Sustainability</div>
-          </div>
-        </div>
-
-        <div class="ind-deep-card">
-          <div class="ind-deep-num">04</div>
-          <div class="ind-deep-content">
-            <div class="ind-deep-title">Stress</div>
-            <div class="ind-deep-sub">Load, adaptability, and pressure tolerance</div>
-            <div class="ind-deep-body">Stress in aviation training is not an aberration — it is a design feature. The training environment is deliberately demanding. What differentiates candidates who survive it from those who do not is not the absence of stress but the presence of adaptive capacity. Vexeom does not assess whether stress is present. It assesses whether the individual's stress response system is calibrated for a sustained, high-demand career — and whether that system is currently under load or in reserve.</div>
-            <div class="ind-deep-chain">COMPOUNDS INTO → Recovery, Motivation Stability, Lifestyle Compatibility</div>
-          </div>
-        </div>
-
-        <div class="ind-deep-card">
-          <div class="ind-deep-num">05</div>
-          <div class="ind-deep-content">
-            <div class="ind-deep-title">Circadian Stability</div>
-            <div class="ind-deep-sub">Sleep timing and schedule resilience</div>
-            <div class="ind-deep-body">Commercial aviation is a 24-hour industry. Early morning departures, late-night arrivals, transmeridian operations, and irregular roster patterns are not edge cases — they are the job. Circadian instability during training is a leading predictor of performance degradation in operational settings. EASA's FTL framework implicitly acknowledges this: operators are now legally required to manage circadian disruption. Pilots who have never stress-tested their own circadian resilience will not know their vulnerability until the roster reveals it.</div>
-            <div class="ind-deep-chain">COMPOUNDS INTO → Recovery, Fatigue, Cognitive Load</div>
-          </div>
-        </div>
-
-        <div class="ind-deep-card">
-          <div class="ind-deep-num">06</div>
-          <div class="ind-deep-content">
-            <div class="ind-deep-title">Training Readiness</div>
-            <div class="ind-deep-sub">Study discipline and self-management under demand</div>
-            <div class="ind-deep-body">ICAO's 2025 Human Factors mandate requires type rating programmes to formally assess self-management and study discipline as core competencies. Instructors now have regulatory vocabulary for what was previously assessed by instinct: reactive study patterns, motivation-dependent preparation, and absent consolidation systems are identifiable — and are being identified earlier in the pipeline. Candidates who arrive at type rating without a documented history of self-managed training are entering an assessed environment without the evidence base that environment now requires.</div>
-            <div class="ind-deep-chain">COMPOUNDS INTO → Cognitive Load, Career Sustainability, Motivation Stability</div>
-          </div>
-        </div>
-
-        <div class="ind-deep-card">
-          <div class="ind-deep-num">07</div>
-          <div class="ind-deep-content">
-            <div class="ind-deep-title">Lifestyle Compatibility</div>
-            <div class="ind-deep-sub">Environmental stability and schedule flexibility</div>
-            <div class="ind-deep-body">The UK CAA's 2024 wellbeing guidance formally identifies relationship instability as a primary environmental stressor that compounds fatigue and reduces cognitive reserve in operational settings. Commercial aviation demands tolerance for irregular hours, extended absence, and perpetual schedule disruption. Most candidates evaluate their technical readiness for aviation exhaustively. Almost none formally assess their environmental readiness — and the two assessments are not interchangeable.</div>
-            <div class="ind-deep-chain">COMPOUNDS INTO → Stress, Recovery, Motivation Stability</div>
-          </div>
-        </div>
-
-        <div class="ind-deep-card">
-          <div class="ind-deep-num">08</div>
-          <div class="ind-deep-content">
-            <div class="ind-deep-title">Financial Resilience</div>
-            <div class="ind-deep-sub">Pressure, debt exposure, and career funding runway</div>
-            <div class="ind-deep-body">Financial pressure is the single most commonly cited factor in voluntary training withdrawal across UK flight schools — ahead of washout, medical failure, and personal circumstances combined. It is also the factor most reliably identifiable in advance. A pilot who is six months from a financial crisis at the start of their second year of training is not facing a sudden problem — they are in the early stages of a failure chain that Vexeom can identify and flag before it reaches the withdrawal conversation.</div>
-            <div class="ind-deep-chain">COMPOUNDS INTO → Recovery, Fatigue, Training Readiness, Career Sustainability</div>
-          </div>
-        </div>
-
-        <div class="ind-deep-card">
-          <div class="ind-deep-num">09</div>
-          <div class="ind-deep-content">
-            <div class="ind-deep-title">Motivation Stability</div>
-            <div class="ind-deep-sub">Commitment strength and persistence under adversity</div>
-            <div class="ind-deep-body">Airline psychometric assessments — deployed by 82% of EU and UK carriers — specifically probe motivation stability under adversity. Assessors are not looking for candidates who never doubt themselves. They are specifically looking for candidates whose commitment structure survives setbacks without requiring external validation or rescue. Candidates who have never stress-tested their own motivation architecture before reaching selection routinely underperform on this component — not because they lack commitment, but because they have never examined it under controlled conditions.</div>
-            <div class="ind-deep-chain">COMPOUNDS INTO → Training Readiness, Career Sustainability, Stress</div>
-          </div>
-        </div>
-
-        <div class="ind-deep-card">
-          <div class="ind-deep-num">10</div>
-          <div class="ind-deep-content">
-            <div class="ind-deep-title">Career Sustainability</div>
-            <div class="ind-deep-sub">Burnout vulnerability and long-term resilience outlook</div>
-            <div class="ind-deep-body">Career sustainability is the aggregate output of all nine preceding indicators. A pilot with strong individual scores across most indicators can still carry a critical sustainability risk if two or three compounding factors are simultaneously under pressure. This is the failure mode that the Vexeom framework is specifically designed to detect — not the single catastrophic indicator, but the quiet convergence of moderate risks that individually would not trigger concern but collectively constitute an active failure chain.</div>
-            <div class="ind-deep-chain">SUMMARY INDICATOR — Receives compound input from all 9 preceding indicators</div>
-          </div>
-        </div>
-
+    <div class="intel-block">
+      <div class="intel-block-label">THE 10 INDICATORS</div>
+      <h2>What Vexeom measures and why it compounds.</h2>
+      <div class="ind-grid">
+        <div class="ind-card"><div class="ind-card-num">01</div><div class="ind-card-title">Recovery</div><div class="ind-card-sub">Physical restoration and adaptation rate</div><div class="ind-card-body">Recovery is not rest. It is the rate at which the body and nervous system return to baseline after sustained demand. Candidates who cannot recover between cycles accumulate deficits that compound across every other indicator.</div><div class="ind-card-chain">→ Fatigue, Cognitive Load, Career Sustainability</div></div>
+        <div class="ind-card"><div class="ind-card-num">02</div><div class="ind-card-title">Fatigue</div><div class="ind-card-sub">Cumulative load and operational reserve</div><div class="ind-card-body">EASA FTL 2024 linked fatigue to 23% of reported EU operator incidents. Fatigue in training presents as slower processing and narrowed situational awareness — by the time it is noticed, it has already compounded into other indicators.</div><div class="ind-card-chain">→ Cognitive Load, Training Readiness, Career Sustainability</div></div>
+        <div class="ind-card"><div class="ind-card-num">03</div><div class="ind-card-title">Cognitive Load</div><div class="ind-card-sub">Focus reliability under sustained demand</div><div class="ind-card-body">82% of EU/UK airlines deploy AI-assisted cognitive assessment at selection. Candidates who have never tracked their cognitive capacity during training arrive at these systems without a baseline. The AI finds what you have not measured. Vexeom measures it first.</div><div class="ind-card-chain">→ Training Readiness, Stress, Career Sustainability</div></div>
+        <div class="ind-card"><div class="ind-card-num">04</div><div class="ind-card-title">Stress</div><div class="ind-card-sub">Load, adaptability, and pressure tolerance</div><div class="ind-card-body">The training environment is deliberately stressful. What differentiates candidates who survive from those who do not is not the absence of stress but the presence of adaptive capacity calibrated for a sustained, high-demand career.</div><div class="ind-card-chain">→ Recovery, Motivation Stability, Lifestyle Compatibility</div></div>
+        <div class="ind-card"><div class="ind-card-num">05</div><div class="ind-card-title">Circadian Stability</div><div class="ind-card-sub">Sleep timing and schedule resilience</div><div class="ind-card-body">Commercial aviation is a 24-hour industry. EASA FTL now legally requires operators to manage circadian disruption. Pilots who have never stress-tested their circadian resilience will not know their vulnerability until the roster reveals it.</div><div class="ind-card-chain">→ Recovery, Fatigue, Cognitive Load</div></div>
+        <div class="ind-card"><div class="ind-card-num">06</div><div class="ind-card-title">Training Readiness</div><div class="ind-card-sub">Study discipline and self-management</div><div class="ind-card-body">ICAO 2025 mandates Human Factors as a core type rating component. Self-management is now formally assessed. Candidates without a documented history of self-managed training are entering an assessed environment without the evidence base it requires.</div><div class="ind-card-chain">→ Cognitive Load, Career Sustainability, Motivation Stability</div></div>
+        <div class="ind-card"><div class="ind-card-num">07</div><div class="ind-card-title">Lifestyle Compatibility</div><div class="ind-card-sub">Environmental stability and schedule flexibility</div><div class="ind-card-body">CAA 2024 formally identifies relationship instability as a primary stressor that compounds fatigue and reduces cognitive reserve. Most candidates assess technical readiness exhaustively. Almost none formally assess environmental readiness. The two are not interchangeable.</div><div class="ind-card-chain">→ Stress, Recovery, Motivation Stability</div></div>
+        <div class="ind-card"><div class="ind-card-num">08</div><div class="ind-card-title">Financial Resilience</div><div class="ind-card-sub">Economic stability under training cost pressure</div><div class="ind-card-body">The average UK integrated ATPL exceeds £150,000. Financial pressure is the most commonly cited factor in voluntary training withdrawal — ahead of washout and medical failure combined. It is the most predictable and the most preventable failure trigger.</div><div class="ind-card-chain">→ Stress, Fatigue, Motivation Stability</div></div>
+        <div class="ind-card"><div class="ind-card-num">09</div><div class="ind-card-title">Motivation Stability</div><div class="ind-card-sub">Commitment consistency and career conviction</div><div class="ind-card-body">Boeing 2024 identifies motivation instability as the second most common non-technical cause of training failure globally. Motivation does not collapse suddenly — it erodes progressively, compounding with stress and financial pressure until withdrawal becomes rational.</div><div class="ind-card-chain">→ Training Readiness, Career Sustainability, Lifestyle Compatibility</div></div>
+        <div class="ind-card"><div class="ind-card-num">10</div><div class="ind-card-title">Career Sustainability</div><div class="ind-card-sub">Long-range trajectory and systemic resilience</div><div class="ind-card-body">The terminal indicator. Career sustainability reflects the aggregate state of all nine upstream indicators weighted against each other. A high score means the system is holding. A low score means something upstream has already begun to fail.</div><div class="ind-card-chain">→ ALL INDICATORS — TERMINAL OUTPUT</div></div>
       </div>
     </div>
-  </section>
-
-  <section class="platform-section dark-section">
-    <div class="inner">
-      <div class="section-tag">FAILURE CHAIN LIBRARY</div>
-      <h2>The chains Vexeom maps. Not hypothetical. Documented.</h2>
-      <div class="chain-library">
-
-        <div class="chain-lib-item">
-          <div class="chain-lib-name">CHAIN 01 — THE FINANCIAL CASCADE</div>
-          <div class="chain-lib-flow">Financial Pressure → Excess Working Hours → Sleep Reduction → Recovery Failure → Fatigue Accumulation → Cognitive Degradation → Training Performance Decline → Dropout Risk</div>
-          <div class="chain-lib-note">Most common chain in UK flight school withdrawal data. Entry point is almost always financial pressure appearing 4–8 months before training departure.</div>
-        </div>
-
-        <div class="chain-lib-item">
-          <div class="chain-lib-name">CHAIN 02 — THE SILENT BURNOUT</div>
-          <div class="chain-lib-flow">High Motivation → Overtraining → Recovery Neglect → Circadian Disruption → Cognitive Load Accumulation → Motivation Collapse → Career Departure</div>
-          <div class="chain-lib-note">Paradoxically affects the most motivated candidates. High initial drive masks recovery failure until the cognitive and motivational collapse is already advanced.</div>
-        </div>
-
-        <div class="chain-lib-item">
-          <div class="chain-lib-name">CHAIN 03 — THE LIFESTYLE FAULT LINE</div>
-          <div class="chain-lib-flow">Relationship Instability → Chronic Stress Elevation → Sleep Disruption → Fatigue → Concentration Failure → Training Inconsistency → Performance Decline</div>
-          <div class="chain-lib-note">Environmental stressors outside training are formally recognised by the CAA as contributors to cognitive reserve depletion in operational pilots.</div>
-        </div>
-
-        <div class="chain-lib-item">
-          <div class="chain-lib-name">CHAIN 04 — THE SELECTION AMBUSH</div>
-          <div class="chain-lib-flow">Unmanaged Cognitive Load → Absent Self-Assessment Baseline → No Psychometric Preparation → AI Screening Underperformance → Selection Failure</div>
-          <div class="chain-lib-note">Emerging chain as AI psychometric tools become standard at 82% of airlines. Candidates who have not actively managed cognitive profile during training are identified as high-risk at selection.</div>
-        </div>
-
-      </div>
+    <div class="intel-block intel-block-alt">
+      <div class="intel-block-label">FAILURE CHAIN LIBRARY</div>
+      <h2>Most aviation career failures follow predictable causal sequences.</h2>
+      <div class="chain-lib-item"><div class="chain-lib-num">CHAIN 01 — FINANCIAL COLLAPSE</div><div class="chain-lib-title">The most common dropout sequence. Triggered by financial exposure, not skill failure.</div><div class="chain-lib-flow"><span class="r">Financial Pressure</span> → Excess Hours → Sleep Reduction → <span class="r">Fatigue</span> → Cognitive Degradation → Training Performance Decline → <span class="o">Dropout</span></div></div>
+      <div class="chain-lib-item"><div class="chain-lib-num">CHAIN 02 — BURNOUT TRAJECTORY</div><div class="chain-lib-title">The slow failure that looks like dedication until it doesn't.</div><div class="chain-lib-flow"><span class="r">Overtraining</span> → Recovery Deficit → <span class="r">Stress Accumulation</span> → Circadian Disruption → Motivation Collapse → <span class="o">Voluntary Withdrawal</span></div></div>
+      <div class="chain-lib-item"><div class="chain-lib-num">CHAIN 03 — SELECTION FAILURE</div><div class="chain-lib-title">Prepared on paper. Unprepared in the room when the AI runs the assessment.</div><div class="chain-lib-flow"><span class="r">Unmanaged Stress Load</span> → Cognitive Load Peak → Performance Suppression → <span class="r">AI Screen Failure</span> → <span class="o">Rejection at Selection</span></div></div>
+      <div class="chain-lib-item"><div class="chain-lib-num">CHAIN 04 — LIFESTYLE INCOMPATIBILITY</div><div class="chain-lib-title">The conflict that builds silently and resolves by ending the career.</div><div class="chain-lib-flow"><span class="r">Environmental Instability</span> → Circadian Disruption → <span class="r">Motivation Erosion</span> → Training Disengagement → <span class="o">Dropout</span></div></div>
     </div>
-  </section>
-
-  <section class="cta-strip">
-    <div class="inner">
-      <div class="cta-strip-inner">
-        <div class="cta-strip-left">
-          <div class="section-tag">NEXT STEP</div>
-          <h2>Find out which chains are active in your profile.</h2>
-        </div>
-        <div class="cta-strip-right">
-          <p>The free snapshot gives you an instant read on 7 of your 10 indicators. The full report maps your active chains.</p>
-          <a href="assessment.html" class="btn-primary">TAKE THE FREE TEST</a>
-        </div>
-      </div>
+    <div class="intel-cta">
+      <div><h3>See where your risk profile stands.</h3><p>4 questions. Partial read. Instant report format. Free.</p></div>
+      <a href="assessment.html" class="btn-primary">TAKE THE FREE TEST</a>
     </div>
-  </section>
-
-    <footer>
+  </div>
+  <footer>
     <div class="footer-top">
-      <div class="footer-col">
-        <div class="footer-brand-name">VEX<span>E</span>OM</div>
-        <div class="footer-brand-desc">Intelligence infrastructure for the human layer of aviation. The only platform that maps, scores, and tracks career risk before it becomes career failure.</div>
-        <a href="mailto:info@vexeom.com" class="footer-link">info@vexeom.com</a>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-title">Platform</div>
-        <a href="platform.html" class="footer-link">What Vexeom Is</a>
-        <a href="intelligence.html" class="footer-link">Intelligence Framework</a>
-        <a href="assessment.html" class="footer-link">Free Snapshot Test</a>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-title">Access</div>
-        <a href="access.html" class="footer-link">Altitude — £99/mo</a>
-        <a href="access.html" class="footer-link">Vantage — £299/mo</a>
-        <a href="access.html" class="footer-link">Citadel — £1,750/mo</a>
-        <a href="command.html" class="footer-link gold-link">Command™ — White Label</a>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-title">Legal</div>
-        <a href="terms.html" class="footer-link">Terms &amp; Conditions</a>
-        <a href="mailto:info@vexeom.com" class="footer-link">Privacy Requests</a>
-        <a href="mailto:info@vexeom.com" class="footer-link">Contact</a>
-      </div>
+      <div class="footer-col"><div class="footer-brand-name">VEX<span>E</span>OM</div><div class="footer-brand-desc">Intelligence infrastructure for the human layer of aviation. The only platform that maps, scores, and tracks career risk before it becomes career failure.</div><a href="mailto:info@vexeom.com" class="footer-link">info@vexeom.com</a></div>
+      <div class="footer-col"><div class="footer-col-title">Platform</div><a href="platform.html" class="footer-link">What Vexeom Is</a><a href="intelligence.html" class="footer-link">Intelligence Framework</a><a href="assessment.html" class="footer-link">Free Snapshot Test</a></div>
+      <div class="footer-col"><div class="footer-col-title">Access</div><a href="access.html" class="footer-link">Altitude — £99/mo</a><a href="access.html" class="footer-link">Vantage — £299/mo</a><a href="access.html" class="footer-link">Citadel — £1,750/mo</a><a href="command.html" class="footer-link gold-link">Command™ — White Label</a></div>
+      <div class="footer-col"><div class="footer-col-title">Legal</div><a href="terms.html" class="footer-link">Terms &amp; Conditions</a><a href="mailto:info@vexeom.com" class="footer-link">Privacy Requests</a><a href="mailto:info@vexeom.com" class="footer-link">Contact</a></div>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">© 2025 VEXEOM — AVIATION CAREER INTELLIGENCE — ENGLAND &amp; WALES</div>
-      <div class="footer-bottom-right">
-        <a href="terms.html">Terms</a>
-        <a href="mailto:info@vexeom.com">Contact</a>
-        <a href="command.html">Command</a>
-      </div>
+      <div class="footer-bottom-right"><a href="terms.html">Terms</a><a href="mailto:info@vexeom.com">Contact</a><a href="command.html">Command</a></div>
     </div>
   </footer>
-<script>function toggleMenu(){var m=document.getElementById("mobileMenu");var h=document.querySelector(".hamburger");m.classList.toggle("open");h.classList.toggle("open");}</script>
+  <script>function toggleMenu(){var m=document.getElementById("mobileMenu");var h=document.querySelector(".hamburger");m.classList.toggle("open");h.classList.toggle("open");}</script>
 </body>
 </html>

@@ -6,9 +6,55 @@
   <title>Access — Vexeom</title>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .access-wrap{max-width:1000px;margin:0 auto;padding:120px 40px 120px;position:relative;z-index:1}
+    .access-header{border:1px solid var(--border);padding:56px;margin-bottom:2px;position:relative;overflow:hidden}
+    .access-header::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent)}
+    .access-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.25em;color:var(--accent);margin-bottom:16px}
+    .access-header h1{font-size:clamp(26px,4vw,42px);font-weight:600;letter-spacing:-.02em;margin-bottom:16px}
+    .access-header p{font-size:14px;color:var(--muted);font-family:var(--mono);line-height:1.6;margin:0;max-width:560px}
+    .tiers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-top:none;margin-bottom:2px}
+    .tier-card{background:var(--bg-surface);padding:40px 32px;position:relative;display:flex;flex-direction:column}
+    .tier-card.featured{background:#060F1E}
+    .tier-featured-badge{font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:var(--accent);margin-bottom:16px}
+    .tier-tag{font-family:var(--mono);font-size:10px;letter-spacing:.15em;color:var(--muted);margin-bottom:8px}
+    .tier-name{font-family:var(--mono);font-size:20px;font-weight:500;letter-spacing:.1em;color:var(--text);margin-bottom:20px}
+    .tier-price{font-family:var(--mono);font-size:36px;font-weight:500;color:var(--text);line-height:1;margin-bottom:4px}
+    .tier-price span{font-size:13px;color:var(--muted);font-weight:300}
+    .tier-who{font-size:13px;color:var(--muted);margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid var(--border);line-height:1.5}
+    .tier-features{list-style:none;margin-bottom:32px;flex:1}
+    .tier-features li{font-size:13px;color:var(--muted);padding:9px 0 9px 16px;border-bottom:1px solid var(--border);position:relative;line-height:1.5}
+    .tier-features li:last-child{border-bottom:none}
+    .tier-features li::before{content:"→";position:absolute;left:0;color:var(--accent);font-family:var(--mono);font-size:11px}
+    .tier-btn{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.15em;color:var(--text);border:1px solid var(--border-light);padding:14px;text-align:center;text-decoration:none;transition:all .2s;cursor:pointer;background:none;width:100%}
+    .tier-btn:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
+    .tier-btn.featured-btn{background:var(--accent);border-color:var(--accent);color:#fff}
+    .tier-btn.featured-btn:hover{background:#2D6AFF;border-color:#2D6AFF;color:#fff}
+    .command-strip{border:1px solid rgba(200,169,110,.25);border-top:none;padding:36px 48px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;background:rgba(200,169,110,.02);margin-bottom:2px}
+    .cs-tag{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+    .cs-title{font-size:20px;font-weight:600;color:var(--text);margin-bottom:6px}
+    .cs-sub{font-size:13px;color:var(--muted);max-width:480px;line-height:1.6}
+    .cs-btn{font-family:var(--mono);font-size:11px;letter-spacing:.15em;color:#000;background:var(--gold);padding:14px 32px;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:opacity .2s;display:inline-block}
+    .cs-btn:hover{opacity:.85;text-decoration:none}
+    .social-strip{border:1px solid var(--border);border-top:none;background:var(--bg-surface)}
+    .social-strip-inner{display:grid;grid-template-columns:repeat(3,1fr)}
+    .social-cell{padding:28px 32px;border-right:1px solid var(--border)}
+    .social-cell:last-child{border-right:none}
+    .social-cell-label{font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:var(--muted);margin-bottom:8px}
+    .social-cell-text{font-size:13px;color:var(--text);line-height:1.6}
+    .confirm-overlay{position:fixed;inset:0;background:rgba(2,12,24,.98);z-index:9999;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s}
+    .confirm-overlay.active{opacity:1;pointer-events:all}
+    .confirm-inner{max-width:480px;width:100%;padding:0 32px;text-align:center}
+    .confirm-rule{width:32px;height:1px;background:var(--gold);margin:0 auto 28px}
+    .confirm-label{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--gold);margin-bottom:16px}
+    .confirm-title{font-size:clamp(20px,3vw,28px);font-weight:600;color:var(--text);margin-bottom:10px;line-height:1.2;letter-spacing:-.02em}
+    .confirm-sub{font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:36px}
+    .confirm-close{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--text);cursor:pointer;padding:12px 32px;border:1px solid rgba(200,169,110,.3);transition:all .2s;display:inline-block}
+    .confirm-close:hover{border-color:var(--gold);color:var(--gold)}
+    @media(max-width:768px){.access-wrap{padding:90px 20px 80px}.access-header{padding:28px 24px}.tiers-grid{grid-template-columns:1fr}.command-strip{padding:28px 24px;flex-direction:column}.social-strip-inner{grid-template-columns:1fr}.social-cell{border-right:none;border-bottom:1px solid var(--border)}.social-cell:last-child{border-bottom:none}}
+  </style>
 </head>
 <body class="access-page">
-
   <nav>
     <div class="nav-inner">
       <div class="logo"><a href="index.html">VEX<span>E</span>OM</a></div>
@@ -33,108 +79,97 @@
     <a href="command.html" class="gold">COMMAND</a>
     <a href="access.html" class="cta-mobile">REQUEST ACCESS</a>
   </div>
-
-  <section class="access-hero">
-    <div class="inner">
-      <div class="section-eyebrow">INTELLIGENCE ACCESS</div>
-      <h1>Select Your<br/><span class="accent">Intelligence Tier</span></h1>
-      <p class="access-sub">Every report is generated and delivered instantly upon submission. No waiting. No queues.</p>
+  <div class="access-wrap">
+    <div class="access-header">
+      <div class="access-eyebrow">INTELLIGENCE ACCESS — SELECT TIER</div>
+      <h1>Your intelligence tier.<br/>Delivered instantly.</h1>
+      <p>Every report is generated the moment your assessment is submitted. No waiting periods. No delivery windows. Intelligence on demand.</p>
     </div>
-  </section>
-
-  <section class="tiers-section">
-    <div class="inner">
-      <div class="tiers-grid">
-
-        <!-- ALTITUDE -->
-        <div class="tier-card">
-          <div class="tier-tag">TIER 01</div>
-          <div class="tier-name">ALTITUDE</div>
-          <div class="tier-price">£99<span>/month</span></div>
-          <div class="tier-target">Student &amp; aspiring pilots</div>
-          <ul class="tier-features">
-            <li>Monthly Pilot Intelligence Report</li>
-            <li>10 scored career risk indicators</li>
-            <li>Failure chain analysis</li>
-            <li>Score movement tracking</li>
-            <li>Standard cohort benchmarking</li>
-            <li>Instant report delivery</li>
-          </ul>
-          <a href="#" class="tier-cta" onclick="showAnimation()">GET ALTITUDE</a>
-        </div>
-
-        <!-- VANTAGE -->
-        <div class="tier-card tier-featured">
-          <div class="tier-badge">MOST SELECTED</div>
-          <div class="tier-tag">TIER 02</div>
-          <div class="tier-name">VANTAGE</div>
-          <div class="tier-price">£299<span>/month</span></div>
-          <div class="tier-target">Commercial pilots &amp; senior professionals</div>
-          <ul class="tier-features">
-            <li>Everything in Altitude</li>
-            <li>6 &amp; 12-month trajectory modelling</li>
-            <li>Full dataset benchmark access</li>
-            <li>Quarterly strategy intelligence report</li>
-            <li>Dedicated account intelligence review</li>
-            <li>Early access to new indicators</li>
-            <li>Instant report delivery</li>
-          </ul>
-          <a href="#" class="tier-cta tier-cta-featured" onclick="showAnimation()">GET VANTAGE</a>
-        </div>
-
-        <!-- CITADEL -->
-        <div class="tier-card">
-          <div class="tier-tag">TIER 03</div>
-          <div class="tier-name">CITADEL</div>
-          <div class="tier-price">£1,750<span>/month</span></div>
-          <div class="tier-target">Flight schools &amp; aerospace organisations — 25 seats</div>
-          <ul class="tier-features">
-            <li>Everything in Vantage</li>
-            <li>25 individual member seats</li>
-            <li>Cohort risk dashboard</li>
-            <li>Monthly organisation intelligence report</li>
-            <li>Anonymised instructor risk flagging</li>
-            <li>Dedicated account intelligence review</li>
-            <li>Instant report delivery</li>
-          </ul>
-          <a href="#" class="tier-cta" onclick="showAnimation()">GET CITADEL</a>
-        </div>
-
+    <div class="tiers-grid">
+      <div class="tier-card">
+        <div class="tier-tag">TIER 01</div>
+        <div class="tier-name">ALTITUDE</div>
+        <div class="tier-price">£99<span>/month</span></div>
+        <div class="tier-who">Student &amp; aspiring pilots entering or progressing through training</div>
+        <ul class="tier-features">
+          <li>Monthly Pilot Intelligence Report</li>
+          <li>10 scored career risk indicators</li>
+          <li>Failure chain analysis</li>
+          <li>Score movement tracking</li>
+          <li>Standard cohort benchmarking</li>
+          <li>Instant report delivery</li>
+        </ul>
+        <button class="tier-btn" onclick="showConfirm('ALTITUDE')">GET ALTITUDE</button>
       </div>
-
-      <!-- COMMAND STRIP -->
-      <div class="command-strip">
-        <div class="command-strip-left">
-          <div class="command-strip-tag">COMMAND™</div>
-          <div class="command-strip-title">Defence. Enterprise. C-Suite.</div>
-          <div class="command-strip-sub">Bespoke intelligence infrastructure built around your organisation. Contact for further information. All enquiries reviewed privately.</div>
-        </div>
-        <a href="command.html" class="command-strip-cta">APPLY PRIVATELY</a>
+      <div class="tier-card featured">
+        <div class="tier-featured-badge">MOST SELECTED</div>
+        <div class="tier-tag">TIER 02</div>
+        <div class="tier-name">VANTAGE</div>
+        <div class="tier-price">£299<span>/month</span></div>
+        <div class="tier-who">Commercial pilots &amp; senior aviation professionals</div>
+        <ul class="tier-features">
+          <li>Everything in Altitude</li>
+          <li>6 &amp; 12-month trajectory modelling</li>
+          <li>Full dataset benchmark access</li>
+          <li>Quarterly strategy intelligence report</li>
+          <li>Dedicated account intelligence review</li>
+          <li>Early access to new indicators</li>
+          <li>Instant report delivery</li>
+        </ul>
+        <button class="tier-btn featured-btn" onclick="showConfirm('VANTAGE')">GET VANTAGE</button>
       </div>
-
+      <div class="tier-card">
+        <div class="tier-tag">TIER 03</div>
+        <div class="tier-name">CITADEL</div>
+        <div class="tier-price">£1,750<span>/month</span></div>
+        <div class="tier-who">Flight schools &amp; aerospace organisations — 25 seats included</div>
+        <ul class="tier-features">
+          <li>Everything in Vantage</li>
+          <li>25 individual member seats</li>
+          <li>Cohort risk dashboard</li>
+          <li>Monthly organisation intelligence report</li>
+          <li>Anonymised instructor risk flagging</li>
+          <li>Dedicated account intelligence review</li>
+          <li>Instant report delivery</li>
+        </ul>
+        <button class="tier-btn" onclick="showConfirm('CITADEL')">GET CITADEL</button>
+      </div>
     </div>
-  </section>
-
-  <!-- TRANSACTION ANIMATION -->
-  <div id="transactionOverlay" class="transaction-overlay">
-    <div class="overlay-content">
-      <div class="plane-animation">
-        <svg class="plane-svg" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M10 60L110 20L85 60L110 100L10 60Z" fill="#00D4FF" opacity="0.9"/>
-          <path d="M10 60L85 60L75 80L10 60Z" fill="#0099BB" opacity="0.7"/>
-        </svg>
-        <div class="trail"></div>
+    <div class="command-strip">
+      <div>
+        <div class="cs-tag">COMMAND™ — WHITE LABEL</div>
+        <div class="cs-title">Defence. Enterprise. C-Suite.</div>
+        <div class="cs-sub">Bespoke intelligence infrastructure built around your organisation. White label deployment, cohort intelligence, and strategic briefings. Pricing established through private consultation.</div>
       </div>
-      <div class="overlay-text">
-        <div class="overlay-label">INTELLIGENCE DEPLOYED</div>
-        <div class="overlay-title">Your report is being generated.</div>
-        <div class="overlay-sub">Delivering to your account now.</div>
+      <a href="command-apply.html" class="cs-btn">ENGAGE PRIVATELY</a>
+    </div>
+    <div class="social-strip">
+      <div class="social-strip-inner">
+        <div class="social-cell">
+          <div class="social-cell-label">REGULATORY CONTEXT</div>
+          <div class="social-cell-text">82% of EU/UK airlines now use AI psychometric screening at selection. Vexeom prepares you for what that screening will find. — EASA 2024</div>
+        </div>
+        <div class="social-cell">
+          <div class="social-cell-label">INDUSTRY REALITY</div>
+          <div class="social-cell-text">1 in 3 student pilots do not complete training. 67% cite non-skill factors. Every one of those factors is measurable before it becomes a departure statistic. — CAA 2025</div>
+        </div>
+        <div class="social-cell">
+          <div class="social-cell-label">WHAT YOU GET</div>
+          <div class="social-cell-text">10 scored indicators. Failure chain mapping. 12-month outlook. Generated and delivered the moment you submit. No delay.</div>
+        </div>
       </div>
-      <div class="overlay-close" onclick="hideAnimation()">CONTINUE →</div>
     </div>
   </div>
-
-    <footer>
+  <div class="confirm-overlay" id="confirmOverlay">
+    <div class="confirm-inner">
+      <div class="confirm-rule"></div>
+      <div class="confirm-label">VEXEOM INTELLIGENCE PLATFORM</div>
+      <div class="confirm-title" id="confirmTitle">Your report has been<br/>compiled and issued.</div>
+      <div class="confirm-sub">Your Pilot Intelligence Report is now active.<br/>Scored. Delivered. Ready for review.</div>
+      <div class="confirm-close" onclick="document.getElementById('confirmOverlay').classList.remove('active')">PROCEED TO REPORT →</div>
+    </div>
+  </div>
+  <footer>
     <div class="footer-top">
       <div class="footer-col">
         <div class="footer-brand-name">VEX<span>E</span>OM</div>
@@ -170,21 +205,9 @@
       </div>
     </div>
   </footer>
-
   <script>
-    function toggleMenu(){
-      var m=document.getElementById("mobileMenu");
-      var h=document.querySelector(".hamburger");
-      m.classList.toggle("open");
-      h.classList.toggle("open");
-    }
-    function showAnimation(){
-      document.getElementById("transactionOverlay").classList.add("active");
-    }
-    function hideAnimation(){
-      document.getElementById("transactionOverlay").classList.remove("active");
-    }
+    function toggleMenu(){var m=document.getElementById("mobileMenu");var h=document.querySelector(".hamburger");m.classList.toggle("open");h.classList.toggle("open");}
+    function showConfirm(tier){document.getElementById("confirmTitle").innerHTML="Your "+tier+" report<br/>has been issued.";document.getElementById("confirmOverlay").classList.add("active");}
   </script>
-
 </body>
 </html>
