@@ -66,3 +66,607 @@
 
 </body>
 </html>
+cat > /Users/deniz/atlas-aerospace-intelligence/website/index.html << 'ENDOFFILE'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vexeom — Aviation Career Intelligence</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ── INDEX PAGE OVERRIDES ── */
+    .hero { min-height: 100vh; display: flex; align-items: center; padding: 140px 48px 100px; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+    .hero::after { content: ''; position: absolute; top: 10%; right: -300px; width: 800px; height: 800px; background: radial-gradient(circle, rgba(27,79,216,0.06) 0%, transparent 65%); pointer-events: none; }
+    .hero-inner { max-width: 1100px; margin: 0 auto; width: 100%; position: relative; z-index: 1; }
+    .hero-tag { display: flex; align-items: center; gap: 10px; margin-bottom: 32px; }
+    .hero-tag-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+    .hero-tag span { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; color: var(--muted); }
+    .hero h1 { font-size: clamp(36px,5.5vw,72px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 0; color: var(--text); max-width: 820px; }
+    .hero-sub { font-size: clamp(28px,4vw,56px); font-weight: 600; letter-spacing: -0.03em; color: var(--accent); margin-bottom: 28px; line-height: 1.1; }
+    .hero p.sub { font-size: 17px; color: var(--muted); max-width: 580px; line-height: 1.75; margin-bottom: 40px; }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 64px; }
+    .hero-divider { width: 40px; height: 1px; background: var(--border-light); margin-bottom: 32px; }
+    .hero-chain-preview { max-width: 680px; }
+    .hero-chain-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; color: var(--muted); margin-bottom: 14px; }
+    .hero-chain-text { font-family: var(--mono); font-size: 12px; color: #4A6A8A; line-height: 2; }
+    .hero-chain-text strong { color: #CC2936; }
+
+    /* TRUST STRIP */
+    .trust-strip { border-bottom: 1px solid var(--border); padding: 0; background: var(--bg-surface); }
+    .trust-strip-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); }
+    .trust-cell { padding: 32px 40px; border-right: 1px solid var(--border); }
+    .trust-cell:last-child { border-right: none; }
+    .trust-num { font-family: var(--mono); font-size: 32px; font-weight: 500; color: var(--text); margin-bottom: 6px; line-height: 1; }
+    .trust-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; color: var(--muted); line-height: 1.5; }
+
+    /* POSITIONING SECTION */
+    .position-section { padding: 100px 48px; border-bottom: 1px solid var(--border); }
+    .position-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .position-left .section-tag { margin-bottom: 20px; }
+    .position-left h2 { font-size: clamp(22px,3vw,32px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 24px; }
+    .position-left p { font-size: 15px; color: var(--muted); line-height: 1.8; margin-bottom: 14px; }
+    .position-left p strong { color: var(--text); font-weight: 500; }
+    .position-right { border: 1px solid var(--border); }
+    .position-right-row { display: flex; align-items: flex-start; gap: 16px; padding: 20px 24px; border-bottom: 1px solid var(--border); }
+    .position-right-row:last-child { border-bottom: none; }
+    .position-right-num { font-family: var(--mono); font-size: 10px; color: var(--accent); flex-shrink: 0; padding-top: 2px; }
+    .position-right-text { font-size: 14px; color: var(--muted); line-height: 1.6; }
+    .position-right-text strong { color: var(--text); font-weight: 500; display: block; margin-bottom: 4px; font-size: 13px; }
+
+    /* FAILURE CHAIN SECTION */
+    .chain-section { padding: 100px 48px; border-bottom: 1px solid var(--border); background: var(--bg-surface); }
+    .chain-inner { max-width: 1100px; margin: 0 auto; }
+    .chain-header { margin-bottom: 48px; }
+    .chain-header h2 { font-size: clamp(20px,2.8vw,30px); font-weight: 600; letter-spacing: -0.02em; margin-top: 16px; }
+    .chain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); }
+    .chain-card { background: var(--bg-surface); padding: 32px; }
+    .chain-card-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; color: #CC2936; margin-bottom: 12px; }
+    .chain-card-title { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 16px; }
+    .chain-flow { font-family: var(--mono); font-size: 11px; color: #4A6A8A; line-height: 2.2; }
+    .chain-arrow { color: var(--border-light); margin: 0 4px; }
+    .chain-node-risk { color: #CC2936; }
+    .chain-node-outcome { color: #FF8C00; }
+    .chain-cta { margin-top: 40px; }
+
+    /* INDICATORS */
+    .indicators-section { padding: 100px 48px; border-bottom: 1px solid var(--border); }
+    .indicators-inner { max-width: 1100px; margin: 0 auto; }
+    .indicators-header { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-bottom: 48px; }
+    .indicators-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+    .ind-item { background: var(--bg-surface); padding: 20px 24px; display: flex; flex-direction: column; gap: 6px; }
+    .ind-num { font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.1em; }
+    .ind-name { font-size: 13px; color: var(--text); font-weight: 500; }
+
+    /* CTA STRIP */
+    .cta-strip { padding: 80px 48px; border-bottom: 1px solid var(--border); }
+    .cta-strip-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .cta-strip-left h2 { font-size: clamp(20px,2.8vw,30px); font-weight: 600; letter-spacing: -0.02em; margin-top: 12px; }
+    .cta-strip-right p { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 24px; font-family: var(--mono); }
+
+    /* MOBILE */
+    @media(max-width:768px) {
+      .hero { padding: 100px 24px 64px; }
+      .trust-strip-inner { grid-template-columns: 1fr; }
+      .trust-cell { border-right: none; border-bottom: 1px solid var(--border); }
+      .trust-cell:last-child { border-bottom: none; }
+      .position-section { padding: 64px 24px; }
+      .position-inner { grid-template-columns: 1fr; gap: 40px; }
+      .chain-section { padding: 64px 24px; }
+      .chain-grid { grid-template-columns: 1fr; }
+      .indicators-section { padding: 64px 24px; }
+      .indicators-header { grid-template-columns: 1fr; gap: 24px; }
+      .indicators-grid { grid-template-columns: repeat(2, 1fr); }
+      .cta-strip { padding: 64px 24px; }
+      .cta-strip-inner { grid-template-columns: 1fr; gap: 32px; }
+      .hero-actions { flex-direction: column; }
+      .hero-actions a { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <div class="logo"><a href="index.html">VEX<span>E</span>OM</a></div>
+      <div class="nav-tabs">
+        <a href="index.html" class="nav-tab active">HOME</a>
+        <a href="platform.html" class="nav-tab">PLATFORM</a>
+        <a href="intelligence.html" class="nav-tab">INTELLIGENCE</a>
+        <a href="assessment.html" class="nav-tab">FREE TEST</a>
+        <a href="access.html" class="nav-tab">ACCESS</a>
+        <a href="command.html" class="nav-tab command-tab">COMMAND</a>
+      </div>
+      <a href="access.html" class="nav-cta">REQUEST ACCESS</a>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">HOME</a>
+    <a href="platform.html">PLATFORM</a>
+    <a href="intelligence.html">INTELLIGENCE</a>
+    <a href="assessment.html">FREE TEST</a>
+    <a href="access.html">ACCESS</a>
+    <a href="command.html" class="gold">COMMAND</a>
+    <a href="access.html" class="cta-mobile">REQUEST ACCESS</a>
+  </div>
+
+  <!-- HERO — ONE CTA, FAILURE CHAIN TEASER -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-tag">
+        <div class="hero-tag-dot"></div>
+        <span>AVIATION CAREER INTELLIGENCE — OPERATIONAL</span>
+      </div>
+      <h1>The human layer of aviation</h1>
+      <div class="hero-sub">has never had an operating system.</div>
+      <p class="sub">Vexeom identifies, maps, and tracks the hidden risk factors that determine whether a pilot career survives contact with the industry — before those factors become irreversible.</p>
+      <div class="hero-actions">
+        <a href="assessment.html" class="btn-primary">TAKE THE FREE TEST</a>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-chain-preview">
+        <div class="hero-chain-label">ACTIVE FAILURE CHAIN — EXAMPLE</div>
+        <div class="hero-chain-text">
+          <strong>Financial Pressure</strong> → Excess Hours → Sleep Reduction → Recovery Failure → <strong>Fatigue</strong> → Cognitive Degradation → <strong>Training Performance Decline</strong> → Dropout
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <div class="trust-strip">
+    <div class="trust-strip-inner">
+      <div class="trust-cell">
+        <div class="trust-num">1 IN 3</div>
+        <div class="trust-label">STUDENT PILOTS DO NOT COMPLETE TRAINING — CAA 2025</div>
+      </div>
+      <div class="trust-cell">
+        <div class="trust-num">67%</div>
+        <div class="trust-label">OF DROPOUTS CITE NON-SKILL FACTORS AS PRIMARY CAUSE</div>
+      </div>
+      <div class="trust-cell">
+        <div class="trust-num">82%</div>
+        <div class="trust-label">OF EU/UK AIRLINES USE AI PSYCHOMETRIC SCREENING AT SELECTION — EASA 2024</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POSITIONING -->
+  <section class="position-section">
+    <div class="position-inner">
+      <div class="position-left">
+        <div class="section-tag">THE INTELLIGENCE LAYER</div>
+        <h2>Every layer of aviation has been made intelligent. The human layer has not.</h2>
+        <p>Palantir built the data infrastructure for governments. Anduril built the autonomous systems layer for the battlefield. Shield AI built the cognitive layer for unmanned aircraft.</p>
+        <p>Nobody built the intelligence infrastructure for the human layer of aviation — the pilots and operators on whom every aircraft, every mission, and every safety outcome depends.</p>
+        <p><strong>Vexeom is that infrastructure.</strong> It does not advise. It identifies patterns, maps causal chains, and delivers scored intelligence — so that risk is known before it becomes a departure statistic.</p>
+        <a href="platform.html" class="btn-text-link" style="margin-top:8px;display:inline-block;">READ THE PLATFORM BRIEF →</a>
+      </div>
+      <div class="position-right">
+        <div class="position-right-row">
+          <div class="position-right-num">01</div>
+          <div class="position-right-text"><strong>Aircraft Systems</strong>ACARS, FOQA, predictive maintenance AI — solved.</div>
+        </div>
+        <div class="position-right-row">
+          <div class="position-right-num">02</div>
+          <div class="position-right-text"><strong>Air Traffic Management</strong>SESAR, NextGen, AI conflict detection — solved.</div>
+        </div>
+        <div class="position-right-row">
+          <div class="position-right-num">03</div>
+          <div class="position-right-text"><strong>Safety Management</strong>SMS platforms, ASRS, predictive risk models — solved.</div>
+        </div>
+        <div class="position-right-row">
+          <div class="position-right-num">04</div>
+          <div class="position-right-text"><strong>Psychometric Screening</strong>AI selection tools at 82% of airlines — solved at selection only.</div>
+        </div>
+        <div class="position-right-row" style="background:rgba(204,41,54,0.04);border-left:2px solid #CC2936;">
+          <div class="position-right-num" style="color:#CC2936;">—</div>
+          <div class="position-right-text" style="color:var(--text);"><strong style="color:#CC2936;">Human Performance Sustainability</strong>Fatigue, cognitive load, financial resilience, career chain mapping — the gap. Vexeom.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAILURE CHAINS -->
+  <section class="chain-section">
+    <div class="chain-inner">
+      <div class="chain-header">
+        <div class="section-tag">FAILURE CHAIN LIBRARY</div>
+        <h2>Most pilot career failures are not random. They follow predictable causal sequences.</h2>
+      </div>
+      <div class="chain-grid">
+        <div class="chain-card">
+          <div class="chain-card-label">CHAIN 01 — FINANCIAL COLLAPSE</div>
+          <div class="chain-card-title">The most common dropout sequence.</div>
+          <div class="chain-flow">
+            <span class="chain-node-risk">Financial Pressure</span>
+            <span class="chain-arrow">→</span>Excess Hours
+            <span class="chain-arrow">→</span>Sleep Reduction
+            <span class="chain-arrow">→</span><span class="chain-node-risk">Fatigue</span>
+            <span class="chain-arrow">→</span>Cognitive Degradation
+            <span class="chain-arrow">→</span><span class="chain-node-outcome">Training Failure</span>
+          </div>
+        </div>
+        <div class="chain-card">
+          <div class="chain-card-label">CHAIN 02 — BURNOUT TRAJECTORY</div>
+          <div class="chain-card-title">The slow failure that looks like progress.</div>
+          <div class="chain-flow">
+            <span class="chain-node-risk">Overtraining</span>
+            <span class="chain-arrow">→</span>Recovery Deficit
+            <span class="chain-arrow">→</span><span class="chain-node-risk">Stress Accumulation</span>
+            <span class="chain-arrow">→</span>Motivation Collapse
+            <span class="chain-arrow">→</span><span class="chain-node-outcome">Voluntary Withdrawal</span>
+          </div>
+        </div>
+        <div class="chain-card">
+          <div class="chain-card-label">CHAIN 03 — SELECTION FAILURE</div>
+          <div class="chain-card-title">Prepared on paper. Unprepared in the room.</div>
+          <div class="chain-flow">
+            <span class="chain-node-risk">Undisclosed Stress</span>
+            <span class="chain-arrow">→</span>Cognitive Load Peak
+            <span class="chain-arrow">→</span>Performance Suppression
+            <span class="chain-arrow">→</span><span class="chain-node-risk">AI Screen Failure</span>
+            <span class="chain-arrow">→</span><span class="chain-node-outcome">Rejection</span>
+          </div>
+        </div>
+        <div class="chain-card">
+          <div class="chain-card-label">CHAIN 04 — LIFESTYLE INCOMPATIBILITY</div>
+          <div class="chain-card-title">The conflict that compounds silently.</div>
+          <div class="chain-flow">
+            <span class="chain-node-risk">Lifestyle Pressure</span>
+            <span class="chain-arrow">→</span>Circadian Disruption
+            <span class="chain-arrow">→</span><span class="chain-node-risk">Motivation Instability</span>
+            <span class="chain-arrow">→</span>Commitment Erosion
+            <span class="chain-arrow">→</span><span class="chain-node-outcome">Dropout</span>
+          </div>
+        </div>
+      </div>
+      <div class="chain-cta">
+        <a href="intelligence.html" class="btn-ghost">VIEW FULL INTELLIGENCE FRAMEWORK →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDICATORS -->
+  <section class="indicators-section">
+    <div class="indicators-inner">
+      <div class="indicators-header">
+        <div>
+          <div class="section-tag">THE VEXEOM FRAMEWORK</div>
+          <h2 style="margin-top:16px;">10 scored indicators. Mapped causal chains. Continuous longitudinal intelligence.</h2>
+        </div>
+        <div style="padding-top:48px;">
+          <p style="font-size:14px;color:var(--muted);line-height:1.75;font-family:var(--mono);">No indicator is assessed in isolation. The scoring model weights indicators against known compounding relationships. The intelligence compounds with every assessment cycle.</p>
+        </div>
+      </div>
+      <div class="indicators-grid">
+        <div class="ind-item"><span class="ind-num">01</span><span class="ind-name">Recovery</span></div>
+        <div class="ind-item"><span class="ind-num">02</span><span class="ind-name">Fatigue</span></div>
+        <div class="ind-item"><span class="ind-num">03</span><span class="ind-name">Cognitive Load</span></div>
+        <div class="ind-item"><span class="ind-num">04</span><span class="ind-name">Stress</span></div>
+        <div class="ind-item"><span class="ind-num">05</span><span class="ind-name">Circadian Stability</span></div>
+        <div class="ind-item"><span class="ind-num">06</span><span class="ind-name">Training Readiness</span></div>
+        <div class="ind-item"><span class="ind-num">07</span><span class="ind-name">Lifestyle Compatibility</span></div>
+        <div class="ind-item"><span class="ind-num">08</span><span class="ind-name">Financial Resilience</span></div>
+        <div class="ind-item"><span class="ind-num">09</span><span class="ind-name">Motivation Stability</span></div>
+        <div class="ind-item"><span class="ind-num">10</span><span class="ind-name">Career Sustainability</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-strip">
+    <div class="cta-strip-inner">
+      <div class="cta-strip-left">
+        <div class="section-tag">START NOW</div>
+        <h2>Find out where you stand. Free. In 4 questions.</h2>
+      </div>
+      <div class="cta-strip-right">
+        <p>4 of your 10 risk indicators. Real industry data embedded in every question. No account required. Instant result in report format.</p>
+        <a href="assessment.html" class="btn-primary">TAKE THE FREE TEST</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-top">
+      <div class="footer-col">
+        <div class="footer-brand-name">VEX<span>E</span>OM</div>
+        <div class="footer-brand-desc">Intelligence infrastructure for the human layer of aviation. The only platform that maps, scores, and tracks career risk before it becomes career failure.</div>
+        <a href="mailto:info@vexeom.com" class="footer-link">info@vexeom.com</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Platform</div>
+        <a href="platform.html" class="footer-link">What Vexeom Is</a>
+        <a href="intelligence.html" class="footer-link">Intelligence Framework</a>
+        <a href="assessment.html" class="footer-link">Free Snapshot Test</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Access</div>
+        <a href="access.html" class="footer-link">Altitude — £99/mo</a>
+        <a href="access.html" class="footer-link">Vantage — £299/mo</a>
+        <a href="access.html" class="footer-link">Citadel — £1,750/mo</a>
+        <a href="command.html" class="footer-link gold-link">Command™ — White Label</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Legal</div>
+        <a href="terms.html" class="footer-link">Terms &amp; Conditions</a>
+        <a href="mailto:info@vexeom.com" class="footer-link">Privacy Requests</a>
+        <a href="mailto:info@vexeom.com" class="footer-link">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-left">© 2025 VEXEOM — AVIATION CAREER INTELLIGENCE — ENGLAND &amp; WALES</div>
+      <div class="footer-bottom-right">
+        <a href="terms.html">Terms</a>
+        <a href="mailto:info@vexeom.com">Contact</a>
+        <a href="command.html">Command</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>function toggleMenu(){var m=document.getElementById("mobileMenu");var h=document.querySelector(".hamburger");m.classList.toggle("open");h.classList.toggle("open");}</script>
+</body>
+</html>
+ENDOFFILE
+
+cat > /Users/deniz/atlas-aerospace-intelligence/website/platform.html << 'ENDOFFILE'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vexeom — The Platform</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    .platform-wrap { max-width: 900px; margin: 0 auto; padding: 120px 40px 120px; position: relative; z-index: 1; }
+    .plat-header { border: 1px solid var(--border); padding: 56px; margin-bottom: 2px; position: relative; overflow: hidden; }
+    .plat-header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), transparent); }
+    .plat-eyebrow { font-family: var(--mono); font-size: 10px; letter-spacing: 0.25em; color: var(--accent); margin-bottom: 20px; }
+    .plat-header h1 { font-size: clamp(28px,4vw,48px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 24px; }
+    .plat-header-sub { font-size: 16px; color: var(--muted); line-height: 1.8; max-width: 640px; }
+    .plat-block { border: 1px solid var(--border); border-top: none; padding: 48px 56px; }
+    .plat-block-alt { background: var(--bg-surface); }
+    .plat-block-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; color: var(--accent); margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+    .plat-block h2 { font-size: 22px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 20px; color: var(--text); }
+    .plat-block p { font-size: 15px; color: var(--muted); line-height: 1.85; margin-bottom: 16px; }
+    .plat-block p strong { color: var(--text); font-weight: 500; }
+    .plat-block p:last-child { margin-bottom: 0; }
+    .compare-table { width: 100%; border-collapse: collapse; margin-top: 24px; }
+    .compare-table th { font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; color: var(--muted); text-align: left; padding: 10px 16px; border-bottom: 1px solid var(--border); }
+    .compare-table td { font-size: 13px; color: var(--muted); padding: 14px 16px; border-bottom: 1px solid var(--border); line-height: 1.5; vertical-align: top; }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table td:first-child { color: var(--text); font-weight: 500; font-size: 14px; white-space: nowrap; }
+    .status-solved { font-family: var(--mono); font-size: 10px; color: #0A7C4B; letter-spacing: 0.1em; }
+    .status-gap { font-family: var(--mono); font-size: 10px; color: #CC2936; letter-spacing: 0.1em; font-weight: 500; }
+    .plat-is-not { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); margin-top: 24px; }
+    .plat-is-col { background: var(--bg-surface); padding: 28px 32px; }
+    .plat-is-col-title { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+    .plat-is-col-title.is { color: var(--accent); }
+    .plat-is-col-title.not { color: #CC2936; }
+    .plat-is-item { font-size: 13px; color: var(--muted); padding: 8px 0; border-bottom: 1px solid var(--border); line-height: 1.5; }
+    .plat-is-item:last-child { border-bottom: none; }
+    .plat-cta { border: 1px solid var(--border); border-top: none; padding: 40px 56px; display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; background: rgba(27,79,216,0.04); }
+    .plat-cta h3 { font-size: 18px; font-weight: 600; margin-bottom: 6px; }
+    .plat-cta p { font-size: 13px; color: var(--muted); font-family: var(--mono); margin: 0; }
+    @media(max-width:768px) {
+      .platform-wrap { padding: 90px 20px 80px; }
+      .plat-header { padding: 32px 24px; }
+      .plat-block { padding: 32px 24px; }
+      .plat-is-not { grid-template-columns: 1fr; }
+      .plat-cta { padding: 28px 24px; flex-direction: column; align-items: flex-start; }
+      .compare-table td, .compare-table th { padding: 10px 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <div class="logo"><a href="index.html">VEX<span>E</span>OM</a></div>
+      <div class="nav-tabs">
+        <a href="index.html" class="nav-tab">HOME</a>
+        <a href="platform.html" class="nav-tab active">PLATFORM</a>
+        <a href="intelligence.html" class="nav-tab">INTELLIGENCE</a>
+        <a href="assessment.html" class="nav-tab">FREE TEST</a>
+        <a href="access.html" class="nav-tab">ACCESS</a>
+        <a href="command.html" class="nav-tab command-tab">COMMAND</a>
+      </div>
+      <a href="access.html" class="nav-cta">REQUEST ACCESS</a>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">HOME</a>
+    <a href="platform.html">PLATFORM</a>
+    <a href="intelligence.html">INTELLIGENCE</a>
+    <a href="assessment.html">FREE TEST</a>
+    <a href="access.html">ACCESS</a>
+    <a href="command.html" class="gold">COMMAND</a>
+    <a href="access.html" class="cta-mobile">REQUEST ACCESS</a>
+  </div>
+
+  <div class="platform-wrap">
+
+    <div class="plat-header">
+      <div class="plat-eyebrow">VEXEOM — PLATFORM BRIEF</div>
+      <h1>Vexeom is infrastructure.<br/>Not a product.</h1>
+      <p class="plat-header-sub">Every layer of aviation has been systematically digitised and made intelligent — except one. The human performance layer. Vexeom is the operating system for that layer. It does not advise. It does not counsel. It identifies, maps, and delivers scored intelligence on the risk factors that determine whether a pilot career survives contact with the industry.</p>
+    </div>
+
+    <div class="plat-block">
+      <div class="plat-block-label">THE CATEGORY</div>
+      <h2>The gap nobody filled.</h2>
+      <p>Palantir built the data infrastructure for governments and defence organisations. Anduril built the autonomous systems layer for the battlefield. Shield AI built the cognitive layer for unmanned aircraft. Each of these companies identified a layer of human activity that had never been made systematically intelligent — and built the infrastructure to fill that gap.</p>
+      <p>Aviation has done the same at every layer — aircraft systems, air traffic management, flight operations, safety management, and psychometric selection. Every layer except one: <strong>the ongoing human performance sustainability of the pilots and operators on whom every outcome depends.</strong></p>
+      <p>Psychometric screening exists — but only at selection. It fires once, at the gate, and then never again. What happens between entry and operation — the financial pressure, the fatigue accumulation, the motivation erosion, the cognitive load trajectory — is invisible. Vexeom makes it visible.</p>
+      <table class="compare-table">
+        <tr><th>AVIATION LAYER</th><th>INTELLIGENCE INFRASTRUCTURE</th><th>STATUS</th></tr>
+        <tr><td>Aircraft Systems</td><td>ACARS, FOQA, predictive maintenance AI</td><td class="status-solved">SOLVED</td></tr>
+        <tr><td>Air Traffic Management</td><td>SESAR, NextGen, AI conflict detection</td><td class="status-solved">SOLVED</td></tr>
+        <tr><td>Flight Operations</td><td>EFB platforms, route optimisation, fuel analytics</td><td class="status-solved">SOLVED</td></tr>
+        <tr><td>Safety Management</td><td>SMS platforms, ASRS, predictive risk models</td><td class="status-solved">SOLVED</td></tr>
+        <tr><td>Psychometric Screening</td><td>AI-assisted selection tools — 82% of airlines</td><td class="status-solved">SOLVED AT SELECTION</td></tr>
+        <tr><td><strong>Human Performance Sustainability</strong></td><td>Fatigue, cognitive load, financial resilience, career chain mapping</td><td class="status-gap">THE GAP — VEXEOM</td></tr>
+      </table>
+    </div>
+
+    <div class="plat-block plat-block-alt">
+      <div class="plat-block-label">HOW IT WORKS</div>
+      <h2>Pattern detection. Chain mapping. Scored intelligence.</h2>
+      <p>The individual completes a structured assessment targeting 10 risk indicators. These are not wellness prompts — they are calibrated to aviation-specific failure patterns. Each response is a data point in a scored model that weights indicators against their known compounding relationships.</p>
+      <p>Financial pressure amplifies fatigue risk. Fatigue amplifies cognitive load. Cognitive load suppresses training performance. These are not hypotheses — they are documented sequences in the Vexeom failure chain library, derived from the most common non-skill-related career departure patterns in commercial aviation training.</p>
+      <p>The scored profile is mapped against this library. The system identifies which chains are active, how far they have progressed, and where the individual sits within them. A 15–25 page intelligence report is generated instantly — containing the full indicator profile, active chain identification, a 12-month career outlook, and prioritised recommendations ranked by urgency.</p>
+      <p><strong>Every assessment adds to the Vexeom dataset.</strong> Over time this produces prevalence rates, intervention effectiveness data, and predictive models that no competitor can replicate without equivalent time and volume. The dataset is the moat. It compounds with every assessment.</p>
+    </div>
+
+    <div class="plat-block">
+      <div class="plat-block-label">CLASSIFICATION</div>
+      <h2>What Vexeom is. What Vexeom is not.</h2>
+      <div class="plat-is-not">
+        <div class="plat-is-col">
+          <div class="plat-is-col-title is">VEXEOM IS</div>
+          <div class="plat-is-item">Intelligence infrastructure for human performance in aviation</div>
+          <div class="plat-is-item">A scored, data-driven risk assessment framework</div>
+          <div class="plat-is-item">A longitudinal tracking system that compounds in value over time</div>
+          <div class="plat-is-item">An enterprise intelligence layer for flight schools, airlines, and defence operators</div>
+          <div class="plat-is-item">The only platform that maps causal failure chains at the individual career level</div>
+        </div>
+        <div class="plat-is-col">
+          <div class="plat-is-col-title not">VEXEOM IS NOT</div>
+          <div class="plat-is-item">Medical advice or a clinical assessment</div>
+          <div class="plat-is-item">A wellness app or motivational tool</div>
+          <div class="plat-is-item">A regulatory assessment or aeromedical substitute</div>
+          <div class="plat-is-item">Affiliated with the CAA, FAA, EASA, or any aviation authority</div>
+          <div class="plat-is-item">A replacement for professional psychological or financial counsel</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="plat-cta">
+      <div>
+        <h3>See the full intelligence framework.</h3>
+        <p>10 indicators, failure chain library, and the scoring architecture behind every report.</p>
+      </div>
+      <a href="intelligence.html" class="btn-primary">VIEW INTELLIGENCE FRAMEWORK</a>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-top">
+      <div class="footer-col">
+        <div class="footer-brand-name">VEX<span>E</span>OM</div>
+        <div class="footer-brand-desc">Intelligence infrastructure for the human layer of aviation. The only platform that maps, scores, and tracks career risk before it becomes career failure.</div>
+        <a href="mailto:info@vexeom.com" class="footer-link">info@vexeom.com</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Platform</div>
+        <a href="platform.html" class="footer-link">What Vexeom Is</a>
+        <a href="intelligence.html" class="footer-link">Intelligence Framework</a>
+        <a href="assessment.html" class="footer-link">Free Snapshot Test</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Access</div>
+        <a href="access.html" class="footer-link">Altitude — £99/mo</a>
+        <a href="access.html" class="footer-link">Vantage — £299/mo</a>
+        <a href="access.html" class="footer-link">Citadel — £1,750/mo</a>
+        <a href="command.html" class="footer-link gold-link">Command™ — White Label</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Legal</div>
+        <a href="terms.html" class="footer-link">Terms &amp; Conditions</a>
+        <a href="mailto:info@vexeom.com" class="footer-link">Privacy Requests</a>
+        <a href="mailto:info@vexeom.com" class="footer-link">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-left">© 2025 VEXEOM — AVIATION CAREER INTELLIGENCE — ENGLAND &amp; WALES</div>
+      <div class="footer-bottom-right">
+        <a href="terms.html">Terms</a>
+        <a href="mailto:info@vexeom.com">Contact</a>
+        <a href="command.html">Command</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>function toggleMenu(){var m=document.getElementById("mobileMenu");var h=document.querySelector(".hamburger");m.classList.toggle("open");h.classList.toggle("open");}</script>
+</body>
+</html>
+ENDOFFILE
+
+cat >> /Users/deniz/atlas-aerospace-intelligence/website/css/styles.css << 'EOF'
+
+/* ── COLOUR CONSOLIDATION — FINAL OVERRIDE ── */
+:root {
+  --bg: #03111F;
+  --bg-surface: #040E1A;
+  --accent: #1B4FD8;
+  --accent-bright: #2D6AFF;
+  --border: #0D1F35;
+  --border-light: #162840;
+  --muted: #6B7A8D;
+  --text: #E8EDF2;
+  --gold: #C8A96E;
+  --gold-dim: #9B7D4A;
+}
+
+body { background: #03111F; }
+
+.btn-primary {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: #fff;
+  background: #1B4FD8;
+  padding: 14px 32px;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.2s;
+  border: none;
+  cursor: pointer;
+}
+.btn-primary:hover { background: #2D6AFF; text-decoration: none; color: #fff; }
+
+.btn-ghost {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--text);
+  border: 1px solid var(--border-light);
+  padding: 14px 32px;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s;
+}
+.btn-ghost:hover { border-color: #1B4FD8; color: #1B4FD8; text-decoration: none; }
+
+.btn-text-link {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: #1B4FD8;
+  text-decoration: none;
+}
+.btn-text-link:hover { text-decoration: underline; }
+
+.section-tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+/* kill any remaining cyan */
+.hero-tag-dot { background: #1B4FD8 !important; }
+EOF
+
+cd /Users/deniz/atlas-aerospace-intelligence
+git add -A
+git commit -m "rebuild homepage, platform page, colour consolidation, mobile fixes"
+git push https://dznizd1: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@github.com/dznizd1/Vexeom.git main
