@@ -3,24 +3,72 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Command™ — Vexeom White Label</title>
+  <title>Command&trade; &mdash; Vexeom White Label</title>
   <meta name="description" content="Vexeom Command is a bespoke white label intelligence engagement for defence contractors, aerospace C-suite, and institutional bodies. By private application only." />
-  <meta name="robots" content="index, follow" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Vexeom" />
-  <meta property="og:title" content="Vexeom Command™ — White Label Intelligence Engagement" />
-  <meta property="og:description" content="Not a product. An engagement. Defence. Enterprise. C-Suite. Apply privately." />
-  <meta property="og:url" content="https://vexeom.com" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Vexeom Command™ — White Label Intelligence Engagement" />
-  <meta name="twitter:description" content="Not a product. An engagement. Defence. Enterprise. C-Suite. Apply privately." />
-  <link rel="canonical" href="https://vexeom.com" />
   <link rel="stylesheet" href="css/styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    body{background:#020C18}
+    .cmd-wrap{max-width:960px;margin:0 auto;padding:120px 40px 120px;position:relative;z-index:1}
+    .cmd-header{border:1px solid rgba(200,169,110,.2);padding:56px;margin-bottom:2px;position:relative;overflow:hidden}
+    .cmd-header::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+    .cmd-header::after{content:"COMMAND";position:absolute;right:40px;top:36px;font-family:var(--mono);font-size:72px;font-weight:700;color:rgba(200,169,110,.04);letter-spacing:.1em;pointer-events:none}
+    .cmd-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--gold);margin-bottom:24px}
+    .cmd-header h1{font-size:clamp(28px,4vw,48px);font-weight:600;letter-spacing:-.02em;line-height:1.1;margin-bottom:20px}
+    .cmd-header h1 em{font-style:normal;color:var(--gold)}
+    .cmd-header-sub{font-size:16px;color:var(--muted);line-height:1.8;max-width:580px;margin-bottom:36px}
+    .cmd-meta{display:flex;gap:0;border:1px solid rgba(200,169,110,.15);flex-wrap:wrap}
+    .cmd-meta-cell{padding:14px 24px;border-right:1px solid rgba(200,169,110,.15);flex:1;min-width:120px}
+    .cmd-meta-cell:last-child{border-right:none}
+    .cmd-meta-label{font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:#4A5A6A;text-transform:uppercase;margin-bottom:4px}
+    .cmd-meta-value{font-family:var(--mono);font-size:12px;color:var(--gold)}
+    .cmd-block{border:1px solid rgba(200,169,110,.12);border-top:none;padding:48px 56px}
+    .cmd-block-alt{background:rgba(200,169,110,.02)}
+    .cmd-block-label{font-family:var(--mono);font-size:10px;letter-spacing:.25em;color:var(--gold);margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid rgba(200,169,110,.12)}
+    .cmd-block h2{font-size:22px;font-weight:600;letter-spacing:-.01em;margin-bottom:16px;color:var(--text)}
+    .cmd-block p{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:14px}
+    .cmd-block p strong{color:#9BA8B5;font-weight:500}
+    .cmd-block p:last-child{margin-bottom:0}
+    .cmd-who-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(200,169,110,.1);margin-top:24px}
+    .cmd-who-card{background:#020C18;padding:28px 32px}
+    .cmd-who-tag{font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:var(--gold);margin-bottom:10px}
+    .cmd-who-title{font-size:16px;font-weight:600;color:var(--text);margin-bottom:10px}
+    .cmd-who-body{font-size:14px;color:var(--muted);line-height:1.7}
+    .cmd-delivers{margin-top:24px}
+    .cmd-deliver-row{display:flex;gap:28px;padding:24px 0;border-bottom:1px solid rgba(200,169,110,.1);align-items:flex-start}
+    .cmd-deliver-row:last-child{border-bottom:none}
+    .cmd-deliver-num{font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:.1em;flex-shrink:0;width:24px;padding-top:2px}
+    .cmd-deliver-title{font-size:15px;font-weight:600;color:var(--text);margin-bottom:6px}
+    .cmd-deliver-body{font-size:14px;color:var(--muted);line-height:1.7}
+    .cmd-process{margin-top:24px}
+    .cmd-step{display:flex;gap:24px;padding:20px 0;border-bottom:1px solid rgba(200,169,110,.1);align-items:flex-start}
+    .cmd-step:last-child{border-bottom:none}
+    .cmd-step-num{font-family:var(--mono);font-size:10px;color:var(--gold);letter-spacing:.15em;flex-shrink:0;width:20px;padding-top:2px}
+    .cmd-step-title{font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px}
+    .cmd-step-body{font-size:13px;color:var(--muted);line-height:1.6}
+    .cmd-notice{background:rgba(200,169,110,.04);border:1px solid rgba(200,169,110,.2);border-left:2px solid var(--gold);padding:20px 24px;margin:24px 0}
+    .cmd-notice p{font-family:var(--mono);font-size:12px;color:#9B7D4A;line-height:1.6;margin:0}
+    .cmd-cta-block{border:1px solid rgba(200,169,110,.2);border-top:none;padding:56px;text-align:center;position:relative;overflow:hidden}
+    .cmd-cta-block::after{content:"";position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+    .cmd-cta-block h2{font-size:28px;font-weight:600;letter-spacing:-.02em;margin-bottom:12px}
+    .cmd-cta-block p{font-size:14px;color:var(--muted);margin-bottom:36px;font-family:var(--mono);line-height:1.6;max-width:480px;margin-left:auto;margin-right:auto}
+    .cmd-email-btn{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:#000;background:var(--gold);padding:16px 48px;text-decoration:none;transition:opacity .2s;margin-bottom:16px}
+    .cmd-email-btn:hover{opacity:.85;text-decoration:none}
+    .cmd-cta-note{font-family:var(--mono);font-size:11px;color:#4A5A6A}
+    @media(max-width:768px){
+      .cmd-wrap{padding:90px 20px 80px}
+      .cmd-header{padding:32px 24px}
+      .cmd-header::after{display:none}
+      .cmd-block{padding:28px 24px}
+      .cmd-who-grid{grid-template-columns:1fr}
+      .cmd-cta-block{padding:40px 24px}
+      .cmd-meta{flex-direction:column}
+      .cmd-meta-cell{border-right:none;border-bottom:1px solid rgba(200,169,110,.15)}
+    }
+  </style>
 </head>
-<body class="command-page">
-
-  <nav class="command-nav">
+<body>
+  <nav>
     <div class="nav-inner">
       <div class="logo"><a href="index.html">VEX<span>E</span>OM</a></div>
       <div class="nav-tabs">
@@ -31,124 +79,150 @@
         <a href="access.html" class="nav-tab">ACCESS</a>
         <a href="command.html" class="nav-tab command-tab active">COMMAND</a>
       </div>
-      <a href="command-apply.html" class="nav-cta gold-cta">APPLY PRIVATELY</a>
+      <a href="mailto:info@vexeom.com?subject=Command%20Engagement%20Enquiry" class="nav-cta" style="background:var(--gold);color:#000">APPLY PRIVATELY</a>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </nav>
-<div class="mobile-menu" id="mobileMenu">
-  <a href="index.html">HOME</a>
-  <a href="platform.html">PLATFORM</a>
-  <a href="intelligence.html">INTELLIGENCE</a>
-  <a href="assessment.html">FREE TEST</a>
-  <a href="access.html">ACCESS</a>
-  <a href="command.html" class="gold">COMMAND</a>
-  <a href="access.html" class="cta-mobile">REQUEST ACCESS</a>
-</div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">HOME</a>
+    <a href="platform.html">PLATFORM</a>
+    <a href="intelligence.html">INTELLIGENCE</a>
+    <a href="assessment.html">FREE TEST</a>
+    <a href="access.html">ACCESS</a>
+    <a href="command.html" class="gold">COMMAND</a>
+    <a href="mailto:info@vexeom.com?subject=Command%20Engagement%20Enquiry" class="cta-mobile">APPLY PRIVATELY</a>
+  </div>
 
-  <section class="command-hero">
-    <div class="inner">
-      <div class="command-hero-tag">
-        <div class="command-hex">⬡</div>
-        <span>VEXEOM COMMAND™ — WHITE LABEL ACCESS ONLY</span>
-      </div>
-      <h1 class="command-h1">Command is not a product<br>you purchase.</h1>
-      <p class="command-sub">It is an intelligence engagement you are invited into. Access is reviewed. Not all applications are accepted. Engagement terms are disclosed privately and only after initial qualification.</p>
-      <div class="command-divider"></div>
-      <div class="command-stats">
-        <div class="command-stat"><span class="command-stat-num">INVITE ONLY</span><span class="command-stat-label">ENGAGE PRIVATELY</span></div>
-        <div class="command-stat"><span class="command-stat-num">BESPOKE</span><span class="command-stat-label">NO STANDARD DELIVERABLE</span></div>
-        <div class="command-stat"><span class="command-stat-num">PRIVATE</span><span class="command-stat-label">TERMS DISCLOSED AFTER QUALIFICATION</span></div>
+  <div class="cmd-wrap">
+
+    <div class="cmd-header">
+      <div class="cmd-eyebrow">VEXEOM COMMAND&trade; &mdash; PRIVATE ENGAGEMENT</div>
+      <h1>Intelligence at<br/><em>organisational scale.</em></h1>
+      <p class="cmd-header-sub">Command is not a subscription. It is a privately scoped intelligence engagement &mdash; built around your organisation's workforce, operational environment, and strategic requirements. No standard deliverable. No public pricing. Every engagement is different.</p>
+      <div class="cmd-meta">
+        <div class="cmd-meta-cell"><div class="cmd-meta-label">Access</div><div class="cmd-meta-value">ENQUIRY ONLY</div></div>
+        <div class="cmd-meta-cell"><div class="cmd-meta-label">Deliverable</div><div class="cmd-meta-value">BESPOKE</div></div>
+        <div class="cmd-meta-cell"><div class="cmd-meta-label">Pricing</div><div class="cmd-meta-value">PRIVATE CONSULTATION</div></div>
+        <div class="cmd-meta-cell"><div class="cmd-meta-label">Terms</div><div class="cmd-meta-value">POST-QUALIFICATION</div></div>
       </div>
     </div>
-  </section>
 
-  <section class="command-section">
-    <div class="inner">
-      <div class="section-tag" style="color:var(--gold)">— WHO COMMAND IS FOR</div>
-      <div class="command-who-grid">
-        <div class="command-who-card">
-          <div class="command-who-title">Defence Contractors</div>
-          <div class="command-who-body">Organisations operating within defence procurement environments where workforce human performance is a mission-critical variable. BAE Systems, Leonardo, Thales, Aselsan, Rolls-Royce Defence. Operators where a single human performance failure carries consequences that extend beyond the individual.</div>
+    <div class="cmd-block">
+      <div class="cmd-block-label">WHO COMMAND IS FOR</div>
+      <div class="cmd-who-grid">
+        <div class="cmd-who-card">
+          <div class="cmd-who-tag">DEFENCE &amp; AEROSPACE</div>
+          <div class="cmd-who-title">Defence Contractors &amp; Primes</div>
+          <div class="cmd-who-body">Organisations within defence procurement where workforce human performance is a mission-critical variable. BAE Systems, Leonardo, Thales, Rolls-Royce Defence. Environments where a single human performance failure carries consequences that extend beyond the individual into operational outcomes.</div>
         </div>
-        <div class="command-who-card">
-          <div class="command-who-title">Aerospace C-Suite</div>
-          <div class="command-who-body">CEOs, COOs, and Chief People Officers at airlines, aerospace firms, and MRO organisations who understand that workforce sustainability is a strategic asset — not an HR function. Executives who want board-level intelligence on the human performance risks inside their organisations before those risks manifest as operational incidents or attrition costs.</div>
+        <div class="cmd-who-card">
+          <div class="cmd-who-tag">AIRLINES &amp; OPERATORS</div>
+          <div class="cmd-who-title">Aerospace C-Suite &amp; Executives</div>
+          <div class="cmd-who-body">CEOs, COOs, and Chief People Officers at airlines and aerospace organisations who understand that workforce sustainability is a strategic asset. Executives who require board-level intelligence on human performance risk before it manifests as operational incidents, regulatory exposure, or attrition cost.</div>
         </div>
-        <div class="command-who-card">
-          <div class="command-who-title">Senior Defence Operators</div>
-          <div class="command-who-body">Workforce capability leads, HR directors, and senior engineers inside defence operator units where the sustainability and cognitive performance of technical personnel is a readiness variable. Organisations where the cost of a performance failure is not a career statistic — it is an operational outcome.</div>
+        <div class="cmd-who-card">
+          <div class="cmd-who-tag">TRAINING ORGANISATIONS</div>
+          <div class="cmd-who-title">Flight Schools &amp; ATO Leadership</div>
+          <div class="cmd-who-body">Approved Training Organisations and flight academies operating at scale where cohort dropout, instructor sustainability, and student performance data represent both a commercial risk and a regulatory obligation. Command provides organisation-wide intelligence that individual memberships cannot.</div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="command-section dark-section">
-    <div class="inner">
-      <div class="section-tag" style="color:var(--gold)">— WHAT COMMAND DELIVERS</div>
-      <div class="command-delivers-grid">
-        <div class="command-deliver-item">
-          <div class="command-deliver-num">01</div>
-          <div class="command-deliver-title">Bespoke Intelligence Scoping</div>
-          <div class="command-deliver-body">No standard deliverable exists at Command level. Every engagement is scoped against the organisation's specific workforce, operational context, data sovereignty requirements, and reporting structure. The intelligence framework is Vexeom's. The application is yours.</div>
-        </div>
-        <div class="command-deliver-item">
-          <div class="command-deliver-num">02</div>
-          <div class="command-deliver-title">AI-Powered Workforce Intelligence</div>
-          <div class="command-deliver-body">Command engagements integrate Vexeom's scoring model with AI-assisted pattern detection across workforce datasets — identifying systemic risk concentrations, predicting attrition trajectories, and flagging compounding failure chains at the organisational level before they manifest as departures, incidents, or capability gaps.</div>
-        </div>
-        <div class="command-deliver-item">
-          <div class="command-deliver-num">03</div>
-          <div class="command-deliver-title">Defence Data Sovereignty Compliance</div>
-          <div class="command-deliver-body">Command engagements are scoped to meet defence data sovereignty and security requirements from the outset. Data handling, storage, access control, and reporting architecture are adapted to the organisation's classification requirements. Legal framework is reviewed and adapted before deployment.</div>
-        </div>
-        <div class="command-deliver-item">
-          <div class="command-deliver-num">04</div>
-          <div class="command-deliver-title">Executive and Board-Level Reporting</div>
-          <div class="command-deliver-body">Intelligence delivered at Command level is formatted for executive and board audiences — aggregated risk profiles, workforce sustainability trends, intervention recommendations with ROI framing, and strategic outlook. Not individual reports. Organisational intelligence.</div>
-        </div>
-        <div class="command-deliver-item">
-          <div class="command-deliver-num">05</div>
-          <div class="command-deliver-title">Dedicated Intelligence Partnership</div>
-          <div class="command-deliver-body">Command is not a platform subscription. It is a partnership. Vexeom works directly with the organisation's internal champions to design, deploy, and iterate the intelligence programme. Quarterly strategy sessions. Direct access. No account management layer between the intelligence and the decision-makers who need it.</div>
-        </div>
-        <div class="command-deliver-item">
-          <div class="command-deliver-num">06</div>
-          <div class="command-deliver-title">Validated Dataset Access</div>
-          <div class="command-deliver-body">Command partners receive access to anonymised aggregate benchmarking from the Vexeom dataset — including prevalence rates across pilot demographics, indicator combinations most reliably predicting dropout, and intervention effectiveness data. The kind of intelligence that requires years of volume to produce and cannot be acquired at any price point below Command.</div>
+        <div class="cmd-who-card">
+          <div class="cmd-who-tag">GOVERNMENT &amp; INSTITUTIONAL</div>
+          <div class="cmd-who-title">Regulatory &amp; Institutional Bodies</div>
+          <div class="cmd-who-body">Government aviation departments, military aviation commands, and institutional bodies requiring population-level human performance intelligence. Workforce readiness, career sustainability trends, and systemic risk indicators &mdash; delivered as anonymised, structured intelligence briefings.</div>
         </div>
       </div>
     </div>
-  </section>
 
-  <section class="command-apply">
-    <div class="inner">
-      <div class="command-apply-inner">
-        <div class="command-apply-left">
-          <div class="section-tag" style="color:var(--gold)">— APPLICATION</div>
-          <h2 class="command-apply-h2">Applications are reviewed.<br>Not all are accepted.</h2>
-          <p class="command-apply-body">Vexeom Command operates with a limited number of active engagements at any time. This is deliberate. Each engagement receives the full attention of the Vexeom intelligence team. We do not scale by compromising depth.</p>
-          <p class="command-apply-body">To apply, send a brief outline of your organisation, your role, and what you are trying to solve to the address below. Initial qualification takes place by private correspondence. No sales process. No demo calls. No pitch decks.</p>
-          <a href="mailto:info@vexeom.com" class="command-apply-btn">info@vexeom.com</a>
-          <div class="command-apply-note">Applications reviewed within 5 business days. We will respond only if there is a potential fit.</div>
+    <div class="cmd-block cmd-block-alt">
+      <div class="cmd-block-label">WHAT COMMAND DELIVERS</div>
+      <div class="cmd-notice">
+        <p>No standard deliverable exists at Command level. The following represents the capability range available. Every engagement is scoped specifically through private consultation.</p>
+      </div>
+      <div class="cmd-delivers">
+        <div class="cmd-deliver-row">
+          <div class="cmd-deliver-num">01</div>
+          <div>
+            <div class="cmd-deliver-title">White Label Intelligence Platform</div>
+            <div class="cmd-deliver-body">The full Vexeom intelligence framework deployed under your organisation's brand. Your workforce completes assessments through a branded interface. Reports are generated, scored, and delivered under your identity. The intelligence is Vexeom's. The presentation is yours.</div>
+          </div>
         </div>
-        <div class="command-apply-right">
-          <div class="command-criteria">
-            <div class="command-criteria-title">QUALIFICATION CRITERIA</div>
-            <div class="command-criteria-item"><span class="criteria-mark">—</span><span>Organisations with 50+ aviation or aerospace personnel</span></div>
-            <div class="command-criteria-item"><span class="criteria-mark">—</span><span>Defence contractors, airlines, aerospace firms, or MRO organisations</span></div>
-            <div class="command-criteria-item"><span class="criteria-mark">—</span><span>Direct decision-making authority at C-suite or senior leadership level</span></div>
-            <div class="command-criteria-item"><span class="criteria-mark">—</span><span>Minimum Contact for further information engagement budget</span></div>
-            <div class="command-criteria-item"><span class="criteria-mark">—</span><span>Operational need for workforce human performance intelligence</span></div>
-            <div class="command-criteria-divider"></div>
-            <div class="command-criteria-item not-criteria"><span class="criteria-mark-no">✕</span><span>Individual pilots or student pilots — see Cadet or Navigator</span></div>
-            <div class="command-criteria-item not-criteria"><span class="criteria-mark-no">✕</span><span>Flight schools under 50 students — see Academy</span></div>
-            <div class="command-criteria-item not-criteria"><span class="criteria-mark-no">✕</span><span>Speculative or exploratory enquiries without budget authority</span></div>
+        <div class="cmd-deliver-row">
+          <div class="cmd-deliver-num">02</div>
+          <div>
+            <div class="cmd-deliver-title">Cohort &amp; Population Intelligence</div>
+            <div class="cmd-deliver-body">Aggregated, anonymised risk intelligence across your workforce. Cohort-level scoring, failure chain prevalence, systemic risk indicators, and trend analysis. Delivered as structured intelligence briefings suitable for board reporting and regulatory submissions.</div>
+          </div>
+        </div>
+        <div class="cmd-deliver-row">
+          <div class="cmd-deliver-num">03</div>
+          <div>
+            <div class="cmd-deliver-title">Bespoke Indicator Development</div>
+            <div class="cmd-deliver-body">New indicators developed specifically for your operational context &mdash; beyond the standard 10. Defence-specific performance variables, type-rating readiness indicators, or sector-specific career sustainability metrics. Built in collaboration, deployed exclusively to your engagement.</div>
+          </div>
+        </div>
+        <div class="cmd-deliver-row">
+          <div class="cmd-deliver-num">04</div>
+          <div>
+            <div class="cmd-deliver-title">Data Sovereignty &amp; Private Deployment</div>
+            <div class="cmd-deliver-body">For organisations with data classification requirements or sovereign data obligations, Command engagements can be structured to meet those constraints. Assessment data, report outputs, and population intelligence remain within agreed jurisdictional and infrastructure boundaries.</div>
+          </div>
+        </div>
+        <div class="cmd-deliver-row">
+          <div class="cmd-deliver-num">05</div>
+          <div>
+            <div class="cmd-deliver-title">Strategic Intelligence Briefings</div>
+            <div class="cmd-deliver-body">Periodic executive-level briefings on workforce human performance trends &mdash; formatted for C-suite and board consumption. Strategic intelligence on the human layer of your organisation, mapped against industry benchmarks from the Vexeom population dataset.</div>
           </div>
         </div>
       </div>
     </div>
-  </section>
 
-    <footer>
+    <div class="cmd-block">
+      <div class="cmd-block-label">ENGAGEMENT PROCESS</div>
+      <p>Command engagements follow a structured qualification and scoping process. There is no self-serve pathway. Every engagement begins with a private conversation.</p>
+      <div class="cmd-process">
+        <div class="cmd-step">
+          <div class="cmd-step-num">01</div>
+          <div><div class="cmd-step-title">Initial Enquiry</div><div class="cmd-step-body">Submit your organisation name, role, and a brief outline of your requirements to info@vexeom.com. All enquiries are reviewed. Not all proceed to consultation.</div></div>
+        </div>
+        <div class="cmd-step">
+          <div class="cmd-step-num">02</div>
+          <div><div class="cmd-step-title">Qualification Review</div><div class="cmd-step-body">Vexeom reviews your enquiry against operational fit and capacity. If your organisation meets the Command criteria, you will be contacted to arrange a private consultation within 5 business days.</div></div>
+        </div>
+        <div class="cmd-step">
+          <div class="cmd-step-num">03</div>
+          <div><div class="cmd-step-title">Private Consultation</div><div class="cmd-step-body">A confidential scoping call to understand your organisation's requirements, workforce profile, data requirements, and strategic objectives. Pricing, deliverables, and engagement structure are discussed here &mdash; not before.</div></div>
+        </div>
+        <div class="cmd-step">
+          <div class="cmd-step-num">04</div>
+          <div><div class="cmd-step-title">Engagement Proposal</div><div class="cmd-step-body">A bespoke engagement proposal is issued. This document outlines scope, deliverables, timeline, commercial terms, and data handling. It is specific to your organisation.</div></div>
+        </div>
+        <div class="cmd-step">
+          <div class="cmd-step-num">05</div>
+          <div><div class="cmd-step-title">Deployment</div><div class="cmd-step-body">Upon agreement, the engagement is activated. Vexeom assigns a dedicated engagement contact for the duration. Reporting cadence and delivery format are agreed in the proposal stage.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cmd-block cmd-block-alt">
+      <div class="cmd-block-label">BEFORE YOU ENQUIRE</div>
+      <p>Command is not appropriate for individual pilots, students, or small operations. Those use cases are served by Altitude, Vantage, and Citadel.</p>
+      <p>Command is for <strong>organisations</strong> where human performance intelligence at population scale is a strategic or operational requirement. If uncertain whether Command is the right fit, begin with <a href="access.html" style="color:var(--gold);text-decoration:none">Citadel</a> and contact us to discuss scaling.</p>
+      <div class="cmd-notice">
+        <p>All enquiries are subject to review. Vexeom reserves the right to decline any engagement without explanation. Submission of an enquiry is not an offer or commitment from either party. Commercial terms are disclosed only after qualification and only in writing.</p>
+      </div>
+    </div>
+
+    <div class="cmd-cta-block">
+      <h2>Begin your enquiry.</h2>
+      <p>Include your organisation, role, and a brief description of your requirements. All correspondence is treated as strictly confidential.</p>
+      <a href="mailto:info@vexeom.com?subject=Command%20Engagement%20Enquiry" class="cmd-email-btn">SUBMIT PRIVATE ENQUIRY</a>
+      <div class="cmd-cta-note">Reviewed within 5 business days. Not all enquiries proceed to consultation.</div>
+    </div>
+
+  </div>
+
+  <footer>
     <div class="footer-top">
       <div class="footer-col">
         <div class="footer-brand-name">VEX<span>E</span>OM</div>
@@ -163,10 +237,10 @@
       </div>
       <div class="footer-col">
         <div class="footer-col-title">Access</div>
-        <a href="access.html" class="footer-link">Altitude — £99/mo</a>
-        <a href="access.html" class="footer-link">Vantage — £299/mo</a>
-        <a href="access.html" class="footer-link">Citadel — £1,750/mo</a>
-        <a href="command.html" class="footer-link gold-link">Command™ — White Label</a>
+        <a href="access.html" class="footer-link">Altitude &mdash; &pound;99/mo</a>
+        <a href="access.html" class="footer-link">Vantage &mdash; &pound;299/mo</a>
+        <a href="access.html" class="footer-link">Citadel &mdash; &pound;1,750/mo</a>
+        <a href="command.html" class="footer-link gold-link">Command&trade; &mdash; White Label</a>
       </div>
       <div class="footer-col">
         <div class="footer-col-title">Legal</div>
@@ -176,7 +250,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="footer-bottom-left">© 2025 VEXEOM — AVIATION CAREER INTELLIGENCE — ENGLAND &amp; WALES</div>
+      <div class="footer-bottom-left">&copy; 2025 VEXEOM &mdash; AVIATION CAREER INTELLIGENCE &mdash; ENGLAND &amp; WALES</div>
       <div class="footer-bottom-right">
         <a href="terms.html">Terms</a>
         <a href="mailto:info@vexeom.com">Contact</a>
@@ -184,6 +258,6 @@
       </div>
     </div>
   </footer>
-<script>function toggleMenu(){var m=document.getElementById("mobileMenu");var h=document.querySelector(".hamburger");m.classList.toggle("open");h.classList.toggle("open");}</script>
+  <script>function toggleMenu(){var m=document.getElementById("mobileMenu");var h=document.querySelector(".hamburger");m.classList.toggle("open");h.classList.toggle("open");}</script>
 </body>
 </html>
