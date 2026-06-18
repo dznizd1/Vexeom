@@ -3,73 +3,59 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Platform — Vexeom</title>
-  <meta name="description" content="Vexeom is intelligence infrastructure for aviation human performance. Not a wellness app. Not a medical device. The operating layer aviation has never had." />
-  <meta name="robots" content="index, follow" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Vexeom" />
-  <meta property="og:title" content="Vexeom — The Platform Brief" />
-  <meta property="og:description" content="Every layer of aviation has been made intelligent except one. Vexeom fills the gap." />
+  <title>The Platform &mdash; Vexeom</title>
+  <meta name="description" content="Vexeom is intelligence infrastructure for aviation human performance. The operating layer aviation has never had." />
+  <meta property="og:title" content="The Platform &mdash; Vexeom" />
+  <meta property="og:description" content="Vexeom is intelligence infrastructure for aviation human performance. The operating layer aviation has never had." />
   <meta property="og:url" content="https://vexeom.com" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Vexeom — The Platform Brief" />
-  <meta name="twitter:description" content="Every layer of aviation has been made intelligent except one. Vexeom fills the gap." />
   <link rel="canonical" href="https://vexeom.com" />
   <link rel="stylesheet" href="css/styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
-    .platform-wrap { max-width: 900px; margin: 0 auto; padding: 120px 40px 120px; position: relative; z-index: 1; }
-    .plat-header { border: 1px solid var(--border); padding: 56px; margin-bottom: 2px; position: relative; overflow: hidden; }
-    .plat-header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), transparent); }
-    .plat-eyebrow { font-family: var(--mono); font-size: 10px; letter-spacing: 0.25em; color: var(--accent); margin-bottom: 20px; }
-    .plat-header h1 { font-size: clamp(28px,4vw,48px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 24px; }
-    .plat-header-sub { font-size: 16px; color: var(--muted); line-height: 1.8; max-width: 640px; }
-    .plat-block { border: 1px solid var(--border); border-top: none; padding: 48px 56px; }
-    .plat-block-alt { background: var(--bg-surface); }
-    .plat-block-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; color: var(--accent); margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
-    .plat-block h2 { font-size: 22px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 20px; color: var(--text); }
-    .plat-block p { font-size: 15px; color: var(--muted); line-height: 1.85; margin-bottom: 16px; }
-    .plat-block p strong { color: var(--text); font-weight: 500; }
-    .plat-block p:last-child { margin-bottom: 0; }
-    .compare-table { width: 100%; border-collapse: collapse; margin-top: 24px; }
-    .compare-table th { font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; color: var(--muted); text-align: left; padding: 10px 16px; border-bottom: 1px solid var(--border); }
-    .compare-table td { font-size: 13px; color: var(--muted); padding: 14px 16px; border-bottom: 1px solid var(--border); line-height: 1.5; vertical-align: top; }
-    .compare-table tr:last-child td { border-bottom: none; }
-    .compare-table td:first-child { color: var(--text); font-weight: 500; font-size: 14px; white-space: nowrap; }
-    .status-solved { font-family: var(--mono); font-size: 10px; color: #0A7C4B; letter-spacing: 0.1em; }
-    .status-gap { font-family: var(--mono); font-size: 10px; color: #CC2936; letter-spacing: 0.1em; font-weight: 500; }
-    .plat-is-not { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); margin-top: 24px; }
-    .plat-is-col { background: var(--bg-surface); padding: 28px 32px; }
-    .plat-is-col-title { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
-    .plat-is-col-title.is { color: var(--accent); }
-    .plat-is-col-title.not { color: #CC2936; }
-    .plat-is-item { font-size: 13px; color: var(--muted); padding: 8px 0; border-bottom: 1px solid var(--border); line-height: 1.5; }
-    .plat-is-item:last-child { border-bottom: none; }
-    .plat-cta { border: 1px solid var(--border); border-top: none; padding: 40px 56px; display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; background: rgba(27,79,216,0.04); }
-    .plat-cta h3 { font-size: 18px; font-weight: 600; margin-bottom: 6px; }
-    .plat-cta p { font-size: 13px; color: var(--muted); font-family: var(--mono); margin: 0; }
-    @media(max-width:768px) {
-      .platform-wrap { padding: 90px 20px 80px; }
-      .plat-header { padding: 32px 24px; }
-      .plat-block { padding: 32px 24px; }
-      .plat-is-not { grid-template-columns: 1fr; }
-      .plat-cta { padding: 28px 24px; flex-direction: column; align-items: flex-start; }
-      .compare-table td, .compare-table th { padding: 10px 12px; }
-    }
-  </style>
+.plat-wrap{max-width:900px;margin:0 auto;padding:120px 40px 120px;position:relative;z-index:1}
+.plat-header{border:1px solid var(--border);padding:56px;margin-bottom:2px;position:relative;overflow:hidden}
+.plat-header::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent)}
+.plat-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.25em;color:var(--accent);margin-bottom:20px}
+.plat-header h1{font-size:clamp(28px,4vw,48px);font-weight:600;letter-spacing:-.02em;line-height:1.1;margin-bottom:24px}
+.plat-header p{font-size:15px;color:var(--muted);line-height:1.8;max-width:640px}
+.plat-block{border:1px solid var(--border);border-top:none;padding:48px 56px}
+.plat-block-alt{background:var(--bg-surface)}
+.plat-label{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--accent);margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.plat-block h2{font-size:22px;font-weight:600;letter-spacing:-.01em;margin-bottom:20px}
+.plat-block p{font-size:15px;color:var(--muted);line-height:1.85;margin-bottom:16px}
+.plat-block p strong{color:var(--text);font-weight:500}
+.plat-block p:last-child{margin-bottom:0}
+.compare-table{width:100%;border-collapse:collapse;margin-top:24px}
+.compare-table th{font-family:var(--mono);font-size:10px;letter-spacing:.15em;color:#4A6A8A;text-align:left;padding:10px 16px;border-bottom:1px solid var(--border)}
+.compare-table td{font-size:13px;color:var(--muted);padding:14px 16px;border-bottom:1px solid var(--border);line-height:1.5;vertical-align:top}
+.compare-table tr:last-child td{border-bottom:none}
+.compare-table td:first-child{color:var(--text);font-weight:500;font-size:14px}
+.status-solved{color:#00A86B!important;font-family:var(--mono);font-size:10px;letter-spacing:.1em}
+.status-gap{color:#CC2936!important;font-family:var(--mono);font-size:10px;letter-spacing:.1em;font-weight:600}
+.is-not{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);margin-top:24px}
+.is-col{background:var(--bg-surface);padding:28px 32px}
+.is-col-title{font-family:var(--mono);font-size:10px;letter-spacing:.2em;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.is-col-title.is{color:var(--accent)}
+.is-col-title.not{color:#CC2936}
+.is-item{font-size:13px;color:var(--muted);padding:8px 0;border-bottom:1px solid var(--border);line-height:1.5}
+.is-item:last-child{border-bottom:none}
+.plat-cta{border:1px solid var(--border);border-top:none;padding:40px 56px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;background:rgba(27,79,216,.04)}
+.plat-cta h3{font-size:18px;font-weight:600;margin-bottom:6px}
+.plat-cta p{font-size:13px;color:var(--muted);font-family:var(--mono);margin:0}
+@media(max-width:768px){.plat-wrap{padding:90px 20px 80px}.plat-header,.plat-block{padding:28px 24px}.is-not{grid-template-columns:1fr}.plat-cta{padding:24px;flex-direction:column;align-items:flex-start}}
+</style>
 </head>
 <body>
-
   <nav>
     <div class="nav-inner">
       <div class="logo"><a href="index.html">VEX<span>E</span>OM</a></div>
       <div class="nav-tabs">
-        <a href="index.html" class="nav-tab">HOME</a>
+        <a href="index.html" class="nav-tab ">HOME</a>
         <a href="platform.html" class="nav-tab active">PLATFORM</a>
-        <a href="intelligence.html" class="nav-tab">INTELLIGENCE</a>
-        <a href="assessment.html" class="nav-tab">FREE TEST</a>
-        <a href="access.html" class="nav-tab">ACCESS</a>
-        <a href="command.html" class="nav-tab command-tab">COMMAND</a>
+        <a href="intelligence.html" class="nav-tab ">INTELLIGENCE</a>
+        <a href="assessment.html" class="nav-tab ">FREE TEST</a>
+        <a href="access.html" class="nav-tab ">ACCESS</a>
+        <a href="command.html" class="nav-tab command-tab ">COMMAND</a>
       </div>
       <a href="access.html" class="nav-cta">REQUEST ACCESS</a>
       <button class="hamburger" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -84,74 +70,49 @@
     <a href="command.html" class="gold">COMMAND</a>
     <a href="access.html" class="cta-mobile">REQUEST ACCESS</a>
   </div>
-
-  <div class="platform-wrap">
-
+  <div class="plat-wrap">
     <div class="plat-header">
-      <div class="plat-eyebrow">VEXEOM — PLATFORM BRIEF</div>
+      <div class="plat-eyebrow">VEXEOM &mdash; PLATFORM BRIEF</div>
       <h1>Vexeom is infrastructure.<br/>Not a product.</h1>
-      <p class="plat-header-sub">Every layer of aviation has been systematically digitised and made intelligent — except one. The human performance layer. Vexeom is the operating system for that layer. It does not advise. It does not counsel. It identifies, maps, and delivers scored intelligence on the risk factors that determine whether a pilot career survives contact with the industry.</p>
+      <p>Every layer of aviation has been systematically digitised and made intelligent &mdash; except one. The human performance layer. Vexeom is the operating system for that layer. It does not advise. It does not counsel. It identifies, maps, and delivers scored intelligence on the risk factors that determine whether a pilot career survives contact with the industry.</p>
     </div>
-
     <div class="plat-block">
-      <div class="plat-block-label">THE CATEGORY</div>
+      <div class="plat-label">THE CATEGORY</div>
       <h2>The gap nobody filled.</h2>
-      <p>Palantir built the data infrastructure for governments and defence organisations. Anduril built the autonomous systems layer for the battlefield. Shield AI built the cognitive layer for unmanned aircraft. Each of these companies identified a layer of human activity that had never been made systematically intelligent — and built the infrastructure to fill that gap.</p>
-      <p>Aviation has done the same at every layer — aircraft systems, air traffic management, flight operations, safety management, and psychometric selection. Every layer except one: <strong>the ongoing human performance sustainability of the pilots and operators on whom every outcome depends.</strong></p>
-      <p>Psychometric screening exists — but only at selection. It fires once, at the gate, and then never again. What happens between entry and operation — the financial pressure, the fatigue accumulation, the motivation erosion, the cognitive load trajectory — is invisible. Vexeom makes it visible.</p>
+      <p>Palantir built the data infrastructure for governments and defence organisations. Anduril built the autonomous systems layer for the battlefield. Shield AI built the cognitive layer for unmanned aircraft. Each identified a layer of human activity that had never been made systematically intelligent &mdash; and built the infrastructure to fill that gap.</p>
+      <p>Aviation has done the same at every layer &mdash; aircraft systems, air traffic management, flight operations, safety management, and psychometric selection. Every layer except one: <strong>the ongoing human performance sustainability of the pilots and operators on whom every outcome depends.</strong></p>
+      <p>Psychometric screening exists &mdash; but only at selection. It fires once, at the gate, and then never again. What happens between entry and operation &mdash; the financial pressure, the fatigue accumulation, the motivation erosion, the cognitive load trajectory &mdash; is invisible. Vexeom makes it visible.</p>
       <table class="compare-table">
         <tr><th>AVIATION LAYER</th><th>INTELLIGENCE INFRASTRUCTURE</th><th>STATUS</th></tr>
         <tr><td>Aircraft Systems</td><td>ACARS, FOQA, predictive maintenance AI</td><td class="status-solved">SOLVED</td></tr>
         <tr><td>Air Traffic Management</td><td>SESAR, NextGen, AI conflict detection</td><td class="status-solved">SOLVED</td></tr>
         <tr><td>Flight Operations</td><td>EFB platforms, route optimisation, fuel analytics</td><td class="status-solved">SOLVED</td></tr>
         <tr><td>Safety Management</td><td>SMS platforms, ASRS, predictive risk models</td><td class="status-solved">SOLVED</td></tr>
-        <tr><td>Psychometric Screening</td><td>AI-assisted selection tools — 82% of airlines</td><td class="status-solved">SOLVED AT SELECTION</td></tr>
-        <tr><td><strong>Human Performance Sustainability</strong></td><td>Fatigue, cognitive load, financial resilience, career chain mapping</td><td class="status-gap">THE GAP — VEXEOM</td></tr>
+        <tr><td>Psychometric Screening</td><td>AI-assisted selection tools &mdash; 82% of airlines</td><td class="status-solved">SOLVED AT SELECTION</td></tr>
+        <tr><td><strong>Human Performance Sustainability</strong></td><td>Fatigue, cognitive load, financial resilience, career chain mapping</td><td class="status-gap">THE GAP &mdash; VEXEOM</td></tr>
       </table>
     </div>
-
     <div class="plat-block plat-block-alt">
-      <div class="plat-block-label">HOW IT WORKS</div>
+      <div class="plat-label">HOW IT WORKS</div>
       <h2>Pattern detection. Chain mapping. Scored intelligence.</h2>
-      <p>The individual completes a structured assessment targeting 10 risk indicators. These are not wellness prompts — they are calibrated to aviation-specific failure patterns. Each response is a data point in a scored model that weights indicators against their known compounding relationships.</p>
-      <p>Financial pressure amplifies fatigue risk. Fatigue amplifies cognitive load. Cognitive load suppresses training performance. These are not hypotheses — they are documented sequences in the Vexeom failure chain library, derived from the most common non-skill-related career departure patterns in commercial aviation training.</p>
-      <p>The scored profile is mapped against this library. The system identifies which chains are active, how far they have progressed, and where the individual sits within them. A 15–25 page intelligence report is generated instantly — containing the full indicator profile, active chain identification, a 12-month career outlook, and prioritised recommendations ranked by urgency.</p>
-      <p><strong>Every assessment adds to the Vexeom dataset.</strong> Over time this produces prevalence rates, intervention effectiveness data, and predictive models that no competitor can replicate without equivalent time and volume. The dataset is the moat. It compounds with every assessment.</p>
+      <p>The individual completes a structured assessment targeting 10 risk indicators. These are not wellness prompts &mdash; they are calibrated to aviation-specific failure patterns. Each response is a data point in a scoring model that weights indicators against their known compounding relationships.</p>
+      <p>Financial pressure amplifies fatigue risk. Fatigue amplifies cognitive load. Cognitive load suppresses training performance. These are documented sequences in the Vexeom failure chain library, derived from the most common non-skill-related career departure patterns in commercial aviation training.</p>
+      <p>The scored profile is mapped against this library. The system identifies which chains are active and how far they have progressed. A full intelligence report is generated instantly &mdash; containing the complete indicator profile, active chain identification, a 12-month career outlook, and prioritised recommendations ranked by urgency.</p>
+      <p><strong>Every assessment adds to the Vexeom dataset.</strong> Over time this produces prevalence rates, intervention effectiveness data, and predictive models that no competitor can replicate. The dataset is the moat.</p>
     </div>
-
     <div class="plat-block">
-      <div class="plat-block-label">CLASSIFICATION</div>
+      <div class="plat-label">CLASSIFICATION</div>
       <h2>What Vexeom is. What Vexeom is not.</h2>
-      <div class="plat-is-not">
-        <div class="plat-is-col">
-          <div class="plat-is-col-title is">VEXEOM IS</div>
-          <div class="plat-is-item">Intelligence infrastructure for human performance in aviation</div>
-          <div class="plat-is-item">A scored, data-driven risk assessment framework</div>
-          <div class="plat-is-item">A longitudinal tracking system that compounds in value over time</div>
-          <div class="plat-is-item">An enterprise intelligence layer for flight schools, airlines, and defence operators</div>
-          <div class="plat-is-item">The only platform that maps causal failure chains at the individual career level</div>
-        </div>
-        <div class="plat-is-col">
-          <div class="plat-is-col-title not">VEXEOM IS NOT</div>
-          <div class="plat-is-item">Medical advice or a clinical assessment</div>
-          <div class="plat-is-item">A wellness app or motivational tool</div>
-          <div class="plat-is-item">A regulatory assessment or aeromedical substitute</div>
-          <div class="plat-is-item">Affiliated with the CAA, FAA, EASA, or any aviation authority</div>
-          <div class="plat-is-item">A replacement for professional psychological or financial counsel</div>
-        </div>
+      <div class="is-not">
+        <div class="is-col"><div class="is-col-title is">VEXEOM IS</div><div class="is-item">Intelligence infrastructure for human performance in aviation</div><div class="is-item">A scored, data-driven risk assessment framework</div><div class="is-item">A longitudinal tracking system that compounds in value over time</div><div class="is-item">An enterprise intelligence layer for flight schools, airlines, and defence operators</div><div class="is-item">The only platform that maps causal failure chains at the individual career level</div></div>
+        <div class="is-col"><div class="is-col-title not">VEXEOM IS NOT</div><div class="is-item">Medical advice or a clinical assessment</div><div class="is-item">A wellness app or motivational tool</div><div class="is-item">A regulatory assessment or aeromedical substitute</div><div class="is-item">Affiliated with the CAA, FAA, EASA, or any aviation authority</div><div class="is-item">A replacement for professional psychological or financial counsel</div></div>
       </div>
     </div>
-
     <div class="plat-cta">
-      <div>
-        <h3>See the full intelligence framework.</h3>
-        <p>10 indicators, failure chain library, and the scoring architecture behind every report.</p>
-      </div>
+      <div><h3>See the full intelligence framework.</h3><p>10 indicators, failure chain library, and the scoring architecture behind every report.</p></div>
       <a href="intelligence.html" class="btn-primary">VIEW INTELLIGENCE FRAMEWORK</a>
     </div>
-
   </div>
-
   <footer>
     <div class="footer-top">
       <div class="footer-col">
@@ -167,10 +128,10 @@
       </div>
       <div class="footer-col">
         <div class="footer-col-title">Access</div>
-        <a href="access.html" class="footer-link">Altitude — £99/mo</a>
-        <a href="access.html" class="footer-link">Vantage — £299/mo</a>
-        <a href="access.html" class="footer-link">Citadel — £1,750/mo</a>
-        <a href="command.html" class="footer-link gold-link">Command™ — White Label</a>
+        <a href="access.html" class="footer-link">Altitude &mdash; &pound;99/mo</a>
+        <a href="access.html" class="footer-link">Vantage &mdash; &pound;299/mo</a>
+        <a href="access.html" class="footer-link">Citadel &mdash; &pound;1,750/mo</a>
+        <a href="command.html" class="footer-link gold-link">Command&trade; &mdash; White Label</a>
       </div>
       <div class="footer-col">
         <div class="footer-col-title">Legal</div>
@@ -180,7 +141,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="footer-bottom-left">© 2025 VEXEOM — AVIATION CAREER INTELLIGENCE — ENGLAND &amp; WALES</div>
+      <div class="footer-bottom-left">&copy; 2025 VEXEOM &mdash; AVIATION CAREER INTELLIGENCE &mdash; ENGLAND &amp; WALES</div>
       <div class="footer-bottom-right">
         <a href="terms.html">Terms</a>
         <a href="mailto:info@vexeom.com">Contact</a>
@@ -188,7 +149,6 @@
       </div>
     </div>
   </footer>
-
   <script>function toggleMenu(){var m=document.getElementById("mobileMenu");var h=document.querySelector(".hamburger");m.classList.toggle("open");h.classList.toggle("open");}</script>
 </body>
 </html>
