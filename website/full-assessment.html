@@ -628,6 +628,10 @@
       function stRecs(tx){
         var el=document.getElementById("rrecs");
         var blocks=tx.split("\n").filter(Boolean);
+        if(blocks.length===1){
+          blocks=blocks[0].split(/(?=\d+\.\s)/).map(function(s){return s.trim();}).filter(Boolean);
+        }
+        blocks=blocks.map(function(b){return b.replace(/^\d+\.\s*/,"").trim();});
         el.innerHTML=blocks.map(function(b,i){
           return '<div class="rec-row"><div class="rec-num">'+String(i+1).padStart(2,"0")+'</div><div class="rec-text">'+b+'</div></div>';
         }).join("");
