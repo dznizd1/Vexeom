@@ -110,7 +110,7 @@
           <li>Standard cohort benchmarking</li>
           <li>Instant report delivery</li>
         </ul>
-        <a class="tier-btn" href="full-assessment.html">GET ALTITUDE</a>
+        <button class="tier-btn" onclick="goCheckout('altitude')">GET ALTITUDE</button>
       </div>
       <div class="tier-card featured">
         <div class="tier-featured-badge">MOST SELECTED</div>
@@ -127,7 +127,7 @@
           <li>Early access to new indicators</li>
           <li>Instant report delivery</li>
         </ul>
-        <a class="tier-btn featured-btn" href="full-assessment.html">GET VANTAGE</a>
+        <button class="tier-btn featured-btn" onclick="goCheckout('vantage')">GET VANTAGE</button>
       </div>
       <div class="tier-card">
         <div class="tier-tag">TIER 03</div>
@@ -143,7 +143,7 @@
           <li>Dedicated account intelligence review</li>
           <li>Instant report delivery</li>
         </ul>
-        <a class="tier-btn" href="full-assessment.html">GET CITADEL</a>
+        <button class="tier-btn" onclick="goCheckout('citadel')">GET CITADEL</button>
       </div>
     </div>
     <div class="command-strip">
@@ -219,6 +219,17 @@
   <script>
     function toggleMenu(){var m=document.getElementById("mobileMenu");var h=document.querySelector(".hamburger");m.classList.toggle("open");h.classList.toggle("open");}
     function showConfirm(tier){document.getElementById("confirmTitle").innerHTML="Your "+tier+" report<br/>has been issued.";document.getElementById("confirmOverlay").classList.add("active");}
+  </script>
+
+  <script>
+    async function goCheckout(tier){
+      try{
+        var r=await fetch("/api/create-checkout",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({tier:tier})});
+        var d=await r.json();
+        if(d.url){window.location.href=d.url;}
+        else{alert("Unable to start checkout. Please try again.");}
+      }catch(e){console.error(e);alert("Unable to start checkout. Please try again.");}
+    }
   </script>
 </body>
 </html>
