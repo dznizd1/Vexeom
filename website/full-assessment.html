@@ -1,45 +1,615 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Full Assessment Report</title>
-
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Full Assessment &mdash; Vexeom</title>
+  <link rel="stylesheet" href="css/styles.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
-    nav,
-    .mobile-menu,
-    footer,
-    .pdf-btn,
-    .assess-header,
-    .intake-form,
-    .progress-wrap,
-    #questionsWrap,
-    .generating {
-      display: none !important;
+    .aw{max-width:720px;margin:0 auto;padding:120px 40px 120px;position:relative;z-index:1}
+    .ah{border:1px solid var(--border);padding:40px;margin-bottom:2px;position:relative;overflow:hidden}
+    .ah::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent)}
+    .ae{font-family:var(--mono);font-size:10px;letter-spacing:.25em;color:var(--accent);margin-bottom:12px}
+    .ah h1{font-size:clamp(20px,3vw,28px);font-weight:600;letter-spacing:-.02em;margin-bottom:8px}
+    .ah p{font-size:13px;color:var(--muted);font-family:var(--mono);margin:0;line-height:1.6}
+    .am{display:flex;gap:0;border:1px solid var(--border);margin-top:20px;flex-wrap:wrap}
+    .amc{padding:10px 20px;border-right:1px solid var(--border);flex:1;min-width:100px}
+    .amc:last-child{border-right:none}
+    .aml{font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;margin-bottom:3px}
+    .amv{font-family:var(--mono);font-size:11px;color:var(--text)}
+    .if{border:1px solid var(--border);border-top:none;padding:32px 40px;background:var(--bg-surface);margin-bottom:2px}
+    .ifl{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--accent);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+    .ifr{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .iff{margin-bottom:16px}
+    .iff label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.15em;color:var(--muted);margin-bottom:8px}
+    .iff input{width:100%;background:var(--bg);border:1px solid var(--border-light);color:var(--text);font-family:var(--mono);font-size:13px;padding:12px 16px;outline:none;transition:border-color .2s}
+    .iff input:focus{border-color:var(--accent)}
+    .pw{margin-bottom:0;border:1px solid var(--border);border-top:none;padding:16px 28px;background:var(--bg-surface);display:none}
+    .pl{font-family:var(--mono);font-size:10px;letter-spacing:.15em;color:var(--muted);margin-bottom:8px;display:flex;justify-content:space-between}
+    .pt{height:2px;background:var(--border)}
+    .pf{height:100%;background:var(--accent);transition:width .4s ease;width:0%}
+    .qb{border:1px solid var(--border);border-top:none;background:var(--bg-surface);display:none}
+    .qb.active{display:block;animation:fi .3s ease}
+    @keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+    .qh{padding:20px 28px 16px;border-bottom:1px solid var(--border)}
+    .qmr{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+    .qn{font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:.15em}
+    .qt2{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.12em;background:var(--border);padding:3px 10px}
+    .qtx{font-size:15px;font-weight:500;color:var(--text);margin-bottom:8px;line-height:1.4}
+    .qd{font-family:var(--mono);font-size:11px;color:#6B7A8D;line-height:1.5}
+    .qo{padding:0}
+    .qop{display:flex;align-items:center;gap:14px;padding:14px 28px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s}
+    .qop:last-child{border-bottom:none}
+    .qop:hover{background:rgba(27,79,216,.05)}
+    .qop input{accent-color:var(--accent);width:15px;height:15px;flex-shrink:0;cursor:pointer}
+    .qop span{font-size:14px;color:var(--muted);line-height:1.4;cursor:pointer}
+    .qop:has(input:checked){background:rgba(27,79,216,.06)}
+    .qop:has(input:checked) span{color:var(--text)}
+    .qnav{padding:16px 28px;border-top:1px solid var(--border);display:flex;justify-content:flex-end}
+    .qnb{font-family:var(--mono);font-size:11px;letter-spacing:.15em;padding:12px 32px;background:var(--accent);color:#fff;border:none;cursor:pointer;transition:opacity .2s}
+    .qnb:hover{opacity:.85}
+    .qnb:disabled{opacity:.3;cursor:not-allowed}
+    .gen{border:1px solid var(--border);border-top:none;padding:60px 40px;text-align:center;display:none;background:var(--bg-surface)}
+    .gen-l{font-family:var(--mono);font-size:10px;letter-spacing:.25em;color:var(--accent);margin-bottom:16px}
+    .gen-t{font-size:20px;font-weight:600;margin-bottom:8px}
+    .gen-s{font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.6}
+    .dots{display:inline-flex;gap:6px;margin-top:24px}
+    .dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:dp 1.4s infinite}
+    .dot:nth-child(2){animation-delay:.2s}
+    .dot:nth-child(3){animation-delay:.4s}
+    @keyframes dp{0%,80%,100%{opacity:.2}40%{opacity:1}}
+    .ro{display:none}
+    .rd{border:1px solid var(--border)}
+    .rdh{padding:36px 40px;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+    .rdh::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent)}
+    .rde{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--accent);margin-bottom:10px}
+    .rdt{font-size:22px;font-weight:600;margin-bottom:4px}
+    .rds{font-family:var(--mono);font-size:12px;color:var(--muted)}
+    .rmr{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:24px}
+    .rmc{background:var(--bg-surface);padding:12px 16px}
+    .rmcl{font-family:var(--mono);font-size:9px;letter-spacing:.15em;color:var(--muted);margin-bottom:3px}
+    .rmcv{font-family:var(--mono);font-size:12px;color:var(--text)}
+    .rss{padding:32px 40px;border-bottom:1px solid var(--border);display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:start}
+    .rsb{font-family:var(--mono);font-size:72px;font-weight:500;color:var(--text);line-height:1}
+    .rsd{font-family:var(--mono);font-size:24px;color:var(--muted)}
+    .rband{font-family:var(--mono);font-size:11px;letter-spacing:.2em;padding:4px 14px;display:inline-block;margin-top:12px}
+    .bc{background:rgba(204,41,54,.15);color:#FF6B6B;border:1px solid rgba(204,41,54,.3)}
+    .bw{background:rgba(255,140,0,.1);color:#FFBA6B;border:1px solid rgba(255,140,0,.3)}
+    .bs{background:rgba(27,79,216,.1);color:#6B9BFF;border:1px solid rgba(27,79,216,.3)}
+    .rsec{padding:28px 40px;border-bottom:1px solid var(--border)}
+    .rsec:last-child{border-bottom:none}
+    .rsel{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--accent);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+    .rsec p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:12px}
+    .rsec p:last-child{margin-bottom:0}
+    .ig{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border)}
+    .isc{background:var(--bg-surface);padding:16px 20px}
+    .isn{font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:6px;letter-spacing:.05em}
+    .isb{height:3px;background:var(--border);margin-bottom:6px;position:relative}
+    .isf{height:100%;transition:width .8s ease}
+    .isnum{font-family:var(--mono);font-size:11px;color:var(--text)}
+    .pdf-btn{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.15em;color:#fff;background:var(--accent);padding:16px;text-align:center;cursor:pointer;border:none;width:100%;transition:opacity .2s;margin-top:2px}
+    .pdf-btn:hover{opacity:.85}
+    .rdoc-classified{font-family:var(--mono);font-size:9px;letter-spacing:.25em;color:#CC2936;margin-bottom:8px}
+    .chain-card2{border:1px solid var(--border);background:var(--bg-surface);padding:24px 28px;margin-bottom:1px}
+    .chain-card2:last-child{margin-bottom:0}
+    .chain-card2-label{font-family:var(--mono);font-size:9px;letter-spacing:.15em;color:#CC2936;margin-bottom:8px}
+    .chain-card2-title{font-size:14px;font-weight:600;color:var(--text);margin-bottom:14px}
+    .chain-card2-body{font-size:13px;color:var(--muted);line-height:1.75}
+    .rec-row{display:flex;gap:20px;padding:16px 0;border-bottom:1px solid var(--border);align-items:flex-start}
+    .rec-row:last-child{border-bottom:none}
+    .rec-num{font-family:var(--mono);font-size:11px;color:var(--accent);flex-shrink:0;width:24px;padding-top:1px}
+    .rec-text{font-size:14px;color:var(--muted);line-height:1.7}
+    .ig-header{font-family:var(--mono);font-size:10px;letter-spacing:.15em;color:var(--muted);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+    @media(max-width:768px){
+      .aw{padding:90px 20px 80px}
+      .ah,.if{padding:24px}
+      .ifr{grid-template-columns:1fr}
+      .qh{padding:16px 20px 12px}
+      .qop{padding:12px 20px}
+      .qnav{padding:14px 20px}
+      .rdh,.rss,.rsec{padding:20px 24px}
+      .rss{grid-template-columns:1fr;gap:16px}
+      .rmr{grid-template-columns:1fr 1fr}
+      .ig{grid-template-columns:1fr}
     }
-
-    .report-output {
-      display: block !important;
-    }
-
-    body {
-      background: white;
-      color: black;
-      font-family: Arial, sans-serif;
-    }
-
-    .report-doc {
-      border: none;
+    @media print{
+      nav,.mobile-menu,footer,.pdf-btn,.ah,.if,.pw,#qw,.gen{display:none !important}
+      .ro{display:block !important}
+      body{background:white;color:black}
+      .rd{border:none}
     }
   </style>
 </head>
-
 <body>
-  <div class="report-output">
-    <div class="report-doc">
-      <!-- Report content will be injected here -->
-      <h1>Assessment Report</h1>
-      <p>Generated successfully.</p>
+  <nav>
+    <div class="nav-inner">
+      <div class="logo"><a href="index.html">VEX<span>E</span>OM</a></div>
+      <div class="nav-tabs">
+        <a href="index.html" class="nav-tab">HOME</a>
+        <a href="platform.html" class="nav-tab">PLATFORM</a>
+        <a href="intelligence.html" class="nav-tab">INTELLIGENCE</a>
+        <a href="assessment.html" class="nav-tab">FREE TEST</a>
+        <a href="access.html" class="nav-tab active">ACCESS</a>
+        <a href="command.html" class="nav-tab command-tab">COMMAND</a>
+      </div>
+      <a href="access.html" class="nav-cta">REQUEST ACCESS</a>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">HOME</a><a href="platform.html">PLATFORM</a><a href="intelligence.html">INTELLIGENCE</a>
+    <a href="assessment.html">FREE TEST</a><a href="access.html">ACCESS</a>
+    <a href="command.html" class="gold">COMMAND</a>
+  </div>
+
+  <div class="aw">
+    <div class="ah">
+      <div class="ae">VEXEOM &mdash; FULL PILOT INTELLIGENCE ASSESSMENT</div>
+      <h1>Complete Career Risk Assessment</h1>
+      <p>20 questions. 10 indicators. Full failure chain analysis. 12-month outlook. Generated instantly by AI.</p>
+      <div class="am">
+        <div class="amc"><div class="aml">Indicators</div><div class="amv">10 OF 10</div></div>
+        <div class="amc"><div class="aml">Questions</div><div class="amv">20</div></div>
+        <div class="amc"><div class="aml">Delivery</div><div class="amv">INSTANT</div></div>
+        <div class="amc"><div class="aml">Format</div><div class="amv">FULL REPORT</div></div>
+      </div>
+    </div>
+
+    <div class="if" id="intakeForm">
+      <div class="ifl">YOUR DETAILS &mdash; REQUIRED FOR REPORT</div>
+      <div class="ifr">
+        <div class="iff"><label>FULL NAME</label><input type="text" id="uname" placeholder="Your full name"/></div>
+        <div class="iff"><label>EMAIL ADDRESS</label><input type="email" id="uemail" placeholder="your@email.com"/></div>
+      </div>
+      <div class="iff"><label>CURRENT STAGE</label><input type="text" id="ustage" placeholder="e.g. PPL student, CPL holder, ATPL candidate, Commercial pilot"/></div>
+      <button class="qnb" onclick="startA()" style="margin-top:8px">BEGIN ASSESSMENT &rarr;</button>
+    </div>
+
+    <div class="pw" id="pw">
+      <div class="pl"><span id="pt">QUESTION 1 OF 20</span><span id="pp">0%</span></div>
+      <div class="pt"><div class="pf" id="pf"></div></div>
+    </div>
+
+    <div id="qw">
+      <div class="qb" id="q1">
+        <div class="qh">
+          <div class="qmr"><span class="qn">01/20</span><span class="qt2">FINANCIAL RESILIENCE</span></div>
+          <div class="qtx">How many months could you sustain full training costs without additional income?</div>
+          <div class="qd">CAA 2025 — 67% of pilot training withdrawals cite financial pressure as the primary factor.</div>
+        </div>
+        <div class="qo">
+          <label class="qop"><input type="radio" name="q1" value="1" onchange="en(1)"/> <span>Under 1 month</span></label>
+          <label class="qop"><input type="radio" name="q1" value="2" onchange="en(1)"/> <span>1–3 months</span></label>
+          <label class="qop"><input type="radio" name="q1" value="3" onchange="en(1)"/> <span>3–6 months</span></label>
+          <label class="qop"><input type="radio" name="q1" value="4" onchange="en(1)"/> <span>6–12 months</span></label>
+          <label class="qop"><input type="radio" name="q1" value="5" onchange="en(1)"/> <span>12+ months — fully funded</span></label>
+        </div>
+        <div class="qnav"><button class="qnb" id="nb1" disabled onclick="nx(1)">NEXT &rarr;</button></div>
+      </div>
+      <div class="qb" id="q2">
+        <div class="qh">
+          <div class="qmr"><span class="qn">02/20</span><span class="qt2">FINANCIAL RESILIENCE</span></div>
+          <div class="qtx">What is your current level of training-related debt or financial obligation?</div>
+          <div class="qd">UK integrated ATPL programmes average over £150,000. Debt pressure compounds dropout risk by 2.4x.</div>
+        </div>
+        <div class="qo">
+          <label class="qop"><input type="radio" name="q2" value="1" onchange="en(2)"/> <span>High debt — significant pressure on decisions</span></label>
+          <label class="qop"><input type="radio" name="q2" value="2" onchange="en(2)"/> <span>Moderate debt — noticeable financial strain</span></label>
+          <label class="qop"><input type="radio" name="q2" value="3" onchange="en(2)"/> <span>Some debt — manageable</span></label>
+          <label class="qop"><input type="radio" name="q2" value="4" onchange="en(2)"/> <span>Minimal debt</span></label>
+          <label class="qop"><input type="radio" name="q2" value="5" onchange="en(2)"/> <span>No training debt — self-funded or sponsored</span></label>
+        </div>
+        <div class="qnav"><button class="qnb" id="nb2" disabled onclick="nx(2)">NEXT &rarr;</button></div>
+      </div>
+      <div class="qb" id="q3">
+        <div class="qh">
+          <div class="qmr"><span class="qn">03/20</span><span class="qt2">FATIGUE & RECOVERY</span></div>
+          <div class="qtx">How would you rate your average sleep quality over the past 30 days?</div>
+          <div class="qd">EASA FTL 2024 — fatigue linked to 23% of reported incidents across EU operators.</div>
+        </div>
+        <div class="qo">
+          <label class="qop"><input type="radio" name="q3" value="1" onchange="en(3)"/> <span>Poor — regularly under 5 hours</span></label>
+          <label class="qop"><input type="radio" name="q3" value="2" onchange="en(3)"/> <span>Below average — disrupted most nights</span></label>
+          <label class="qop"><input type="radio" name="q3" value="3" onchange="en(3)"/> <span>Average — 6–7 hours inconsistent</span></label>
+          <label class="qop"><input type="radio" name="q3" value="4" onchange="en(3)"/> <span>Good — 7–8 hours most nights</span></label>
+          <label class="qop"><input type="radio" name="q3" value="5" onchange="en(3)"/> <span>Excellent — consistent and restorative</span></label>
+        </div>
+        <div class="qnav"><button class="qnb" id="nb3" disabled onclick="nx(3)">NEXT &rarr;</button></div>
+      </div>
+      <div class="qb" id="q4">
+        <div class="qh">
+          <div class="qmr"><span class="qn">04/20</span><span class="qt2">FATIGUE & RECOVERY</span></div>
+          <div class="qtx">How quickly do you recover from a high-demand training day or simulation session?</div>
+          <div class="qd">Recovery rate is a primary predictor of training sustainability over multi-month programmes.</div>
+        </div>
+        <div class="qo">
+          <label class="qop"><input type="radio" name="q4" value="1" onchange="en(4)"/> <span>Poorly — still fatigued the next day</span></label>
+          <label class="qop"><input type="radio" name="q4" value="2" onchange="en(4)"/> <span>Slowly — takes 2–3 days to feel recovered</span></label>
+          <label class="qop"><input type="radio" name="q4" value="3" onchange="en(4)"/> <span>Moderately — mostly recovered overnight</span></label>
+          <label class="qop"><input type="radio" name="q4" value="4" onchange="en(4)"/> <span>Well — consistently recovered by next session</span></label>
+          <label class="qop"><input type="radio" name="q4" value="5" onchange="en(4)"/> <span>Excellent — fast recovery, no residual fatigue</span></label>
+        </div>
+        <div class="qnav"><button class="qnb" id="nb4" disabled onclick="nx(4)">NEXT &rarr;</button></div>
+      </div>
+      <div class="qb" id="q5">
+        <div class="qh">
+          <div class="qmr"><span class="qn">05/20</span><span class="qt2">COGNITIVE LOAD</span></div>
+          <div class="qtx">How well do you maintain focus and decision quality during prolonged mental demand?</div>
+          <div class="qd">EASA 2024 — 82% of airlines use AI cognitive screening. Unmanaged load is a selection filter.</div>
+        </div>
+        <div class="qo">
+          <label class="qop"><input type="radio" name="q5" value="1" onchange="en(5)"/> <span>Poorly — focus degrades quickly under pressure</span></label>
+          <label class="qop"><input type="radio" name="q5" value="2" onchange="en(5)"/> <span>Below average — noticeable decline after 1–2 hours</span></label>
+          <label class="qop"><input type="radio" name="q5" value="3" onchange="en(5)"/> <span>Average — manageable with breaks</span></label>
+          <label class="qop"><input type="radio" name="q5" value="4" onchange="en(5)"/> <span>Good — sustained focus for most sessions</span></label>
+          <label class="qop"><input type="radio" name="q5" value="5" onchange="en(5)"/> <span>Excellent — consistent performance under load</span></label>
+        </div>
+        <div class="qnav"><button class="qnb" id="nb5" disabled onclick="nx(5)">NEXT &rarr;</button></div>
+      </div>
+      <div class="qb" id="q6">
+        <div class="qh">
+          <div class="qmr"><span class="qn">06/20</span><span class="qt2">COGNITIVE LOAD</span></div>
+          <div class="qtx">How confident are you processing complex technical information under exam conditions?</div>
+          <div class="qd">Cognitive reserve under examination pressure is a direct predictor of ATPL theory pass rates.</div>
+        </div>
+        <div class="qo">
+          <label class="qop"><input type="radio" name="q6" value="1" onchange="en(6)"/> <span>Not confident — significant exam anxiety</span></label>
+          <label class="qop"><input type="radio" name="q6" value="2" onchange="en(6)"/> <span>Below average — performance drops under pressure</span></label>
+          <label class="qop"><input type="radio" name="q6" value="3" onchange="en(6)"/> <span>Moderate — some anxiety but manageable</span></label>
+          <label class="qop"><input type="radio" name="q6" value="4" onchange="en(6)"/> <span>Confident — perform well under exam conditions</span></label>
+          <label class="qop"><input type="radio" name="q6" value="5" onchange="en(6)"/> <span>Very confident — pressure improves my performance</span></label>
+        </div>
+        <div class="qnav"><button class="qnb" id="nb6" disabled onclick="nx(6)">NEXT &rarr;</button></div>
+      </div>
+      <div class="qb" id="q7">
+        <div class="qh">
+          <div class="qmr"><span class="qn">07/20</span><span class="qt2">STRESS</span></div>
+          <div class="qtx">How frequently does stress noticeably affect your focus or decision-making?</div>
+          <div class="qd">ICAO 2025 — stress-related cognitive impairment is a leading human factors contributor in training failures.</div>
+        </div>
+        <div class="qo">
+          <label class="qop"><input type="radio" name="q7" value="1" onchange="en(7)"/> <span>Daily — significantly impacts performance</span></label>
+          <label class="qop"><input type="radio" name="q7" value="2" onchange="en(7)"/> <span>Several times a week</span></label>
+          <label class="qop"><input type="radio" name="q7" value="3" onchange="en(7)"/> <span>Occasionally — manageable</span></label>
+          <label class="qop"><input type="radio" name="q7" value="4" onchange="en(7)"/> <span>Rarely</span></label>
+          <label class="qop"><input type="radio" name="q7" value="5" onchange="en(7)"/> <span>Almost never — well regulated</span></label>
+        </div>
+        <div class="qnav"><button class="qnb" id="nb7" disabled onclick="nx(7)">NEXT &rarr;</button></div>
+      </div>
+      <div class="qb" id="q8">
+        <div class="qh">
+          <div class="qmr"><span class="qn">08/20</span><span class="qt2">STRESS</span></div>
+          <div class="qtx">How well do you manage stress during high-stakes scenarios such as check rides or selection?</div>
+          <div class="qd">Stress management under evaluation is independently assessed by 74% of major airline selection programmes.</div>
+        </div>
+        <div class="qo">
+          <label class="qop"><input type="radio" name="q8" value="1" onchange="en(8)"/> <span>Poorly — performance degrades significantly</span></label>
+          <label class="qop"><input type="radio" name="q8" value="2" onchange="en(8)"/> <span>Below average — noticeable impairment</span></label>
+          <label class="qop"><input type="radio" name="q8" value="3" onchange="en(8)"/> <span>Moderate — some impact but functional</span></label>
+          <label class="qop"><input type="radio" name="q8" value="4" onchange="en(8)"/> <span>Well — maintain composure and performance</span></label>
+          <label class="qop"><input type="radio" name="q8" value="5" onchange="en(8)"/> <span>Excellent — high-stakes situations sharpen my focus</span></label>
+        </div>
+        <div class="qnav"><button class="qnb" id="nb8" disabled onclick="nx(8)">NEXT &rarr;</button></div>
+      </div>
+      <div class="qb" id="q9">
+        <div class="qh">
+          <div class="qmr"><span class="qn">09/20</span><span class="qt2">CIRCADIAN STABILITY</span></div>
+          <div class="qtx">How well do you function when required to operate at unusual hours or after time zone changes?</div>
+          <div class="qd">EASA FTL now legally mandates circadian management. Operational aviation is a 24-hour environment.</div>
+      <div class="am">
+        <div class="amc"><div class="aml">Indicators</div><div class="amv">10 OF 10</div></div>
+        <div class="amc"><div class="aml">Questions</div><div class="amv">20</div></div>
+        <div class="amc"><div class="aml">Delivery</div><div class="amv">INSTANT</div></div>
+        <div class="amc"><div class="aml">Format</div><div class="amv">FULL REPORT</div></div>
+      </div>
+      <div class="qb" id="q10">
+        <div class="qh">
+          <div class="qmr"><span class="qn">10/20</span><span class="qt2">CIRCADIAN STABILITY</span></div>
+          <div class="qtx">How consistent is your sleep schedule on a typical week?</div>
+          <div class="qd">Circadian instability during training is a leading predictor of performance degradation in operational settings.</div>
+        </div>
+        <div class="qo">
+          <label class="qop"><input type="radio" name="q10" value="1" onchange="en(10)"/> <span>Very inconsistent — sleep times vary by 3+ hours daily</span></label>
+          <label class="qop"><input type="radio" name="q10" value="2" onchange="en(10)"/> <span>Inconsistent — significant variation</span></label>
+          <label class="qop"><input type="radio" name="q10" value="3" onchange="en(10)"/> <span>Moderate — some variation, mostly manageable</span></label>
+          <label class="qop"><input type="radio" name="q10" value="4" onchange="en(10)"/> <span>Consistent — mostly regular schedule</span></label>
+          <label class="qop"><input type="radio" name="q10" value="5" onchange="en(10)"/> <span>Very consistent — same sleep/wake times daily</span></label>
+        </div>
+        <div class="qnav"><button class="qnb" id="nb10" disabled onclick="nx(10)">NEXT &rarr;</button></div>
+      </div>
+      <div class="qb" id="q11">
+        <div class="qh">
+          <div class="qmr"><span class="qn">11/20</span><span class="qt2">TRAINING READINESS</span></div>
+          <div class="qtx">How prepared do you feel for your next major training milestone or airline selection?</div>
+          <div class="qd">EASA 2024 — 82% of EU/UK airlines use structured psychometric and performance screening at selection.</div>
+        </div>
+        <div class="qo">
+          <label class="qop"><input type="radio" name="q11" value="1" onchange="en(11)"/> <span>Unprepared — significant gaps</span></label>
+          <label class="qop"><input type="radio" name="q11" value="2" onchange="en(11)"/> <span>Below where I need to be</span></label>
+          <label class="qop"><input type="radio" name="q11" value="3" onchange="en(11)"/> <span>Partially prepared</span></label>
+          <label class="qop"><input type="radio" name="q11" value="4" onchange="en(11)"/> <span>Well prepared</span></label>
+          <label class="qop"><input type="radio" name="q11" value="5" onchange="en(11)"/> <span>Fully prepared and confident</span></label>
+        </div>
+        <div class="qnav"><button class="qnb" id="nb11" disabled onclick="nx(11)">NEXT &rarr;</button></div>
+      </div>
+      <div class="qb" id="q12">
+        <div class="qh">
+          <div class="qmr"><span class="qn">12/20</span><span class="qt2">TRAINING READINESS</span></div>
+          <div class="qtx">How disciplined is your current study routine?</div>
+          <div class="qd">ICAO 2025 mandates Human Factors in type rating. Self-management is now a formally assessed competency.</div>
+        </div>
+        <div class="qo">
+          <label class="qop"><input type="radio" name="q12" value="1" onchange="en(12)"/> <span>No consistent routine — reactive study only</span></label>
+          <label class="qop"><input type="radio" name="q12" value="2" onchange="en(12)"/> <span>Irregular — motivation-dependent</span></label>
+          <label class="qop"><input type="radio" name="q12" value="3" onchange="en(12)"/> <span>Moderate — some structure but inconsistent</span></label>
+          <label class="qop"><input type="radio" name="q12" value="4" onchange="en(12)"/> <span>Good — regular structured sessions</span></label>
+          <label class="qop"><input type="radio" name="q12" value="5" onchange="en(12)"/> <span>Excellent — disciplined daily study system</span></label>
+        </div>
+        <div class="qnav"><button class="qnb" id="nb12" disabled onclick="nx(12)">NEXT &rarr;</button></div>
+      </div>
+      <div class="qb" id="q13">
+        <div class="qh">
+          <div class="qmr"><span class="qn">13/20</span><span class="qt2">LIFESTYLE COMPATIBILITY</span></div>
+          <div class="qtx">How compatible is your current lifestyle with the demands of full-time aviation training or operations?</div>
+          <div class="qd">CAA 2025 — lifestyle incompatibility accounts for 31% of mid-training dropout in integrated ATPL programmes.</div>
+        </div>
+        <div class="qo">
+          <label class="qop"><input type="radio" name="q13" value="1" onchange="en(13)"/> <span>Highly incompatible — major conflicts</span></label>
+          <label class="qop"><input type="radio" name="q13" value="2" onchange="en(13)"/> <span>Several significant lifestyle conflicts</span></label>
+          <label class="qop"><input type="radio" name="q13" value="3" onchange="en(13)"/> <span>Some conflicts — manageable with effort</span></label>
+          <label class="qop"><input type="radio" name="q13" value="4" onchange="en(13)"/> <span>Mostly compatible</span></label>
+          <label class="qop"><input type="radio" name="q13" value="5" onchange="en(13)"/> <span>Fully compatible — structured for aviation</span></label>
+        </div>
+        <div class="qnav"><button class="qnb" id="nb13" disabled onclick="nx(13)">NEXT &rarr;</button></div>
+      </div>
+      <div class="qb" id="q14">
+        <div class="qh">
+          <div class="qmr"><span class="qn">14/20</span><span class="qt2">LIFESTYLE COMPATIBILITY</span></div>
+          <div class="qtx">How stable is your personal and home environment during your training or operational period?</div>
+          <div class="qd">CAA 2024 wellbeing guidance formally identifies relationship instability as a primary stressor compounding fatigue.</div>
+        </div>
+        <div class="qo">
+          <label class="qop"><input type="radio" name="q14" value="1" onchange="en(14)"/> <span>Very unstable — significant personal disruption</span></label>
+          <label class="qop"><input type="radio" name="q14" value="2" onchange="en(14)"/> <span>Somewhat unstable — ongoing pressures</span></label>
+          <label class="qop"><input type="radio" name="q14" value="3" onchange="en(14)"/> <span>Moderate — some instability but manageable</span></label>
+          <label class="qop"><input type="radio" name="q14" value="4" onchange="en(14)"/> <span>Stable — supportive environment</span></label>
+          <label class="qop"><input type="radio" name="q14" value="5" onchange="en(14)"/> <span>Very stable — fully supportive home environment</span></label>
+        </div>
+        <div class="qnav"><button class="qnb" id="nb14" disabled onclick="nx(14)">NEXT &rarr;</button></div>
+      </div>
+      <div class="qb" id="q15">
+        <div class="qh">
+          <div class="qmr"><span class="qn">15/20</span><span class="qt2">MOTIVATION STABILITY</span></div>
+          <div class="qtx">How consistent is your motivation to pursue an aviation career right now?</div>
+          <div class="qd">Boeing 2024 — motivation instability is the second most common non-technical cause of training failure globally.</div>
+        </div>
+        <div class="qo">
+          <label class="qop"><input type="radio" name="q15" value="1" onchange="en(15)"/> <span>Seriously questioning the career path</span></label>
+          <label class="qop"><input type="radio" name="q15" value="2" onchange="en(15)"/> <span>Significant fluctuation week to week</span></label>
+          <label class="qop"><input type="radio" name="q15" value="3" onchange="en(15)"/> <span>Generally motivated with occasional doubt</span></label>
+          <label class="qop"><input type="radio" name="q15" value="4" onchange="en(15)"/> <span>Consistently motivated</span></label>
+          <label class="qop"><input type="radio" name="q15" value="5" onchange="en(15)"/> <span>Fully committed — no doubt</span></label>
+        </div>
+        <div class="qnav"><button class="qnb" id="nb15" disabled onclick="nx(15)">NEXT &rarr;</button></div>
+      </div>
+      <div class="qb" id="q16">
+        <div class="qh">
+          <div class="qmr"><span class="qn">16/20</span><span class="qt2">MOTIVATION STABILITY</span></div>
+          <div class="qtx">How do you respond when faced with a significant setback such as a failed exam or poor check ride?</div>
+          <div class="qd">Resilience under setback is independently predictive of programme completion rate across ATPL cohorts.</div>
+        </div>
+        <div class="qo">
+          <label class="qop"><input type="radio" name="q16" value="1" onchange="en(16)"/> <span>Very badly — setbacks significantly undermine commitment</span></label>
+          <label class="qop"><input type="radio" name="q16" value="2" onchange="en(16)"/> <span>Poorly — take a long time to recover motivation</span></label>
+          <label class="qop"><input type="radio" name="q16" value="3" onchange="en(16)"/> <span>Moderately — recover but it takes effort</span></label>
+          <label class="qop"><input type="radio" name="q16" value="4" onchange="en(16)"/> <span>Well — setbacks motivate improvement</span></label>
+          <label class="qop"><input type="radio" name="q16" value="5" onchange="en(16)"/> <span>Excellent — use setbacks as direct performance data</span></label>
+        </div>
+        <div class="qnav"><button class="qnb" id="nb16" disabled onclick="nx(16)">NEXT &rarr;</button></div>
+      </div>
+      <div class="qb" id="q17">
+        <div class="qh">
+          <div class="qmr"><span class="qn">17/20</span><span class="qt2">CAREER SUSTAINABILITY</span></div>
+          <div class="qtx">How realistic is your understanding of what a commercial aviation career demands day to day?</div>
+          <div class="qd">Misalignment between expectation and reality is a primary driver of post-qualification attrition in commercial aviation.</div>
+        </div>
+        <div class="qo">
+          <label class="qop"><input type="radio" name="q17" value="1" onchange="en(17)"/> <span>Limited — I have not researched operational realities</span></label>
+          <label class="qop"><input type="radio" name="q17" value="2" onchange="en(17)"/> <span>Basic — general awareness only</span></label>
+          <label class="qop"><input type="radio" name="q17" value="3" onchange="en(17)"/> <span>Moderate — reasonable understanding</span></label>
+          <label class="qop"><input type="radio" name="q17" value="4" onchange="en(17)"/> <span>Good — I have researched it thoroughly</span></label>
+          <label class="qop"><input type="radio" name="q17" value="5" onchange="en(17)"/> <span>Excellent — direct exposure to operational environments</span></label>
+        </div>
+        <div class="qnav"><button class="qnb" id="nb17" disabled onclick="nx(17)">NEXT &rarr;</button></div>
+      </div>
+      <div class="qb" id="q18">
+        <div class="qh">
+          <div class="qmr"><span class="qn">18/20</span><span class="qt2">CAREER SUSTAINABILITY</span></div>
+          <div class="qtx">How would you rate your long-term physical health and fitness relative to aviation career demands?</div>
+          <div class="qd">CAA Class 1 medical requirements demand sustained cardiovascular and neurological health across a pilot career.</div>
+        </div>
+        <div class="qo">
+          <label class="qop"><input type="radio" name="q18" value="1" onchange="en(18)"/> <span>Poor — health concerns that may affect career longevity</span></label>
+          <label class="qop"><input type="radio" name="q18" value="2" onchange="en(18)"/> <span>Below average — some ongoing health management</span></label>
+          <label class="qop"><input type="radio" name="q18" value="3" onchange="en(18)"/> <span>Average — generally healthy</span></label>
+          <label class="qop"><input type="radio" name="q18" value="4" onchange="en(18)"/> <span>Good — actively maintain fitness</span></label>
+          <label class="qop"><input type="radio" name="q18" value="5" onchange="en(18)"/> <span>Excellent — strong physical baseline</span></label>
+        </div>
+        <div class="qnav"><button class="qnb" id="nb18" disabled onclick="nx(18)">NEXT &rarr;</button></div>
+      </div>
+      <div class="qb" id="q19">
+        <div class="qh">
+          <div class="qmr"><span class="qn">19/20</span><span class="qt2">RECOVERY</span></div>
+          <div class="qtx">How actively do you manage recovery through sleep hygiene, nutrition, exercise, or deliberate downtime?</div>
+          <div class="qd">Active recovery management is associated with 40% lower burnout incidence in training cohorts.</div>
+        </div>
+        <div class="qo">
+          <label class="qop"><input type="radio" name="q19" value="1" onchange="en(19)"/> <span>Not at all — no active recovery practices</span></label>
+          <label class="qop"><input type="radio" name="q19" value="2" onchange="en(19)"/> <span>Minimal — occasional attention to recovery</span></label>
+          <label class="qop"><input type="radio" name="q19" value="3" onchange="en(19)"/> <span>Moderate — some deliberate recovery practices</span></label>
+          <label class="qop"><input type="radio" name="q19" value="4" onchange="en(19)"/> <span>Good — consistent recovery management</span></label>
+          <label class="qop"><input type="radio" name="q19" value="5" onchange="en(19)"/> <span>Excellent — structured recovery system in place</span></label>
+        </div>
+        <div class="qnav"><button class="qnb" id="nb19" disabled onclick="nx(19)">NEXT &rarr;</button></div>
+      </div>
+      <div class="qb" id="q20">
+        <div class="qh">
+          <div class="qmr"><span class="qn">20/20</span><span class="qt2">RECOVERY</span></div>
+          <div class="qtx">Over the past 3 months how would you describe your overall trajectory?</div>
+          <div class="qd">Trajectory direction is the strongest single predictor of 12-month career outcomes in Vexeom assessment data.</div>
+        </div>
+        <div class="qo">
+          <label class="qop"><input type="radio" name="q20" value="1" onchange="en(20)"/> <span>Declining — things are getting harder</span></label>
+          <label class="qop"><input type="radio" name="q20" value="2" onchange="en(20)"/> <span>Slightly declining — some regression</span></label>
+          <label class="qop"><input type="radio" name="q20" value="3" onchange="en(20)"/> <span>Stable — holding position</span></label>
+          <label class="qop"><input type="radio" name="q20" value="4" onchange="en(20)"/> <span>Improving — clear positive trajectory</span></label>
+          <label class="qop"><input type="radio" name="q20" value="5" onchange="en(20)"/> <span>Strongly improving — accelerating progress</span></label>
+        </div>
+        <div class="qnav"><button class="qnb" id="nb20" disabled onclick="genR()">GENERATE FULL REPORT &rarr;</button></div>
+      </div>
+    </div>    <div class="if" id="intakeForm">
+      <div class="ifl">YOUR DETAILS &mdash; REQUIRED FOR REPORT</div>
+      <div class="ifr">
+        <div class="iff"><label>FULL NAME</label><input type="text" id="uname" placeholder="Your full name"/></div>
+        <div class="iff"><label>EMAIL ADDRESS</label><input type="email" id="uemail" placeholder="your@email.com"/></div>
+      </div>
+      <div class="iff"><label>CURRENT STAGE</label><input type="text" id="ustage" placeholder="e.g. PPL student, CPL holder, ATPL candidate, Commercial pilot"/></div>
+      <button class="qnb" onclick="startA()" style="margin-top:8px">BEGIN ASSESSMENT &rarr;</button>
+    </div>
+
+    <div class="pw" id="pw">
+      <div class="pl"><span id="pt">QUESTION 1 OF 20</span><span id="pp">0%</span></div>
+      <div class="pt"><div class="pf" id="pf"></div></div>
+    </div>
+
+    <div id="qw">
+
+    </div>
+
+    <div class="gen" id="gen">
+      <div class="gen-l">VEXEOM INTELLIGENCE ENGINE</div>
+      <div class="gen-t">Generating your report.</div>
+      <div class="gen-s">Scoring 10 indicators. Mapping failure chains.<br/>Building your 12-month outlook.</div>
+      <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+    </div>
+
+    <div class="ro" id="ro">
+      <div class="rd">
+        <div class="rdh">
+          <div class="rdoc-classified">VEXEOM INTELLIGENCE &mdash; CLASSIFIED PERSONAL REPORT</div>
+          <div class="rde">VEXEOM PILOT INTELLIGENCE REPORT &mdash; FULL ASSESSMENT</div>
+          <div class="rdt" id="rname">Pilot Intelligence Report</div>
+          <div class="rds" id="rsub">Generated &mdash; Full 10-Indicator Assessment</div>
+          <div class="rmr">
+            <div class="rmc"><div class="rmcl">OVERALL SCORE</div><div class="rmcv" id="rscore">--</div></div>
+            <div class="rmc"><div class="rmcl">RISK BAND</div><div class="rmcv" id="rband2">--</div></div>
+            <div class="rmc"><div class="rmcl">INDICATORS</div><div class="rmcv">10 OF 10</div></div>
+            <div class="rmc"><div class="rmcl">STATUS</div><div class="rmcv">COMPLETE</div></div>
+          </div>
+        </div>
+        <div class="rss">
+          <div>
+            <div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:8px;letter-spacing:.1em">COMPOSITE SCORE</div>
+            <div style="display:flex;align-items:baseline;gap:6px">
+              <div class="rsb" id="rscbig">--</div>
+              <div class="rsd">/ 100</div>
+            </div>
+            <div class="rband" id="rband">--</div>
+          </div>
+          <div id="ig" class="ig"></div>
+        </div>
+        <div class="rsec"><div class="rsel">EXECUTIVE SUMMARY</div><div id="rsum"></div></div>
+        <div class="rsec"><div class="rsel">ACTIVE FAILURE CHAINS</div><div id="rchains"></div></div>
+        <div class="rsec"><div class="rsel">12-MONTH CAREER OUTLOOK</div><div id="routlook"></div></div>
+        <div class="rsec"><div class="rsel">PRIORITY RECOMMENDATIONS</div><div id="rrecs"></div></div>
+      </div>
+      <button class="pdf-btn" onclick="window.print()">DOWNLOAD REPORT AS PDF</button>
     </div>
   </div>
+
+  <footer>
+    <div class="footer-top">
+      <div class="footer-col"><div class="footer-brand-name">VEX<span>E</span>OM</div><div class="footer-brand-desc">Intelligence infrastructure for the human layer of aviation.</div><a href="mailto:info@vexeom.com" class="footer-link">info@vexeom.com</a></div>
+      <div class="footer-col"><div class="footer-col-title">Platform</div><a href="platform.html" class="footer-link">What Vexeom Is</a><a href="intelligence.html" class="footer-link">Intelligence Framework</a><a href="assessment.html" class="footer-link">Free Snapshot Test</a></div>
+      <div class="footer-col"><div class="footer-col-title">Access</div><a href="access.html" class="footer-link">Altitude &mdash; &pound;99/mo</a><a href="access.html" class="footer-link">Vantage &mdash; &pound;299/mo</a><a href="access.html" class="footer-link">Citadel &mdash; &pound;1,750/mo</a></div>
+      <div class="footer-col"><div class="footer-col-title">Legal</div><a href="terms.html" class="footer-link">Terms &amp; Conditions</a><a href="mailto:info@vexeom.com" class="footer-link">Contact</a></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-left">&copy; 2025 VEXEOM &mdash; AVIATION CAREER INTELLIGENCE &mdash; ENGLAND &amp; WALES</div>
+      <div class="footer-bottom-right"><a href="terms.html">Terms</a><a href="mailto:info@vexeom.com">Contact</a><a href="command.html">Command</a></div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu(){var m=document.getElementById("mobileMenu");var h=document.querySelector(".hamburger");m.classList.toggle("open");h.classList.toggle("open");}
+    var cur=1,ans={},uname="",ustage="";
+    function startA(){
+      var n=document.getElementById("uname").value.trim();
+      var e=document.getElementById("uemail").value.trim();
+      if(!n||!e){alert("Please enter your name and email.");return;}
+      uname=n;ustage=document.getElementById("ustage").value.trim()||"Aviation professional";
+      document.getElementById("intakeForm").style.display="none";
+      document.getElementById("pw").style.display="block";
+      document.getElementById("q1").classList.add("active");
+      upP(0);window.scrollTo({top:0,behavior:"smooth"});
+    }
+    function en(q){document.getElementById("nb"+q).disabled=false;var s=document.querySelector("input[name=q"+q+"]:checked");if(s)ans["q"+q]=parseInt(s.value);}
+    function nx(q){var s=document.querySelector("input[name=q"+q+"]:checked");if(s)ans["q"+q]=parseInt(s.value);document.getElementById("q"+q).classList.remove("active");cur=q+1;document.getElementById("q"+cur).classList.add("active");upP(Math.round((q/20)*100));window.scrollTo({top:document.getElementById("pw").offsetTop-80,behavior:"smooth"});}
+    function upP(p){document.getElementById("pf").style.width=p+"%";document.getElementById("pt").textContent=cur<=20?"QUESTION "+cur+" OF 20":"COMPLETE";document.getElementById("pp").textContent=p+"%";}
+    var imap={financial:[1,2],fatigue:[3,4],cognitive:[5,6],stress:[7,8],circadian:[9,10],training:[11,12],lifestyle:[13,14],motivation:[15,16],sustainability:[17,18],recovery:[19,20]};
+    var inames={financial:"Financial Resilience",fatigue:"Fatigue & Recovery",cognitive:"Cognitive Load",stress:"Stress",circadian:"Circadian Stability",training:"Training Readiness",lifestyle:"Lifestyle Compatibility",motivation:"Motivation Stability",sustainability:"Career Sustainability",recovery:"Recovery"};
+    function calcS(){var s={};for(var k in imap){var t=0;imap[k].forEach(function(q){t+=(ans["q"+q]||3);});s[k]=Math.round((t/(imap[k].length*5))*100);}return s;}
+    async function genR(){
+      var s=document.querySelector("input[name=q20]:checked");if(s)ans["q20"]=parseInt(s.value);
+      document.getElementById("q20").classList.remove("active");
+      document.getElementById("pw").style.display="none";
+      document.getElementById("gen").style.display="block";
+      upP(100);window.scrollTo({top:0,behavior:"smooth"});
+      var sc=calcS();
+      var comp=Math.round(Object.values(sc).reduce(function(a,b){return a+b;},0)/10);
+      var at=Object.keys(imap).map(function(k){var v=imap[k].map(function(q){return ans["q"+q]||3;});return inames[k]+": "+v.join(", ")+" (score: "+sc[k]+"/100)";}).join("\n");
+      var pr="You are generating a Vexeom Pilot Intelligence Report for "+uname+", a "+ustage+".\n\nIndicator scores (out of 100):\n"+at+"\n\nComposite score: "+comp+"/100\n\nGenerate a professional aviation career intelligence report with exactly 4 sections. Be direct, specific, and harsh where needed. Use aviation industry language.\n\nRespond in JSON only with these exact keys:\n{\n\"summary\": \"2-3 paragraph executive summary of the pilot career risk profile\",\n\"chains\": \"identify 1-3 active or emerging failure chains based on the scores. Name each chain describe the causal sequence and assess how far it has progressed\",\n\"outlook\": \"12-month career outlook based on current trajectory. Be specific about what is likely to happen if nothing changes and what is possible if the highest-risk indicators are addressed\",\n\"recommendations\": \"3-5 prioritised recommendations ranked by urgency. Be specific and actionable. Reference the lowest-scoring indicators directly.\"\n}\n\nReturn JSON only. No markdown. No preamble.";
+      try{
+        var r=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"claude-sonnet-4-6",max_tokens:1000,messages:[{role:"user",content:pr}]})});
+        var d=await r.json();
+        var tx=d.content.map(function(i){return i.text||"";}).join("").trim().replace(/```json|```/g,"").trim();
+        renderR(sc,comp,JSON.parse(tx));
+      }catch(e){renderR(sc,comp,{summary:"Report generation encountered an error. Please refresh and try again.",chains:"Unable to map failure chains at this time.",outlook:"12-month outlook unavailable.",recommendations:"Please retry the assessment."});}
+    }
+    function renderR(sc,comp,c){
+      document.getElementById("gen").style.display="none";
+      document.getElementById("ro").style.display="block";
+      document.getElementById("rname").textContent=uname+" \u2014 Pilot Intelligence Report";
+      document.getElementById("rsub").textContent=ustage+" \u2014 Full 10-Indicator Assessment";
+      document.getElementById("rscore").textContent=comp+"/100";
+      document.getElementById("rscbig").textContent=comp;
+      var band,cls;
+      if(comp<40){band="CRITICAL RISK EXPOSURE";cls="bc";}
+      else if(comp<65){band="ELEVATED RISK \u2014 ACTION REQUIRED";cls="bw";}
+      else{band="MANAGED \u2014 MONITOR & OPTIMISE";cls="bs";}
+      document.getElementById("rband").textContent=band;document.getElementById("rband").className="rband "+cls;
+      document.getElementById("rband2").textContent=band;
+      var g=document.getElementById("ig");g.innerHTML="";
+      Object.keys(sc).forEach(function(k){var v=sc[k];var col=v<40?"#CC2936":v<65?"#FF8C00":"#1B4FD8";var d=document.createElement("div");d.className="isc";d.innerHTML="<div class=\"isn\">"+inames[k]+"</div><div class=\"isb\"><div class=\"isf\" style=\"width:"+v+"%;background:"+col+"\"></div></div><div class=\"isnum\">"+v+"/100</div>";g.appendChild(d);});
+      function st(id,tx){var el=document.getElementById(id);el.innerHTML=tx.split("\n").filter(Boolean).map(function(p){return "<p>"+p+"</p>";}).join("");}
+      function stChains(tx){
+        var el=document.getElementById("rchains");
+        var blocks=tx.split("\n").filter(Boolean);
+        el.innerHTML=blocks.map(function(b,i){
+          return '<div class="chain-card2"><div class="chain-card2-label">CHAIN 0'+(i+1)+'</div><div class="chain-card2-body">'+b+'</div></div>';
+        }).join("");
+      }
+      function stRecs(tx){
+        var el=document.getElementById("rrecs");
+        var blocks=tx.split("\n").filter(Boolean);
+        el.innerHTML=blocks.map(function(b,i){
+          return '<div class="rec-row"><div class="rec-num">'+String(i+1).padStart(2,"0")+'</div><div class="rec-text">'+b+'</div></div>';
+        }).join("");
+      }
+      st("rsum",c.summary||"");stChains(c.chains||"");st("routlook",c.outlook||"");stRecs(c.recommendations||"");
+      window.scrollTo({top:0,behavior:"smooth"});
+    }
+  </script>
 </body>
 </html>
