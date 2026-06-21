@@ -571,11 +571,12 @@
       var at=Object.keys(imap).map(function(k){var v=imap[k].map(function(q){return ans["q"+q]||3;});return inames[k]+": "+v.join(", ")+" (score: "+sc[k]+"/100)";}).join("\n");
       var pr="You are generating a Vexeom Pilot Intelligence Report for "+uname+", a "+ustage+".\n\nIndicator scores (out of 100):\n"+at+"\n\nComposite score: "+comp+"/100\n\nGenerate a professional aviation career intelligence report with exactly 4 sections. Be direct, specific, and harsh where needed. Use aviation industry language.\n\nRespond in JSON only with these exact keys:\n{\n\"summary\": \"2-3 paragraph executive summary of the pilot career risk profile\",\n\"chains\": \"identify 1-3 active or emerging failure chains based on the scores. Name each chain describe the causal sequence and assess how far it has progressed\",\n\"outlook\": \"12-month career outlook based on current trajectory. Be specific about what is likely to happen if nothing changes and what is possible if the highest-risk indicators are addressed\",\n\"recommendations\": \"3-5 prioritised recommendations ranked by urgency. Be specific and actionable. Reference the lowest-scoring indicators directly.\"\n}\n\nReturn JSON only. No markdown. No preamble.";
       try{
-        var r=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"claude-sonnet-4-6",max_tokens:1000,messages:[{role:"user",content:pr}]})});
+        var r=await fetch("/api/generate-report",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({prompt:pr})});
         var d=await r.json();
-        var tx=d.content.map(function(i){return i.text||"";}).join("").trim().replace(/```json|```/g,"").trim();
+        if(!r.ok){throw new Error(d.error||"API error");}
+        var tx=(d.text||"").trim().replace(/```json|```/g,"").trim();
         renderR(sc,comp,JSON.parse(tx));
-      }catch(e){renderR(sc,comp,{summary:"Report generation encountered an error. Please refresh and try again.",chains:"Unable to map failure chains at this time.",outlook:"12-month outlook unavailable.",recommendations:"Please retry the assessment."});}
+      }catch(e){console.error(e);renderR(sc,comp,{summary:"Report generation encountered an error. Please refresh and try again.",chains:"Unable to map failure chains at this time.",outlook:"12-month outlook unavailable.",recommendations:"Please retry the assessment."});}
     }
     function renderR(sc,comp,c){
       document.getElementById("gen").style.display="none";
