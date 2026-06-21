@@ -597,6 +597,8 @@
         var d=await r.json();
         if(!r.ok){throw new Error(d.error||"API error");}
         var tx=(d.text||"").trim().replace(/```json|```/g,"").trim();
+        var jsonMatch=tx.match(/\{[\s\S]*\}/);
+        if(jsonMatch) tx=jsonMatch[0];
         renderR(sc,comp,JSON.parse(tx));
       }catch(e){console.error(e);renderR(sc,comp,{summary:"Report generation encountered an error. Please refresh and try again.",chains:"Unable to map failure chains at this time.",outlook:"12-month outlook unavailable.",recommendations:"Please retry the assessment."});}
     }
