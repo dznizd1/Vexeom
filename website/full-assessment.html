@@ -162,6 +162,11 @@
       </div>
     </div>
 
+    <div class="if" id="paymentConfirm" style="display:none;border-left:2px solid var(--gold);background:rgba(200,169,110,.04)">
+      <div class="ifl" style="color:var(--gold)">PAYMENT CONFIRMED</div>
+      <p style="font-size:14px;color:var(--text);line-height:1.7;margin-bottom:0">Your subscription is active. Complete the assessment below to generate your first intelligence report &mdash; delivered instantly.</p>
+    </div>
+
     <div class="if" id="intakeForm">
       <div class="ifl">YOUR DETAILS &mdash; REQUIRED FOR REPORT</div>
       <div class="ifr">
@@ -544,6 +549,15 @@
 
   <script>
     function toggleMenu(){var m=document.getElementById("mobileMenu");var h=document.querySelector(".hamburger");m.classList.toggle("open");h.classList.toggle("open");}
+    (function(){
+      var params=new URLSearchParams(window.location.search);
+      if(params.get("session_id")){
+        document.getElementById("paymentConfirm").style.display="block";
+        var url=new URL(window.location);
+        url.searchParams.delete("session_id");
+        window.history.replaceState({},document.title,url.toString());
+      }
+    })();
     var cur=1,ans={},uname="",ustage="";
     function showFieldError(id, msg){
       var input = document.getElementById(id);
