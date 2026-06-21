@@ -25,6 +25,9 @@
     .iff label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.15em;color:var(--muted);margin-bottom:8px}
     .iff input{width:100%;background:var(--bg);border:1px solid var(--border-light);color:var(--text);font-family:var(--mono);font-size:13px;padding:12px 16px;outline:none;transition:border-color .2s}
     .iff input:focus{border-color:var(--accent)}
+    .iff input{transition:border-color .2s}
+    .field-error{display:flex;align-items:center;gap:6px}
+    .field-error::before{content:"⚠";font-size:10px}
     .pw{margin-bottom:0;border:1px solid var(--border);border-top:none;padding:16px 28px;background:var(--bg-surface);display:none}
     .pl{font-family:var(--mono);font-size:10px;letter-spacing:.15em;color:var(--muted);margin-bottom:8px;display:flex;justify-content:space-between}
     .pt{height:2px;background:var(--border)}
@@ -531,10 +534,42 @@
   <script>
     function toggleMenu(){var m=document.getElementById("mobileMenu");var h=document.querySelector(".hamburger");m.classList.toggle("open");h.classList.toggle("open");}
     var cur=1,ans={},uname="",ustage="";
+    function showFieldError(id, msg){
+      var input = document.getElementById(id);
+      var existing = input.parentElement.querySelector(".field-error");
+      if(existing) existing.remove();
+      input.style.borderColor = "#CC2936";
+      var err = document.createElement("div");
+      err.className = "field-error";
+      err.style.cssText = "font-family:var(--mono);font-size:11px;color:#FF6B6B;margin-top:6px;letter-spacing:.02em";
+      err.textContent = msg;
+      input.parentElement.appendChild(err);
+    }
+    function clearFieldError(id){
+      var input = document.getElementById(id);
+      input.style.borderColor = "";
+      var existing = input.parentElement.querySelector(".field-error");
+      if(existing) existing.remove();
+    }
     function startA(){
       var n=document.getElementById("uname").value.trim();
       var e=document.getElementById("uemail").value.trim();
-      if(!n||!e){alert("Please enter your name and email.");return;}
+      clearFieldError("uname");
+      clearFieldError("uemail");
+      var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      var hasError = false;
+      if(!n){
+        showFieldError("uname", "Full name is required to generate your report.");
+        hasError = true;
+      }
+      if(!e){
+        showFieldError("uemail", "Email address is required for report delivery.");
+        hasError = true;
+      } else if(!emailPattern.test(e)){
+        showFieldError("uemail", "Enter a valid email address (e.g. name@domain.com).");
+        hasError = true;
+      }
+      if(hasError) return;
       uname=n;ustage=document.getElementById("ustage").value.trim()||"Aviation professional";
       document.getElementById("intakeForm").style.display="none";
       document.getElementById("pw").style.display="block";
