@@ -120,10 +120,18 @@
       .ig{grid-template-columns:1fr}
     }
     @media print{
-      nav,.mobile-menu,footer,.pdf-btn,.ah,.if,.pw,#qw,.gen{display:none !important}
+      @page{margin:0;size:A4}
+      nav,.mobile-menu,footer,.pdf-btn,.ah,.if,.pw,#qw,.gen,#paymentConfirm{display:none !important}
       .ro{display:block !important}
-      body{background:white;color:black}
-      .rd{border:none}
+      .aw{padding:0;max-width:100%}
+      body{background:#03111F !important;color:var(--text) !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+      .rd{border:1px solid var(--gold) !important;box-shadow:none !important;page-break-inside:avoid}
+      .rdh{background:linear-gradient(180deg,rgba(200,169,110,.06),transparent) !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+      .rsec{page-break-inside:avoid}
+      .chain-card2{page-break-inside:avoid}
+      .unlock-badge{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+      .isf{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+      .rband{-webkit-print-color-adjust:exact;print-color-adjust:exact}
     }
   </style>
 </head>
