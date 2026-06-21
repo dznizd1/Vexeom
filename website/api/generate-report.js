@@ -10,14 +10,14 @@ export default async function handler(req, res) {
   }
 
   try {
-    const response = await fetch('https://api.x.ai/v1/chat/completions', {
+    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${process.env.XAI_API_KEY}`
+        'Authorization': `Bearer ${process.env.GROQ_API_KEY}`
       },
       body: JSON.stringify({
-        model: 'grok-4',
+        model: 'llama-3.3-70b-versatile',
         messages: [{ role: 'user', content: prompt }],
         max_tokens: 1200
       })
@@ -26,8 +26,8 @@ export default async function handler(req, res) {
     const data = await response.json();
 
     if (!response.ok) {
-      console.error('Grok API error:', data);
-      return res.status(response.status).json({ error: 'Grok API error', details: data });
+      console.error('Groq API error:', data);
+      return res.status(response.status).json({ error: 'Groq API error', details: data });
     }
 
     const text = data.choices?.[0]?.message?.content || '';
