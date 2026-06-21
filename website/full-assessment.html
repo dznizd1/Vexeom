@@ -484,6 +484,13 @@
       <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
     </div>
 
+    <div class="gen" id="retryBlock" style="display:none">
+      <div class="gen-l" style="color:#FF8C00">GENERATION INTERRUPTED</div>
+      <div class="gen-t">Your report could not be generated.</div>
+      <div class="gen-s">Your answers have been saved. No need to retake the assessment.<br/>This is usually temporary &mdash; try again now.</div>
+      <button class="qnb" onclick="retryGeneration()" style="margin-top:24px">RETRY REPORT GENERATION &rarr;</button>
+    </div>
+
     <div class="ro" id="ro">
       <div class="rd">
         <div class="rdh">
@@ -600,7 +607,16 @@
         var jsonMatch=tx.match(/\{[\s\S]*\}/);
         if(jsonMatch) tx=jsonMatch[0];
         renderR(sc,comp,JSON.parse(tx));
-      }catch(e){console.error(e);renderR(sc,comp,{summary:"Report generation encountered an error. Please refresh and try again.",chains:"Unable to map failure chains at this time.",outlook:"12-month outlook unavailable.",recommendations:"Please retry the assessment."});}
+      }catch(e){
+        console.error(e);
+        document.getElementById("gen").style.display="none";
+        document.getElementById("retryBlock").style.display="block";
+      }
+    }
+    function retryGeneration(){
+      document.getElementById("retryBlock").style.display="none";
+      document.getElementById("gen").style.display="block";
+      genR();
     }
     function renderR(sc,comp,c){
       document.getElementById("gen").style.display="none";
