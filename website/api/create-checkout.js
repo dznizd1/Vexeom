@@ -25,7 +25,7 @@ export default async function handler(req, res) {
     const session = await stripe.checkout.sessions.create({
       mode: 'subscription',
       line_items: [{ price: priceId, quantity: 1 }],
-      success_url: `${req.headers.origin}/full-assessment.html?session_id={CHECKOUT_SESSION_ID}`,
+      success_url: `${req.headers.origin}/full-assessment.html?session_id={CHECKOUT_SESSION_ID}&tier=${tier}`,
       cancel_url: `${req.headers.origin}/access.html`,
     });
 

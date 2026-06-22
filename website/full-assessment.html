@@ -568,10 +568,13 @@
     function toggleMenu(){var m=document.getElementById("mobileMenu");var h=document.querySelector(".hamburger");m.classList.toggle("open");h.classList.toggle("open");}
     (function(){
       var params=new URLSearchParams(window.location.search);
-      if(params.get("session_id")){
+      var sid=params.get("session_id");
+      var tier=params.get("tier")||"altitude";
+      if(sid){
         document.getElementById("paymentConfirm").style.display="block";
         var url=new URL(window.location);
         url.searchParams.delete("session_id");
+        url.searchParams.delete("tier");
         window.history.replaceState({},document.title,url.toString());
       }
     })();
