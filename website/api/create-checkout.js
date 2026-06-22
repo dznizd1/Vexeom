@@ -8,9 +8,9 @@ export default async function handler(req, res) {
   const { tier } = req.body;
 
   const priceMap = {
-    altitude: 'price_1Tktp7JoNrMc1AYoLMgjoWIq',
-    vantage: 'price_1TktpiJoNrMc1AYo4wX6cSuf',
-    citadel: 'price_1Tktq9JoNrMc1AYouUoTY19H'
+    altitude: 'price_1TlH44JIAO3tY6L9Eue63hvh',
+    vantage: 'price_1TlH0uJIAO3tY6L9tVJh1hF4',
+    citadel: 'price_1TlH0sJIAO3tY6L9vIsO8HQp'
   };
 
   const priceId = priceMap[tier];
