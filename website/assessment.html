@@ -271,6 +271,11 @@
           <div class="result-cta-title">This is a surface read. The full picture is different.</div>
           <div class="result-cta-sub">10 indicators. Failure chain analysis. 12-month career outlook. Delivered instantly upon purchase.</div>
           <a href="access.html" class="result-cta-btn">ACCESS FULL REPORT</a>
+          <div style="margin-top:16px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+            <a id="shareLinkedIn" href="#" onclick="shareResult(event)" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10px;letter-spacing:.15em;color:var(--muted);border:1px solid var(--border-light);padding:10px 20px;text-decoration:none;transition:all .2s" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='var(--border-light)';this.style.color='var(--muted)'">
+              SHARE ON LINKEDIN &rarr;
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -369,6 +374,24 @@
       document.getElementById('assessmentForm').style.display='none';
       document.getElementById('assessmentResult').style.display='block';
       window.scrollTo({top:0,behavior:'smooth'});
+    }
+  </script>
+
+  <script>
+    function shareResult(e){
+      e.preventDefault();
+      var score = document.getElementById("resultScore");
+      var band = document.getElementById("resultBand");
+      var scoreText = score ? score.textContent.trim() : "";
+      var bandText = band ? band.textContent.trim() : "";
+      var text = "I just completed the Vexeom Pilot Intelligence Assessment. " +
+        (scoreText ? "Score: " + scoreText + "/100. " : "") +
+        (bandText ? bandText + ". " : "") +
+        "Free 4-question snapshot at vexeom.com — identifies your career risk indicators before they compound.";
+      var url = "https://www.linkedin.com/sharing/share-offsite/?url=" +
+        encodeURIComponent("https://vexeom.com/assessment.html") +
+        "&summary=" + encodeURIComponent(text);
+      window.open(url, "_blank", "width=600,height=500");
     }
   </script>
 </body>
