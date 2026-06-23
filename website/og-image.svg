@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <rect width="1200" height="630" fill="#03111F"/>
+  <rect x="0" y="0" width="1200" height="3" fill="#1B4FD8"/>
+  <rect x="60" y="60" width="1080" height="510" fill="none" stroke="#0D1F35" stroke-width="1"/>
+  <line x1="60" y1="60" x2="84" y2="60" stroke="#C8A96E" stroke-width="1.5"/>
+  <line x1="60" y1="60" x2="60" y2="84" stroke="#C8A96E" stroke-width="1.5"/>
+  <line x1="1140" y1="60" x2="1116" y2="60" stroke="#C8A96E" stroke-width="1.5"/>
+  <line x1="1140" y1="60" x2="1140" y2="84" stroke="#C8A96E" stroke-width="1.5"/>
+  <line x1="60" y1="570" x2="84" y2="570" stroke="#C8A96E" stroke-width="1.5"/>
+  <line x1="60" y1="570" x2="60" y2="546" stroke="#C8A96E" stroke-width="1.5"/>
+  <line x1="1140" y1="570" x2="1116" y2="570" stroke="#C8A96E" stroke-width="1.5"/>
+  <line x1="1140" y1="570" x2="1140" y2="546" stroke="#C8A96E" stroke-width="1.5"/>
+  <text x="100" y="200" font-family="'IBM Plex Mono', monospace" font-size="72" font-weight="500" letter-spacing="8" fill="#E8EDF2">VEX<tspan fill="#1B4FD8">E</tspan>OM</text>
+  <text x="100" y="250" font-family="'IBM Plex Mono', monospace" font-size="14" letter-spacing="4" fill="#3A5A7A">AVIATION CAREER INTELLIGENCE</text>
+  <line x1="100" y1="280" x2="400" y2="280" stroke="#0D1F35" stroke-width="1"/>
+  <text x="100" y="340" font-family="'Space Grotesk', sans-serif" font-size="36" font-weight="600" fill="#E8EDF2">The intelligence infrastructure</text>
+  <text x="100" y="390" font-family="'Space Grotesk', sans-serif" font-size="36" font-weight="600" fill="#E8EDF2">for the human layer of aviation.</text>
+  <text x="100" y="450" font-family="'IBM Plex Mono', monospace" font-size="14" fill="#6B7A8D" letter-spacing="1">10 indicators. Failure chain mapping. 12-month outlook.</text>
+  <text x="100" y="530" font-family="'IBM Plex Mono', monospace" font-size="13" fill="#3A5A7A" letter-spacing="2">vexeom.com</text>
+</svg>
